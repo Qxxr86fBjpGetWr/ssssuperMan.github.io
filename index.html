@@ -499,9 +499,1940 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/16/e9-80-9a-e8-bf-87-e5-ad-90-e7-b1-bb-e4-bf-ae-e6-94-b9-e7-88-b6-e7-b1-bb-e7-9a-84-e7-a7-81-e6-9c-89-e5-8f-98-e9-87-8f-e5-92-8c-e7-a7-81-e6-9c-89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/16/e9-80-9a-e8-bf-87-e5-ad-90-e7-b1-bb-e4-bf-ae-e6-94-b9-e7-88-b6-e7-b1-bb-e7-9a-84-e7-a7-81-e6-9c-89-e5-8f-98-e9-87-8f-e5-92-8c-e7-a7-81-e6-9c-89/" itemprop="url">通过子类修改父类的‘’私有变量‘’和‘’私有方法‘’</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-16T18:28:13+08:00">
+                2017-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/%E6%9C%AA%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">未分类</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>不知道大家在开发的过程当中有没有遇到过这样的问题，就是使用了其他的第三方库，但是库本身并不是特别好用，或者是满足不了当前的需求，这样的话就需要去改这个库的代码，这样的话这个库你就不能随意的去更新了，很痛苦，如果项目本身对这个库的依赖又相对较大，那就更头疼了。所以我们在修改库代码的时候呢，就不能“粗暴”的直接去修改源代码。这样的话既可以保证第三方的持续更新，也能不破坏现有的代码结构，还能在第三方的基础上拓展自己的功能，可以说是相当的优雅了。 如果父类的方法和属性都暴露在.h里面的话就很容易了，这里就不在赘述了，我们来说说如何修改父类的“私有属性和方法”。 当然我不知道我们能够这样做是不是因为OC里面没有绝对的私有变量。（不知道其他语言行不行？） 先来看一个例子：</p>
+<pre><code> // User.h
+@interface User : NSObject
+@property (nonatomic, strong) NSString *userName; 
+@end  
+// User.m
+@interface User ()
+- (void)run;
+@property (nonatomic, strong) NSString *passWord;
+@end
+
+@implementation User
+- (instancetype)init {
+   self = [super init];
+   if (self) {
+       _userName = @&quot;zhangyang&quot;;
+       _passWord = @&quot;123456&quot;;
+       }
+       return self;
+   }
+
+-(void)eat {
+
+}
+   @end</code></pre><p>这是一个User类，有一个公有的属性<code>userName</code>，一个私有的属性<code>passWord</code>。一个共有的方法<code>run</code>一个私有方法<code>eat</code>。 那我怎么通过自己创建子类来重写父类的私有方法和变量呢？ ###修改父类的私有变量 1. 使用 <code>setValue:(id)value forKey</code> 我们创建一个Man的子类，代码如下：</p>
+<pre><code>// Man.h
+@interface Man : User
+@end
+// Man.m
+@implementation Man
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.userName = @&quot;zhangyang01&quot;;
+        [self setValue:@&quot;1234567&quot; forKey:@&quot;passWord&quot;];
+    }
+return self;
+}
+@end</code></pre><p>在这里我们再简单的了解一下KVC的机制：</p>
+<pre><code>首先去接收者(调用方法的那个对象)的类中查找与key相匹配的访问器方法(-setKey),如果找到了一个方法,就检查它参数的类型,如果它的参数类型不是一个对象指针类型,但是只为nil,就会执行setNilValueForKey:方法,setNilValueForKey:方法的默认实现,是产生一个NSInvalidArgumentException的异常,但是你可以重写这个方法.如果方法参数的类是一个对象指针类型,就会简单的执行这个方法,传入对应的参数.如果方法的参数类型是NSNumber或NSValue的对应的基本类型,先把它转换为基本数据类,再执行方法,传入转换后的数据.
+
+如果没有对应的访问器方法(setter方法),如果接受者的类的+accessInstanceVariablesDirectly方法返回YES,那么就查找这个接受者的与key相匹配的实例变量(匹配模式为_key,_isKey,key,isKey):比如:key为age,只要属性存在_age,_isAge,age,isAge中的其中一个就认为匹配上了,如果找到这样的一个实例变量,并且的类型是一个对象指针类型,首先released对象上的旧值,然后把传入的新值retain后的传入的值赋值该成员变量,如果方法的参数类型是NSNumber或NSValue的对应的基本类型,先把它转换为基本数据类,再执行方法,传入转换后的数据.
+
+如果访问器方法和实例变量都没有找到,执行setValue:forUndefinedKey:方法,该方法的默认实现是产生一个 NSUndefinedKeyException 类型的异常,但是我们可以重setValue:forUndefinedKey:方法</code></pre><p>看完上面关于方法的实现的说明，我们就明白了其是在找不到Man类的passWord属性的set方法之后，转而去查找User类的属性中是否含有passWord相关key的实例变量，找到_passWord属性之后，将“1234567”的值赋值给该属性。</p>
+<ol>
+<li><p>通过运行时<code>performSelector : withObject:</code></p>
+<p>[self performSelector:@selector(setPassWord:) withObject:@”abc”];</p>
+</li>
+</ol>
+<p>3.在子类中创建父类的<code>class extension</code></p>
+<pre><code>// Man.m
+@interface User () // 在子类的.m中暴露父类的内部结构
+@property (nonatomic, strong) NSString *passWord;
+@end
+@implementation Man
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.userName = @&quot;zhangyang02&quot;;
+        self.passWord = @&quot;123&quot;;
+    }
+    return self;
+}
+@end</code></pre><p>4.在子类在内部声明一个跟父类内部同名的属性,配合使用<code>@dynamic</code>标记 先上代码再说：</p>
+<pre><code>// Man.m
+@interface Man ()
+@property (nonatomic, strong) NSString *passWord;
+@end
+@implementation Man
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.userName = @&quot;zhangyang03&quot;;
+        self.passWord = @&quot;123&quot;;
+    }
+    return self;
+}
+@end</code></pre><p>这样的话编译器会默认的给<code>Man</code>类的<code>passWord</code>合成<code>@synthesize passWord = _passWord</code> 这样的话子类就有一个变量和父类重名了，那到底是子类和父类公用一个变量呢，还是各是各的？我从别人那抄来了一个方法，那就是在子类和父类的<code>init</code>方法各打一个断点，执行到断点的时候分别在控制台打印 <code>(lldb) watchpoint set variable _passWord</code> 结果可以分别看到两个不同的地址</p>
+<pre><code>(lldb) watchpoint set variable _passWord
+Watchpoint created: Watchpoint 1: addr = 0x100603400 size = 8 state = enabled type = w
+    watchpoint spec = &apos;_passWord&apos;
+    new value: 0x0000000000000000
+(lldb) watchpoint set variable _passWord
+Watchpoint created: Watchpoint 2: addr = 0x100603408 size = 8 state = enabled type = w
+    watchpoint spec = &apos;_passWord&apos;
+    new value: 0x0000000000000000</code></pre><p>所以说，子类定义了与父类内部同名属性的话，默认情况下，编译器会给子类创建一个实例变量，虽然与父类的同名，但却是两个独立的实例变量。 要是这样的话，我们要实现修改父类的私有变量那就直接不让子类自己有呗，直接用父类的不就行了。 所以我们可以使用<code>dyniimic</code>来实现，这样在运行时的时候直接就去那父类的变量直接使用了。 ###修改父类的私有方法 这个话就要用到大家常说的<code>Method Swizzling</code>,先上代码：</p>
+<pre><code>// Man.m
+@interface Man ()
+@property (nonatomic, strong) NSString *passWord;
+@end
+@implementation Man
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.userName = @&quot;zhangyang03&quot;;
+        self.passWord = @&quot;123&quot;;
+    }
+    return self;
+}
+
++(void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        Class selfClass = [self class];
+        Class superClass = [self superclass];
+
+        SEL oriSel = @selector(methodSwizzlingEat);
+        Method oriMethod = class_getInstanceMethod(selfClass, oriSel);
+
+        SEL cusSel = @selector(eat);
+        Method cusMethod = class_getInstanceMethod(superClass, cusSel);
+
+        BOOL addSuccess = class_addMethod(selfClass, oriSel, method_getImplementation(cusMethod), method_getTypeEncoding(cusMethod));
+
+        if (addSuccess) {
+            class_replaceMethod(selfClass, cusSel, method_getImplementation(oriMethod), method_getTypeEncoding(oriMethod));
+        }else {
+            method_exchangeImplementations(oriMethod, cusMethod);
+        }
+   });
+}
+
+-(void) methodSwizzlingEat {
+
+}
+
+@end</code></pre><p>这样的话就实现了将父类的方法和子类自己的方法交换，在运行时的时候就避开了父类的方法实现，字节去执行子列替换过的方法，从而达到不改变原有代码的基础上实现自己的需求的目的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/31/415/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/31/415/" itemprop="url">Warning: Attempt to present  on  whose view is not in the window hierarchy!错误的解决办法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-31T15:19:28+08:00">
+                2017-08-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Warning-Attempt-to-present-on-whose-view-is-not-in-the-window-hierarchy-错误的解决办法"><a href="#Warning-Attempt-to-present-on-whose-view-is-not-in-the-window-hierarchy-错误的解决办法" class="headerlink" title="Warning: Attempt to present on whose view is not in the window hierarchy!错误的解决办法"></a>Warning: Attempt to present on whose view is not in the window hierarchy!错误的解决办法</h1><p>控制台打印日志：</p>
+<pre><code>2017-08-31 15:11:58.656 [16260:423412] Warning: Attempt to present &lt;UINavigationController: 0x7ff940903e00&gt; on &lt;BDFBaseNavigationController: 0x7ff941032200&gt; whose view is not in the window hierarchy!</code></pre><p>报错代码：</p>
+<pre><code>[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:self.imagePicker animated:YES completion:nil];</code></pre><p>解决办法，将原有代码改为如下即可，具体原因以后再来补充：</p>
+<pre><code>UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+        while (vc.presentedViewController) {
+            vc = vc.presentedViewController;
+        }
+        [vc presentViewController:self.imagePicker animated:YES completion:nil];</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/22/ios-e5-8a-a8-e7-94-bb-e6-b1-87-e6-80-bb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/22/ios-e5-8a-a8-e7-94-bb-e6-b1-87-e6-80-bb/" itemprop="url">iOS动画汇总</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-22T15:34:08+08:00">
+                2017-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="iOS动画汇总"><a href="#iOS动画汇总" class="headerlink" title="iOS动画汇总"></a>iOS动画汇总</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作者：抱紧我的小鲤鱼 链接：<a href="http://www.jianshu.com/p/3f48fabaca19" target="_blank" rel="noopener">http://www.jianshu.com/p/3f48fabaca19</a></p>
+<h2 id="动画的结构"><a href="#动画的结构" class="headerlink" title="动画的结构"></a>动画的结构</h2><pre><code>CAAnimation{
+     CAPropertyAnimation{
+            CABasicAnimation{
+                    CASpringAnimation
+            }
+            CAKeyframeAnimation
+     }
+     CATransition   
+     CAAnimationGroup
+}</code></pre><p>首先<code>CAAnimation</code>是动画的根类不能直接使用，<code>CAPropertyAnimation</code>是抽象类同样不能直接使用，所以我们只能使用余下的子类了。</p>
+<h2 id="API分析"><a href="#API分析" class="headerlink" title="API分析"></a>API分析</h2><h3 id="CAAnimation"><a href="#CAAnimation" class="headerlink" title="CAAnimation"></a>CAAnimation</h3><pre><code>+ (instancetype)animation;
++ (nullable id)defaultValueForKey:(NSString *)key;
+- (BOOL)shouldArchiveValueForKey:(NSString *)key;
+
+/*
+//动画的动作规则,包含以下值
+//kCAMediaTimingFunctionLinear 匀速
+//kCAMediaTimingFunctionEaseIn 慢进快出
+//kCAMediaTimingFunctionEaseOut 快进慢出
+//kCAMediaTimingFunctionEaseInEaseOut 慢进慢出 中间加速
+//kCAMediaTimingFunctionDefault 默认
+*/
+@property(nullable, strong) CAMediaTimingFunction *timingFunction;
+@property(nullable, strong) id &lt;CAAnimationDelegate&gt; delegate;
+@property(getter=isRemovedOnCompletion) BOOL removedOnCompletion;</code></pre><p><code>animation</code>：这个就很简单了，就是创建一个动画对象。 <code>delegate</code>动画执行代理，它包含了两个代理方法<code>- (void)animationDidStart:(CAAnimation *)anim;</code>和<code>- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag;</code> 一个是动画已经开始执行调用一个是动画已经结束调用的。 <code>timingFunction</code>：默认值在上面已经给出来来了，这个属性是设置动画的速度曲线，如果我们对系统自带的速度函数不满意,可以通过这两个函数创建一个自己喜欢的速度曲线函数,具体用法可以参考这篇文章<a href="https://yq.aliyun.com/articles/29568" target="_blank" rel="noopener" title="CAMediaTimingFunction的使用">CAMedia 使用</a> <code>+ (instancetype)functionWithControlPoints:(float)c1x :(float)c1y :(float)c2x :(float)c2y;</code><br><code>+(instancetype)initWithControlPoints:(float)c1x :(float)c1y :(float)c2x :(float)c2y;</code> 获取曲线函数的缓冲点,具体用法可以参考这篇文章:<a href="http://blog.csdn.net/yangbingbinga/article/details/43489295" target="_blank" rel="noopener">iOS-核心动画高级编程/10-缓冲 - ^_^ - CSDN博客</a> <code>+(void)getControlPointAtIndex:(size_t)idx values:(float[2])ptr;</code> <code>- (BOOL)shouldArchiveValueForKey:(NSString *)key;</code>：返回指定的属性值是否可以归档。 <code>+ (nullable id)defaultValueForKey:(NSString *)key;</code> ：根据属性key，返回相应的属性值。 这两个方法官方文档上说是具体见<code>CALayer.h</code>那我们就在CALayer再说吧。</p>
+<h3 id="CAAnimation-协议的属性"><a href="#CAAnimation-协议的属性" class="headerlink" title="CAAnimation 协议的属性"></a>CAAnimation 协议的属性</h3><pre><code>//开始时间.这个属性比较复杂,傻瓜用法为:CACurrentMediaTime() + x,
+//其中x为延迟时间.如果设置 beginTime = CACurrentMediaTime() + 1.0,产生的效果为延迟一秒执行动画,下面详解原理
+@property CFTimeInterval beginTime;
+//动画执行时间,此属性和speed有关系speed默认为1.0,如果speed设置为2.0,那么动画执行时间则为duration*(1.0/2.0).
+@property CFTimeInterval duration;
+//动画执行速度,它duration的关系参考上面解释
+@property float speed;
+//动画的时间延迟,这个属性比较复杂,下面详解
+@property CFTimeInterval timeOffset;
+//重复执行次数
+@property float repeatCount;
+//重复执行时间,此属性优先级大于repeatCount.也就是说如果repeatDuration设置为1秒重复10次,那么它会在1秒内执行完动画.
+@property CFTimeInterval repeatDuration;
+//是否自动翻转动画,默认NO.如果设置YES,那么整个动画的执行效果为A-&gt;B-&gt;A.
+@property BOOL autoreverses;
+//动画的填充方式,默认为: kCAFillModeRemoved,包含以下值
+//kCAFillModeForwards//动画结束后回到准备状态
+//kCAFillModeBackwards//动画结束后保持最后状态
+//kCAFillModeBoth//动画结束后回到准备状态,并保持最后状态
+//kCAFillModeRemoved//执行完成移除动画
+@property(copy) NSString *fillMode;</code></pre><p><code>beginTime</code>:刚才上面简单解释了下这个属性的用法:CACurrentMediaTime()+ x 会使动画延迟执行x秒.不知道到这里有没有人想过如果-x会出现怎么样效果?假设我们有执行一个3秒的动画,然后设置beginTime = CACurrentMediaTime()- 1.5那么执行动画你会发现动画只会执行后半段,也就是只执行后面的3-1.5s的动画.为什么会这样?其实动画都有一个timeline(时间线)的概念.动画开始执行都是基于这个时间线的绝对时间,这个时间和它的父类有关(系统的属性注释可以看到).默认的CALayer的beginTime为零,如果这个值为零的话,系统会把它设置为CACurrentMediaTime(),那么这个时间就是正常执行动画的时间:立即执行.所以如果你设置beginTime=CACurrentMediaTime()+x;它会把它的执行时间线推迟x秒,也就是晚执行x秒,如果你beginTime=CACurrentMediaTime()-x;那它开始的时候会从你动画对应的绝对时间开始执行. <code>timeOffset</code>:时间偏移量,默认为0;既然它是时间偏移量,那么它即和动画时间相关.这么解释:假设我们设置一个动画时间为5s,动画执行的过程为1-&gt;2-&gt;3-&gt;4-&gt;5,这时候如果你设置timeOffset = 2s那么它的执行过程就会变成3-&gt;4-&gt;5-&gt;1-&gt;2如果你设置timeOffset = 4s那么它的执行过程就会变成5-&gt;1-&gt;2-&gt;3-&gt;4,这么说应该很明白了吧?</p>
+<h3 id="CAPropertyAnimation属性动画-抽象类-不能直接使用"><a href="#CAPropertyAnimation属性动画-抽象类-不能直接使用" class="headerlink" title="CAPropertyAnimation属性动画,抽象类,不能直接使用"></a>CAPropertyAnimation属性动画,抽象类,不能直接使用</h3><p>CAPropertyAnimation的属性</p>
+<pre><code>//需要动画的属性值
+@property(nullable, copy) NSString *keyPath;
+//属性动画是否以当前动画效果为基础,默认为NO
+@property(getter=isAdditive) BOOL additive;
+//指定动画是否为累加效果,默认为NO
+@property(getter=isCumulative) BOOL cumulative;
+//此属性相当于CALayer中的transform属性,下面会详解
+@property(nullable, strong) CAValueFunction *valueFunction;</code></pre><p>CAPropertyAnimation是属性动画.顾名思义也就是针对属性才可以做的动画.那它可以对谁的属性可以做动画?是CALayer的属性,比如:bounds,position等.那么问题来了,我们改变CALayer的position可以直接设置[CAPropertyAnimation animationWithKeyPath:@”position”]如果我们设置它的transform(CATransform3D)呢?CATransform3D是一个矩阵,如果我们想为它做动画怎么办?下面这个属性就是用来解决这个问题的. valueFunction:我们来看它可以设置的值: kCAValueFunctionRotateX kCAValueFunctionRotateY kCAValueFunctionRotateZ kCAValueFunctionScale kCAValueFunctionScaleX kCAValueFunctionScaleY kCAValueFunctionScaleZ kCAValueFunctionTranslate kCAValueFunctionTranslateX kCAValueFunctionTranslateY kCAValueFunctionTranslateZ</p>
+<h3 id="CABasicAnimation基本动画"><a href="#CABasicAnimation基本动画" class="headerlink" title="CABasicAnimation基本动画"></a>CABasicAnimation基本动画</h3><p>CABasicAnimation的属性</p>
+<pre><code>//开始值
+@property(nullable, strong) id fromValue;
+//结束值
+@property(nullable, strong) id toValue;
+//结束值
+@property(nullable, strong) id byValue;</code></pre><p>fromValue和toValue不为空,动画的效果会从fromValue的值变化到toValue. fromValue和byValue都不为空,动画的效果将会从fromValue变化到fromValue+byValue toValue和byValue都不为空,动画的效果将会从toValue-byValue变化到toValue 只有fromValue的值不为空,动画的效果将会从fromValue的值变化到当前的状态. 只有toValue的值不为空,动画的效果将会从当前状态的值变化到toValue的值. 只有byValue的值不为空,动画的效果将会从当前的值变化到(当前状态的值+byValue)的值.CABasicAnimation看起来不太复杂,但实际只用这个就足以可以做很多种动画了,下面简单用一下,先看效果:<img src="http://upload-images.jianshu.io/upload_images/3270116-7dcdcc25f5103e66.gif?imageMogr2/auto-orient/strip" alt="image"> 然后再看下实现代码:</p>
+<pre><code>-(void)animationBegin:(UIButton *)btn{
+    CABasicAnimation *animation = nil;
+    switch (btn.tag) {
+        case 0:{
+            //淡如淡出
+            animation = [CABasicAnimation animationWithKeyPath:@&quot;opacity&quot;];
+            [animation setFromValue:@1.0];
+            [animation setToValue:@0.1];
+        }break;
+        case 1:{
+            //缩放
+            animation = [CABasicAnimation animationWithKeyPath:@&quot;transform.scale&quot;];
+            [animation setFromValue:@1.0];//设置起始值
+            [animation setToValue:@0.1];//设置目标值
+        }break;
+        case 2:{
+            //旋转
+            animation = [CABasicAnimation animationWithKeyPath:@&quot;transform.rotation&quot;];
+            //setFromValue不设置,默认以当前状态为准
+            [animation setToValue:@(M_PI)];
+        }break;
+        case 3:{
+            //平移
+            animation = [CABasicAnimation animationWithKeyPath:@&quot;position&quot;];
+            //setFromValue不设置,默认以当前状态为准
+            [animation setToValue:[NSValue valueWithCGPoint:CGPointMake(self.view.center.x, self.view.center.y + 200)]];
+        }break;
+        default:break;
+    }
+[animation setDelegate:self];//代理回调
+    [animation setDuration:0.25];//设置动画时间，单次动画时间
+    [animation setRemovedOnCompletion:NO];//默认为YES,设置为NO时setFillMode有效
+    /**
+     *设置时间函数CAMediaTimingFunction
+     *kCAMediaTimingFunctionLinear 匀速
+     *kCAMediaTimingFunctionEaseIn 开始速度慢，后来速度快
+     *kCAMediaTimingFunctionEaseOut 开始速度快 后来速度慢
+     *kCAMediaTimingFunctionEaseInEaseOut = kCAMediaTimingFunctionDefault 中间速度快，两头速度慢
+     */
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    //设置自动翻转
+    //设置自动翻转以后单次动画时间不变，总动画时间增加一倍，它会让你前半部分的动画以相反的方式动画过来
+    //比如说你设置执行一次动画，从a到b时间为1秒，设置自动翻转以后动画的执行方式为，先从a到b执行一秒，然后从b到a再执行一下动画结束
+    [animation setAutoreverses:YES];
+    //kCAFillModeForwards//动画结束后回到准备状态
+    //kCAFillModeBackwards//动画结束后保持最后状态
+    //kCAFillModeBoth//动画结束后回到准备状态,并保持最后状态
+    //kCAFillModeRemoved//执行完成移除动画
+    [animation setFillMode:kCAFillModeBoth];
+    //将动画添加到layer,添加到图层开始执行动画，
+    //注意:key值的设置与否会影响动画的效果
+    //如果不设置key值每次执行都会创建一个动画，然后创建的动画会叠加在图层上
+    //如果设置key值，系统执行这个动画时会先检查这个动画有没有被创建，如果没有的话就创建一个，如果有的话就重新从头开始执行这个动画
+    //你可以通过key值获取或者删除一个动画:
+    //[self.demoView.layer animationForKey:@&quot;&quot;];
+    //[self.demoView.layer removeAnimationForKey:@&quot;&quot;]
+    [self.demoView.layer addAnimation:animation forKey:@&quot;baseanimation&quot;];
+}</code></pre><h3 id="CASpringAnimation弹性动画"><a href="#CASpringAnimation弹性动画" class="headerlink" title="CASpringAnimation弹性动画"></a>CASpringAnimation弹性动画</h3><p>CASpringAnimation的属性(iOS9新加)</p>
+<pre><code>//理解下面的属性的时候可以结合现实物理现象,比如把它想象成一个弹簧上挂着一个金属小球
+//质量,振幅和质量成反比
+@property CGFloat mass;
+//刚度系数(劲度系数/弹性系数),刚度系数越大,形变产生的力就越大,运动越快
+@property CGFloat stiffness;
+//阻尼系数,阻止弹簧伸缩的系数,阻尼系数越大,停止越快,可以认为它是阻力系数
+@property CGFloat damping;
+//初始速率,动画视图的初始速度大小速率为正数时,速度方向与运动方向一致,速率为负数时,速度方向与运动方向相反.
+@property CGFloat initialVelocity;
+//结算时间,只读.返回弹簧动画到停止时的估算时间，根据当前的动画参数估算通常弹簧动画的时间使用结算时间比较准确
+@property(readonly) CFTimeInterval settlingDuration;</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/3270116-3fd724899a6d2b66.gif?imageMogr2/auto-orient/strip" alt="iamge"> 代码：</p>
+<pre><code>CASpringAnimation *spring = [CASpringAnimation animationWithKeyPath:@&quot;position.y&quot;];
+spring.damping = 5;
+spring.stiffness = 100;
+spring.mass = 1;
+spring.initialVelocity = 0;
+spring.duration = spring.settlingDuration;
+spring.fromValue = @(self.demoView1.center.y);
+spring.toValue = @(self.demoView1.center.y + (btn.selected?+200:-200));
+spring.fillMode = kCAFillModeForwards;
+[self.demoView1.layer addAnimation:spring forKey:nil];</code></pre><p>CASpringAnimation效果不错,但是很不幸只有iOS9+系统才能使用,这就很操蛋了.以前项目有过这样的需求,然后就自己写了一个类似的动画,效果在下面: <img src="http://upload-images.jianshu.io/upload_images/3270116-02495b792640eab6.gif?imageMogr2/auto-orient/strip" alt="image"> 然后上面自定义弹性动画的代码在这里:</p>
+<pre><code>#import &quot;UIView+ShakeAnimation.h&quot;
+#import &lt;objc/runtime.h&gt;
+typedef void (^RunAnimationBlock)();
+@interface UIView ()
+@property (nonatomic,  copy)RunAnimationBlock block;
+@end
+
+@implementation UIView (ShakeAnimation)
+
+-(void)startAnimationFromFrame:(CGRect)framef
+                       toFrame:(CGRect)framet
+                      duration:(CGFloat)duration
+                    shakeTimes:(NSInteger)times
+                stretchPercent:(CGFloat)stretchPercent
+                    completion:(void (^)(BOOL finished))completion
+{
+    self.layer.masksToBounds = YES;
+
+    __block CGFloat perTime = duration / times;
+    __block CGFloat perx = (framet.origin.x - framef.origin.x) * stretchPercent / times;
+    __block CGFloat pery = (framet.origin.y - framef.origin.y) * stretchPercent / times;
+    __block CGFloat perw = (framet.size.width - framef.size.width) * stretchPercent / times;
+    __block CGFloat perh = (framet.size.height - framef.size.height) * stretchPercent / times;
+
+    __block UIView * tmpView = self;
+    __block NSInteger tmpTimes = (NSInteger)times;
+    __block NSInteger tmpsymbol = -1;
+
+__weak typeof(self) weakSelf = self;
+    self.block = ^{
+
+        [UIView animateWithDuration:perTime animations:^{
+
+            CGFloat x = framet.origin.x + perx * tmpTimes;
+            CGFloat y = framet.origin.y + pery * tmpTimes;
+            CGFloat w = framet.size.width + perw * tmpTimes;
+            CGFloat h = framet.size.height + perh * tmpTimes;
+            CGRect rect = CGRectMake(x, y, w, h);
+
+            tmpView.frame = rect;
+        }completion:^(BOOL finished) {
+
+            tmpTimes = tmpTimes + tmpsymbol;
+            tmpTimes = - tmpTimes;
+            tmpsymbol = - tmpsymbol;
+            if (tmpTimes != 0) {
+                weakSelf.block();
+            }else{
+                [UIView animateWithDuration:perTime animations:^{
+                    tmpView.frame = framet;
+                }completion:^(BOOL finished) {
+                    completion(YES);
+                }];
+            }
+        }];
+    };
+
+    self.block();
+}
+
+static char RunAnimationBlockKey;
+-(RunAnimationBlock)block{
+    return objc_getAssociatedObject(self, &amp;RunAnimationBlockKey);
+}
+-(void)setBlock:(RunAnimationBlock)block{
+    objc_setAssociatedObject(self, &amp;RunAnimationBlockKey, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+@end</code></pre><p>调用:</p>
+<pre><code>[self.demoView2 startAnimationFromFrame:CGRectMake(10, 300, 100, 100)
+                                toFrame:CGRectMake(10, 300, 300, 100)
+                               duration:0.5
+                             shakeTimes:5
+                         stretchPercent:0.3
+                             completion:^(BOOL finished) {
+                                 NSLog(@&quot;======over======:%@&quot;,self.demoView1);
+                             }];</code></pre><h3 id="CAKeyframeAnimation关键帧动画"><a href="#CAKeyframeAnimation关键帧动画" class="headerlink" title="CAKeyframeAnimation关键帧动画"></a>CAKeyframeAnimation关键帧动画</h3><p>CAKeyframeAnimation的属性</p>
+<pre><code>//关键帧值数组,一组变化值
+@property(nullable, copy) NSArray *values;
+//关键帧帧路径,优先级比values大
+@property(nullable) CGPathRef path;
+//每一帧对应的时间,时间可以控制速度.它和每一个帧相对应,取值为0.0-1.0,不设则每一帧时间相等.
+@property(nullable, copy) NSArray&lt;NSNumber *&gt; *keyTimes;
+//每一帧对应的时间曲线函数,也就是每一帧的运动节奏
+@property(nullable, copy) NSArray&lt;CAMediaTimingFunction *&gt; *timingFunctions;
+//动画的计算模式,默认值: kCAAnimationLinear.有以下几个值:
+//kCAAnimationLinear//关键帧为座标点的时候,关键帧之间直接直线相连进行插值计算;
+//kCAAnimationDiscrete//离散的,也就是没有补间动画
+//kCAAnimationPaced//平均，keyTimes跟timeFunctions失效
+//kCAAnimationCubic对关键帧为座标点的关键帧进行圆滑曲线相连后插值计算,对于曲线的形状还可以通过tensionValues,continuityValues,biasValues来进行调整自定义,keyTimes跟timeFunctions失效
+//kCAAnimationCubicPaced在kCAAnimationCubic的基础上使得动画运行变得均匀,就是系统时间内运动的距离相同,,keyTimes跟timeFunctions失效
+@property(copy) NSString *calculationMode;
+//动画的张力,当动画为立方计算模式的时候此属性提供了控制插值,因为每个关键帧都可能有张力所以连续性会有所偏差它的范围为[-1,1].同样是此作用
+@property(nullable, copy) NSArray&lt;NSNumber *&gt; *tensionValues;
+//动画的连续性值
+@property(nullable, copy) NSArray&lt;NSNumber *&gt; *continuityValues;
+//动画的偏斜率
+@property(nullable, copy) NSArray&lt;NSNumber *&gt; *biasValues;
+//动画沿路径旋转方式,默认为nil.它有两个值:
+//kCAAnimationRotateAuto//自动旋转,
+//kCAAnimationRotateAutoReverse//自动翻转
+@property(nullable, copy) NSString *rotationMode;</code></pre><p>CAKeyframeAnimation可以做很丰富的效果,下面展示了几种纯CAKeyframeAnimation做的效果:<img src="http://upload-images.jianshu.io/upload_images/3270116-9645a22fc0fc0638.gif?imageMogr2/auto-orient/strip" alt="iamge"> 以上效果的代码都比较简单,量也比较大,这里就不贴出来了,这里可以下载:[<a href="https://github.com/shmxybfq/TFDemos.git\]" target="_blank" rel="noopener">https://github.com/shmxybfq/TFDemos.git\]</a></p>
+<h3 id="CAAnimationGroup动画组"><a href="#CAAnimationGroup动画组" class="headerlink" title="CAAnimationGroup动画组"></a>CAAnimationGroup动画组</h3><p>CAAnimationGroup的属性</p>
+<pre><code>//只有一个属性,数组中接受CAAnimation元素
+@property(nullable, copy) NSArray&lt;CAAnimation *&gt; *animations;</code></pre><p>可以看到CAAnimationGroup只有一个属性一个CAAnimation数组.而且它继承于CAAnimation,它具有CAAnimation的特性,所以它的用法和CAAnimation是一样的,不同的是他可以包含n个动画,也就是说他可以接受很多个CAAnimation并且可以让它们一起开始,这就造成了动画效果的叠加,效果就是n个动画同时进行.<img src="http://upload-images.jianshu.io/upload_images/3270116-ee1b00bd9988e12a.gif?imageMogr2/auto-orient/strip" alt="image"> 这个是动画是,旋转,抖动,透明度一起作用在一起的效果,代码在这里[<a href="http://www.jianshu.com/p/(https://github.com/shmxybfq/TFDemos.git)\]" target="_blank" rel="noopener">http://www.jianshu.com/p/(https://github.com/shmxybfq/TFDemos.git)\]</a></p>
+<h3 id="CATransition转场动画"><a href="#CATransition转场动画" class="headerlink" title="CATransition转场动画"></a>CATransition转场动画</h3><pre><code>//转场类型,字符串类型参数.系统提供了四中动画形式:
+//kCATransitionFade//逐渐消失
+//kCATransitionMoveIn//移进来
+//kCATransitionPush//推进来
+//kCATransitionReveal//揭开
+//另外,除了系统给的这几种动画效果,我们还可以使用系统私有的动画效果:
+//@&quot;cube&quot;,//立方体翻转效果
+//@&quot;oglFlip&quot;,//翻转效果
+//@&quot;suckEffect&quot;,//收缩效果,动画方向不可控
+//@&quot;rippleEffect&quot;,//水滴波纹效果,动画方向不可控
+//@&quot;pageCurl&quot;,//向上翻页效果
+//@&quot;pageUnCurl&quot;,//向下翻页效果
+//@&quot;cameralIrisHollowOpen&quot;,//摄像头打开效果,动画方向不可控
+//@&quot;cameraIrisHollowClose&quot;,//摄像头关闭效果,动画方向不可控
+@property(copy) NSString *type;
+//转场方向,系统一共提供四个方向:
+//kCATransitionFromRight//从右开始
+//kCATransitionFromLeft//从左开始
+//kCATransitionFromTop//从上开始
+//kCATransitionFromBottom//从下开始
+@property(nullable, copy) NSString *subtype;
+//开始进度,默认0.0.如果设置0.3,那么动画将从动画的0.3的部分开始
+@property float startProgress;
+//结束进度,默认1.0.如果设置0.6,那么动画将从动画的0.6部分以后就会结束
+@property float endProgress;
+//开始进度
+@property(nullable, strong) id filter;</code></pre><p>CATransition也是继承CAAnimation,系统默认提供了12种动画样式,加上4个动画方向,除了方向不可控的四种效果外,大概一共提供了36种动画.另外系统还给UIView添加了很多分类方法可以快速完成一些简单的动画,如下: <em>UIView(UIViewAnimation)</em></p>
+<pre><code>@interface UIView(UIViewAnimation)
+
++ (void)beginAnimations:(nullable NSString *)animationID context:(nullable void *)context;  // additional context info passed to will start/did stop selectors. begin/commit can be nested
+//提交动画
++ (void)commitAnimations;
+//设置代理
++ (void)setAnimationDelegate:(nullable id)delegate;                          //设置动画开始方法
++ (void)setAnimationWillStartSelector:(nullable SEL)selector;                
+//设置动画结束方法
++ (void)setAnimationDidStopSelector:(nullable SEL)selector;
+//设置动画时间:default = 0.2
++ (void)setAnimationDuration:(NSTimeInterval)duration;              
+//设置动画延迟开始时间:default = 0.0
++ (void)setAnimationDelay:(NSTimeInterval)delay;
+//设置动画延迟开始日期:default = now ([NSDate date])
++ (void)setAnimationStartDate:(NSDate *)startDate;                  
+//设置动画运动曲线:default =UIViewAnimationCurveEaseInOut
+//UIViewAnimationCurveEaseInOut,//慢进慢出
+//UIViewAnimationCurveEaseIn, //慢进快出
+//UIViewAnimationCurveEaseOut,//快进慢出
+//UIViewAnimationCurveLinear//匀速
++ (void)setAnimationCurve:(UIViewAnimationCurve)curve;              
+//设置重复次数: default = 0.0.  May be fractional
++ (void)setAnimationRepeatCount:(float)repeatCount;
+//设置是否翻转动画: default = NO. used if repeat 
++ (void)setAnimationRepeatAutoreverses:(BOOL)repeatAutoreverses;
+//设置动画是否从当前状态开始:default = NO
++ (void)setAnimationBeginsFromCurrentState:(BOOL)fromCurrentState;
+//设置动画类型
++ (void)setAnimationTransition:(UIViewAnimationTransition)transition forView:(UIView *)view cache:(BOOL)cache; 
+//设置动画是否有效
++ (void)setAnimationsEnabled:(BOOL)enabled;
+//
++ (BOOL)areAnimationsEnabled;
+//
++ (void)performWithoutAnimation:(void (^)(void))actionsWithoutAnimation
+//
++ (NSTimeInterval)inheritedAnimationDuration 
+@end</code></pre><p><em>UIView(UIViewAnimationWithBlocks)</em></p>
+<pre><code>@interface UIView(UIViewAnimationWithBlocks)
+//以下方法都大同小异,就不一一做注释了
++ (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^ __nullable)(BOOL finished))completion;
++ (void)animateWithDuration:(NSTimeInterval)duration animations:(void (^)(void))animations completion:(void (^ __nullable)(BOOL finished))completion 
++ (void)animateWithDuration:(NSTimeInterval)duration animations:(void (^)(void))animations;
++ (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay usingSpringWithDamping:(CGFloat)dampingRatio initialSpringVelocity:(CGFloat)velocity options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^ __nullable)(BOOL finished))completion
++ (void)transitionWithView:(UIView *)view duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options animations:(void (^ __nullable)(void))animations completion:(void (^ __nullable)(BOOL finished))completion;
++ (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^ __nullable)(BOOL finished))completion;
++ (void)performSystemAnimation:(UISystemAnimation)animation onViews:(NSArray&lt;__kindof UIView *&gt; *)views options:(UIViewAnimationOptions)options animations:(void (^ __nullable)(void))parallelAnimations completion:(void (^ __nullable)(BOOL finished))completion NS_AVAILABLE_IOS(7_0);
+
+@end</code></pre><p><em>UIView (UIViewKeyframeAnimations)</em></p>
+<pre><code>+ (void)animateKeyframesWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewKeyframeAnimationOptions)options animations:(void (^)(void))animations completion:(void (^ __nullable)(BOOL finished))completion;
++ (void)addKeyframeWithRelativeStartTime:(double)frameStartTime relativeDuration:(double)frameDuration animations:(void (^)(void))animations</code></pre><p>以上方法比较多,找值得说的简单说一下吧</p>
+<pre><code>//单视图转场动画
++ (void)transitionWithView:(UIView *)view
+                  duration:(NSTimeInterval)duration 
+                   options:(UIViewAnimationOptions)options
+                animations:(void (^ __nullable)(void))animations
+                completion:(void (^ __nullable)(BOOL finished))completion
+//双视图转场动画
++ (void)transitionFromView:(UIView *)fromView
+                    toView:(UIView *)toView 
+                  duration:(NSTimeInterval)duration 
+                    options:(UIViewAnimationOptions)options
+              completion:(void (^ __nullable)(BOOL finished))completion</code></pre><p>这两个都是转场动画,不同的是第一个是单视图转场,第二个是双视图转场.不过需要注意的是:单视图转场动画只能用作属性动画做不到的转场效果,比如属性动画不能给UIImageview的image赋值操作做动画效果等. 我们可以看到以上两个方法中都有一个共同的参数: <em>UIViewAnimationOptions</em></p>
+<pre><code>typedef NS_OPTIONS(NSUInteger, UIViewAnimationOptions) {
+    UIViewAnimationOptionLayoutSubviews            = 1 &lt;&lt;  0,
+    UIViewAnimationOptionAllowUserInteraction      = 1 &lt;&lt;  1, // turn on user interaction while animating
+    UIViewAnimationOptionBeginFromCurrentState     = 1 &lt;&lt;  2, // start all views from current value, not initial value
+    UIViewAnimationOptionRepeat                    = 1 &lt;&lt;  3, // repeat animation indefinitely
+    UIViewAnimationOptionAutoreverse               = 1 &lt;&lt;  4, // if repeat, run animation back and forth
+    UIViewAnimationOptionOverrideInheritedDuration = 1 &lt;&lt;  5, // ignore nested duration
+    UIViewAnimationOptionOverrideInheritedCurve    = 1 &lt;&lt;  6, // ignore nested curve
+    UIViewAnimationOptionAllowAnimatedContent      = 1 &lt;&lt;  7, // animate contents (applies to transitions only)
+    UIViewAnimationOptionShowHideTransitionViews   = 1 &lt;&lt;  8, // flip to/from hidden state instead of adding/removing
+    UIViewAnimationOptionOverrideInheritedOptions  = 1 &lt;&lt;  9, // do not inherit any options or animation type
+
+    UIViewAnimationOptionCurveEaseInOut            = 0 &lt;&lt; 16, // default
+    UIViewAnimationOptionCurveEaseIn               = 1 &lt;&lt; 16,
+    UIViewAnimationOptionCurveEaseOut              = 2 &lt;&lt; 16,
+    UIViewAnimationOptionCurveLinear               = 3 &lt;&lt; 16,
+
+    UIViewAnimationOptionTransitionNone            = 0 &lt;&lt; 20, // default
+    UIViewAnimationOptionTransitionFlipFromLeft    = 1 &lt;&lt; 20,
+    UIViewAnimationOptionTransitionFlipFromRight   = 2 &lt;&lt; 20,
+    UIViewAnimationOptionTransitionCurlUp          = 3 &lt;&lt; 20,
+    UIViewAnimationOptionTransitionCurlDown        = 4 &lt;&lt; 20,
+    UIViewAnimationOptionTransitionCrossDissolve   = 5 &lt;&lt; 20,
+    UIViewAnimationOptionTransitionFlipFromTop     = 6 &lt;&lt; 20,
+    UIViewAnimationOptionTransitionFlipFromBottom  = 7 &lt;&lt; 20,
+} NS_ENUM_AVAILABLE_IOS(4_0);</code></pre><p>可以看到系统给到的是一个位移枚举,这就意味着这个枚举可以多个值同时使用,但是怎么用呢?其实那些枚举值可以分为三个部分. 我们分别看一下每个枚举的意思: <em>第一部分:动画效果</em></p>
+<pre><code>UIViewAnimationOptionTransitionNone//没有效果
+UIViewAnimationOptionTransitionFlipFromLeft//从左水平翻转
+UIViewAnimationOptionTransitionFlipFromRight//从右水平翻转
+UIViewAnimationOptionTransitionCurlUp//翻书上掀
+UIViewAnimationOptionTransitionCurlDown//翻书下盖UIViewAnimationOptionTransitionCrossDissolve//融合
+UIViewAnimationOptionTransitionFlipFromTop//从上垂直翻转                    UIViewAnimationOptionTransitionFlipFromBottom//从下垂直翻转</code></pre><p><em>第二部分:动画运动曲线</em></p>
+<pre><code>//开始慢，加速到中间，然后减慢到结束
+UIViewAnimationOptionCurveEaseInOut
+//开始慢，加速到结束
+UIViewAnimationOptionCurveEaseIn
+//开始快，减速到结束
+UIViewAnimationOptionCurveEaseOut
+//线性运动
+UIViewAnimationOptionCurveLinear</code></pre><p><em>第三部分:其他</em></p>
+<pre><code>//默认，跟父类作为一个整体
+UIViewAnimationOptionLayoutSubviews
+//设置了这个，主线程可以接收点击事件
+UIViewAnimationOptionAllowUserInteraction
+//从当前状态开始动画，父层动画运动期间，开始子层动画.
+UIViewAnimationOptionBeginFromCurrentState
+//重复执行动画，从开始到结束， 结束后直接跳到开始态
+UIViewAnimationOptionRepeat
+//反向执行动画，结束后会再从结束态-&gt;开始态
+UIViewAnimationOptionAutoreverse
+//忽略继承自父层持续时间，使用自己持续时间（如果存在）
+UIViewAnimationOptionOverrideInheritedDuration
+//忽略继承自父层的线性效果，使用自己的线性效果（如果存在）
+UIViewAnimationOptionOverrideInheritedCurve
+//允许同一个view的多个动画同时进行     
+UIViewAnimationOptionAllowAnimatedContent     
+//视图切换时直接隐藏旧视图、显示新视图，而不是将旧视图从父视图移除（仅仅适用于转场动画）             UIViewAnimationOptionShowHideTransitionViews
+//不继承父动画设置或动画类型.
+UIViewAnimationOptionOverrideInheritedOptions</code></pre><p>这下可以看到,这些枚举功能都不一样但是可以随意组合,但是组合的时候需要注意,同一类型的枚举不能一起使用比如UIViewAnimationOptionCurveEaseIn和UIViewAnimationOptionCurveEaseOut 然后我们看一下转场动画的一些效果: <em>单视图转场</em> <img src="http://upload-images.jianshu.io/upload_images/3270116-4779e1437d5d2cf5.gif?imageMogr2/auto-orient/strip" alt="image"> <em>双视图转场</em> <img src="http://upload-images.jianshu.io/upload_images/3270116-30a6c1622426380c.gif?imageMogr2/auto-orient/strip" alt="image"> <em>CATransition视图转场</em> <img src="http://upload-images.jianshu.io/upload_images/3270116-eb15d57d4bbe41d9.gif?imageMogr2/auto-orient/strip" alt="image"> 动画效果太多,gif录不了太大,效果没有一一展示.然后代码再这里:[<a href="https://github.com/shmxybfq/TFDemos.git\]" target="_blank" rel="noopener">https://github.com/shmxybfq/TFDemos.git\]</a> 除了3D变换动画,和绘图相关的动画,基本上我们常用到的动画都在这里了.另外感谢这些参考博客的博主~ <a href="http://www.jianshu.com/p/ab0e7b291468" target="_blank" rel="noopener">http://www.jianshu.com/p/ab0e7b291468</a> <a href="http://www.cocoachina.com/ios/20150105/10812.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20150105/10812.html</a> <a href="http://www.jianshu.com/p/240398d0609d" target="_blank" rel="noopener">http://www.jianshu.com/p/240398d0609d</a> <a href="http://www.jianshu.com/p/c18588d4104a" target="_blank" rel="noopener">http://www.jianshu.com/p/c18588d4104a</a> <a href="http://www.jianshu.com/p/499a0689ec40" target="_blank" rel="noopener">http://www.jianshu.com/p/499a0689ec40</a> <a href="http://www.jianshu.com/p/a079a9bb20f9" target="_blank" rel="noopener">http://www.jianshu.com/p/a079a9bb20f9</a> <a href="http://www.jianshu.com/p/08fa17620dae" target="_blank" rel="noopener">http://www.jianshu.com/p/08fa17620dae</a> <a href="http://www.jianshu.com/p/90a7a1787d1b" target="_blank" rel="noopener">http://www.jianshu.com/p/90a7a1787d1b</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/23/30-e5-a4-a9swift-e9-a1-b9-e7-9b-ae/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/23/30-e5-a4-a9swift-e9-a1-b9-e7-9b-ae/" itemprop="url">30天Swift项目</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T18:14:03+08:00">
+                2017-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="项目起因"><a href="#项目起因" class="headerlink" title="项目起因"></a>项目起因</h2><p>随着2017 WWDC的召开Xcode 已经到9了，Swift也即将步入4.0，在之前的学习当中Swift确实有着一种新兴语言的优势，Objective-C与之相比确实繁琐不少，最近又准备捡起来认真学习。</p>
+<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p>这个项目并不是我原创项目，而是一位前辈的作品，项目又30个project，由易到难。基本都是一些基本控件的使用，其实和Objective-C中的远离都是相同的，API也都是相同的。要做的就是熟悉语法句式和对应的设计模式的实现。<strong><em>但是原作者是用XIB、SB来实现的布局，这样的话我觉着不利于想我这种情况熟悉语法和控件的使用，所以我是准备纯代码实现。</em></strong></p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>目前项目已经进行到了第五天，项目已经上传到GitHub上面了：<a href="https://github.com/ssssuperMan/30-Days-Learning-Swift" target="_blank" rel="noopener">30天Swift</a>,具体的移步GitHub上看吧，我放张第三天的预览图，后续正在持续更新中，越是写越是觉得Object-C确实繁琐。<img src="http://www.zhangshengyang.com/wp-content/uploads/2017/06/thirdDay.gif" alt="image"></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>文章的编辑器切换到了Markdown，以后都会用Markdown来写东西（捂脸🤦‍♀️）。还有就是不出意外以后基本每天都会更新代码到GitHub，看着Contributes一点点变绿还是很爽的（这样说好像怪怪的）。最近还有个想法就是用OC仿写一个经常用的新闻聚合类APP，估计是要涉及到自己抓包。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/e5-88-86-e4-ba-ab-e4-b8-80-e4-b8-aabing-e5-a3-81-e7-ba-b8-e6-8e-a5-e5-8f-a3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/20/e5-88-86-e4-ba-ab-e4-b8-80-e4-b8-aabing-e5-a3-81-e7-ba-b8-e6-8e-a5-e5-8f-a3/" itemprop="url">分享一个Bing壁纸接口</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T18:50:04+08:00">
+                2017-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>分享一个Bing壁纸的API，速度还挺快的，也挺稳定的。之前想写个能把Bing每日壁纸设置成壁纸的应用，找了一圈儿API没一个好用的。
+
+顺便撸了个展示数据的demo，地址：[https://github.com/ssssuperMan/BingImage](https://github.com/ssssuperMan/BingImage)
+
+API地址：[https://github.com/xCss/bing](https://github.com/xCss/bing) 感谢作者的劳动成果。</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/12/this-application-is-modifying-the-autolayout-engine-from-a-background-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-a1-88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/12/this-application-is-modifying-the-autolayout-engine-from-a-background-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-a1-88/" itemprop="url">This application is modifying the autolayout engine from a background 的解决方案</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T14:56:35+08:00">
+                2017-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">未分类</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这个错误的出现一般都是因为在子线程当中刷新UI造成的，只要用dispatch_async(dispatch_get_main_queue(), ^(void){ <code> });包裹一下就好了，但是Xcode报错的信息十分的模糊，基本上没有什么可用的信息，也找不出到底是哪个地方的UI放在了子线程中刷新。</p>
+<p>解决方法就是有个一个<a href="https://gist.github.com/steipete/5664345" target="_blank" rel="noopener">PSPDFUIKitMainThreadGuard.m</a>的文件是从PSPDFKit中抽离出来的判断UI进程的文件，这是一个在 PSPDFKit 框架中用到的专门查找代码中哪些代码会在辅线程中更新 UI 的工具，但已经修改为支持 MIT 协议了，因此你可以在自己的项目中使用它。它会在背后拦截所有 UIKit 中对 setNeedsDisplay 和 setNeedsLayout 的调用。将这个文件的编译选项设置为 -fno-objc-arc。试着编译一下，如果顺利的话，你就可以找出项目中那些错误地在辅线程中更新 UI 的代码了。</p>
+<p>这样就能找到问题所在了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/21/ios8-e5-8f-8a-e4-bb-a5-e4-b8-8a-e4-b8-8a-e4-bc-a0-e5-8e-9f-e5-9b-be-e4-bb-a5-e5-8f-8a-e5-8e-9f-e8-a7-86-e9-a2-91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/21/ios8-e5-8f-8a-e4-bb-a5-e4-b8-8a-e4-b8-8a-e4-bc-a0-e5-8e-9f-e5-9b-be-e4-bb-a5-e5-8f-8a-e5-8e-9f-e8-a7-86-e9-a2-91/" itemprop="url">iOS8及以上上传原图以及原视频</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-21T11:14:36+08:00">
+                2017-02-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="2017年12月16日17-08-58更新"><a href="#2017年12月16日17-08-58更新" class="headerlink" title="2017年12月16日17:08:58更新"></a>2017年12月16日17:08:58更新</h2><ul>
+<li><p>视频上传这块后期代码还是优化了，为了解决上传视频的时候内存过大的问题现在的做法是创建<code>socket</code>任务的时候给上<code>tag</code>值，然后根据这个tag值来判断这个任务上传的这一片数据是否上传完毕，然后再创建下一个任务，当一个任务新建的时候上个任务已经被释放了，这样的话内存的占用就可以维持在一个很稳定的数值上下。</p>
+</li>
+<li><p>iPhone 7出来之后苹果默认的照片格式是<code>HEIF</code>也就是Live图，这个图目前想做到原图上传，我没有太好的解决方案，现在我们的做法仍然是使用<code>PhotoKit</code>将后缀名为<code>HEIF</code>的图片转换成<code>JPG</code>格式的照片，然后“原图上传”。（虽然现在已经不存在什么原图了）</p>
+</li>
+<li><p>&gt; <em>“NSData(contentsOfFile: String&gt;, options: NSDataReadingOptions.DataReadingMappedAlways)是可以不让内存暴增，但是这个貌似是有大小限制的，太大的文件比如2G的文件就不行了，使用NSInputSteam的话可以从特定位置截取一段数据上传吗？”</em></p>
+</li>
+</ul>
+<p>这个问题当时是我提出来的，现在我看有人给我推荐了一个方法：</p>
+<pre><code>_stream = [[NSInputStream alloc]initWithFileAtPath:self.srcFilePath];
+[_stream setProperty:[NSNumber numberWithUnsignedLongLong:self.srcFileFinishedSize] forKey:NSStreamFileCurrentOffsetKey];
+
+可以从某个offset开始读取流，实现断点上传。</code></pre><p>这个方法我当时应该也尝试过，但是不太能够满足我的需求，但是可能大家的使用场景都不一样，所以我还是把这个方法贴出来，大家看能不能提供一种思路。</p>
+<h2 id="以下是原文："><a href="#以下是原文：" class="headerlink" title="以下是原文："></a>以下是原文：</h2><p>iPhone手机相册中的图片的默认格式都是jpg的，假设我把一张bmp或者gif等其他格式的图片保存到本地相册那么上传到服务器的话就需要判断图片是哪种格式的，然后做出相应的操作。同理，视频也是这样如果我们需要上传原图原视频是需要处理一下的。</p>
+<blockquote>
+<p>文章大概分为三个部分： 一、怎么上传相册中各种格式的原图上传。 二、怎么上传各种格式的原视频。 三、上传大图片以及大视频面临的内存优化问题。</p>
+</blockquote>
+<p>一、<strong>上传bmp、gif、jpg、png等格式的原图上传（前提是后台也支持接受各种格式）</strong></p>
+<pre><code>//imagePickerController代理方法
+-(void)imagePickerController:(UIImagePickerController )picker didFinishPickingMediaWithInfo:(NSDictionary&lt;NSString ,id&gt; )info {
+//获取原始文件的URL，注意这个地方的URL并不是沙盒中的物理路径，而是一个AssetURL，只能使用系统提供的AssetsLibrary框架进行访问。
+    NSURL assetURL = info[UIImagePickerControllerReferenceURL];
+    //根据URL创建PHFetchResult对象。
+    PHFetchResult fetchResult = [PHAsset fetchAssetsWithALAssetURLs:@[assetURL] options:nil];
+    //获取PHAsset
+    PHAsset asset = [fetchResult firstObject];
+@autoreleasepool {
+                PHImageManager imageManager = [[PHImageManager alloc] init];
+                [imageManager requestImageDataForAsset : assets options :nil resultHandler:^(NSData  _Nullable imageData, NSString  _Nullable dataUTI, UIImageOrientation orientation, NSDictionary  _Nullable info) {
+
+                    UIImage photo = [UIImage imageWithData: imageData];
+                    BOOL downloadFinined = (![[info objectForKey : PHImageCancelledKey] boolValue] &amp;&amp; ![info objectForKey : PHImageErrorKey]);
+                    if (downloadFinined &amp;&amp; imageData) {//这个地方的imageData为原图的二进制数据
+                        [weakSelf updataImageWithArray : photo index:i amount : assets.count imageData : imageData];
+                    }
+                    //用来判断图片的格式
+                    //if ([dataUTI isEqualToString:(__bridge NSString )kUTTypeJPEG]) {}
+                    //如果不想在这个地方进行格式判断，也可是在下面调用的方法中根据imageData判断文件头来判断文件格式
+                }];
+            }
+}</code></pre><p><strong>二、上传原视频</strong></p>
+<pre><code>//imagePickerController代理方法
+    -(void)imagePickerController:(UIImagePickerController )picker didFinishPickingMediaWithInfo:(NSDictionary&lt;NSString ,id&gt; )info {
+        //获取原始文件的URL，注意这个地方的URL并不是沙盒中的物理路径，而是一个AssetURL，只能使用系统提供的AssetsLibrary框架进行访问。
+        NSURL assetURL = info[UIImagePickerControllerReferenceURL];
+        //根据URL创建PHFetchResult对象。
+        PHFetchResult fetchResult = [PHAsset fetchAssetsWithALAssetURLs:@[assetURL] options : nil];
+        //获取PHAsset
+        PHAsset asset = [fetchResult firstObject];
+        //创建导出视频的选项
+        PHVideoRequestOptions videoOptions = [[PHVideoRequestOptions alloc] init];
+        //设置导出版本为PHVideoRequestOptionsVersionOriginal，原图选项。但是这个地方的视频仍然会被压缩。
+        videoOptions.version = PHVideoRequestOptionsVersionOriginal;
+        [[PHImageManager defaultManager] requestExportSessionForVideo : asset options : videoOptions exportPreset : AVAssetExportPresetHighestQuality resultHandler:^(AVAssetExportSession  _Nullable exportSession, NSDictionary  _Nullable info) {
+            NSDateFormatter formater = [[NSDateFormatter alloc] init];
+            [formater setDateFormat:@”yyyy - MM - dd - HH : mm : ss”];
+            //读取到沙盒中
+            NSString videoPath = [NSHomeDirectory() stringByAppendingFormat:@”/Library/Caches/output-%@.%@”, [formater stringFromDate:[NSDate date]],[assetURL pathExtension]];
+            //设置导出地址
+            exportSession.outputURL = [NSURL fileURLWithPath: videoPath];
+            //设置导出文件类型
+            exportSession.outputFileType = [self chooseVideoType:[assetURL pathExtension]];
+            //导出
+            [exportSession exportAsynchronouslyWithCompletionHandler:^{
+                switch (exportSession.status) {
+                    case AVAssetExportSessionStatusCompleted:{
+                    //转成NSData用来上传，使用dataWithContentsOfFile：options：error方法并不会把数据全部加载进内存里面,而是使用内存映射的方式获取NSData。不会导致内存暴增而导致崩溃。
+                    NSData data = [NSData dataWithContentsOfFile : videoPath options : NSDataReadingMappedIfSafe error : nil];
+                        NSLog(@”%ld”,data.length);
+                    }
+                        break;
+                    default:
+                        break;
+                }
+            }];
+        }];
+    }
+
+    //这个地方试试链式语法
+    -(NSString )chooseVideoType:(NSString )videoType {
+        if ([videoType isEqualToString:@”MOV”]) {
+            return AVFileTypeQuickTimeMovie;
+        }else if ([videoType isEqualToString:@”MP4”]) {
+            return AVFileTypeMPEG4;
+        }
+        return nil;
+    }</code></pre><p>首先，我必须得说一下就是使用UIImagePickerController来选择上传视频，在选择之后，系统会自动帮你压缩，这个步骤暂时是去不掉的。具体参考Stack Overflow的答案，因为这一块的资料也比较少，根据我掌握的资料来看还是需要使用PhotoKit的API。 对于沙盒中的大文件上传具体是有两个方法来避免上传时直接拷贝到内存导致内存占用过大导致崩溃。<a href="http://www.jianshu.com/p/157cb9d5350b" target="_blank" rel="noopener">简书一个作者的心血总结</a> 第一个方法就是使用推荐使用<code>NSInputStream(fileAtPath: fileUrl)</code>初始化为文件流，不占内存。也可以使用<code>NSData(contentsOfFile: String&amp;gt;, options: NSDataReadingOptions.DataReadingMappedAlways)</code>，使用内存映射的方式获取NSData。关于内存映射的问题，他提供了一个Stack Overflow的答案 而第一种方法我暂时没有时间去研究，他是这么说的： 对于系统相册的文件，在此处具体来说就是一个ALAsset对象，我们能够通过<code>ALAssetRepresentation</code>的<code>getBytes</code>方法获取到文件的内容到一段缓冲区，继而生成NSData，但是这个NSData并不是内存映射的，所以文件多大，就会占用多少内存。</p>
+<pre><code>let rept =  asset.defaultRepresentation()
+let imageBuffer = UnsafeMutablePointer&lt;UInt8&gt;.alloc(Int(rept.size()))
+let bufferSize = rept.getBytes(imageBuffer, fromOffset: Int64(0),length: Int(rept.size()), error: nil)
+let data =  NSData(bytesNoCopy:imageBuffer ,length:bufferSize, freeWhenDone:true)
+此时我们需要把ALAsset转化为NSInputStream，通过CFStreamCreateBoundPair这个类。在苹果的官方文档上有对这个类的使用场景介绍，但是没有官方例子。
+
+For large blocks of constructed data, call CFStreamCreateBoundPair to create a pair of streams, then call the setHTTPBodyStream: method to tell NSMutableURLRequest to use one of those streams as the source for its body content. By writing into the other stream, you can send the data a piece at a time.</code></pre><p>根据官方文档，以及我收集的资料，具体的做法是使用<code>CFStreamCreateBoundPair</code>创建一对<code>readStream/writeStream</code>，<code>readStream</code>就作为<code>HTTPBodyStream</code>，设置<code>NSStream</code>的代理，<code>writeStream</code>加入<code>Runloop</code>，监测其<code>NSStreamEvent</code>是<code>HasSpaceAvailable</code>时，调用<code>getBytes</code>方法获取一段<code>NSData</code>，写入到<code>writeStream</code>中。主要的代码如下。</p>
+<pre><code>func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
+    switch (eventCode) {
+    case NSStreamEvent.None:
+        break
+
+    case NSStreamEvent.OpenCompleted:
+        break
+
+    case NSStreamEvent.HasBytesAvailable:
+        break
+
+    case NSStreamEvent.HasSpaceAvailable:
+        self.write()
+        break
+
+    case NSStreamEvent.ErrorOccurred :
+        self.finish()
+        break
+    case NSStreamEvent.EndEncountered:
+        // weird error: the output stream is full or closed prematurely, or canceled.
+        self.finish()
+        break
+    default:
+        break
+    }
+}
+
+func write() {
+    let rept =  asset.defaultRepresentation()
+    let length = self.assetSize - self.offset &amp;gt; self.bufferSize ? self.bufferSize :  self.assetSize - self.offset
+    if length &amp;gt; 0 {
+        let writeSize = rept.getBytes(assetBuffer, fromOffset: self.offset ,length: length, error:nil)
+        let written = self.writeStream.write(assetBuffer, maxLength: writeSize)
+        self.offset += written
+    } else {
+        self.finish()
+    }
+}
+
+func finish() {
+    self.writeStream.close()
+    self.writeStream.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
+    self.strongSelf = nil
+}</code></pre><p>完整的代码我上传在了github，<code>ALAssetToNSInputStream</code>，把<code>ALAssetToNSInputStream.swift</code>加入工程即可使用，Demo暂时还没有，有时间会补上。 这是作者这个工程的GitHub，我猜测就是类似于socket做大文件上传的实现方式，就是使用系统提供的C函数来实现的部分功能。 <strong>三、上传大文件时的内存优化问题</strong> 这个问题我在上面的两个问题里面其实都已经提到过了。大致有几个思路。 1.对于普通的上传文件会创建大量的UIImage对象，使用ARC的话可能内存不会及时的释放，所以我们可以在适当的地方手动加上自动释放池。 2.对于在沙盒中的文件可以使用contentWithFile等方法转化成NSData，通过映射的方式可以解决这个问题。 3.就是使用socket的方式进行上传。等我有时间写个demo放到GitHub上吧。 4.分片上传，这个方法我也只是在各大论坛听说可以这样实现，具体实现我并没有写过，继续研究吧。 总结：接触的越多发现不会的越多，发现还是有很多需求其实挺难实现的。这算是PhotoKit框架的初体验吧。因为我们的项目不支持iOS8以下，所以需要支持iOS8一下的同学，可以在网上找找实现方法，都差不多的，有的API貌似比iOS8之后的还好用一些。就这么些吧，等想到了再补充。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/15/e5-85-b3-e4-ba-8e-e5-87-bd-e6-95-b0-e5-bc-8f-e7-bc-96-e7-a8-8b-e5-92-8c-e9-93-be-e5-bc-8f-e7-bc-96-e7-a8-8b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/15/e5-85-b3-e4-ba-8e-e5-87-bd-e6-95-b0-e5-bc-8f-e7-bc-96-e7-a8-8b-e5-92-8c-e9-93-be-e5-bc-8f-e7-bc-96-e7-a8-8b/" itemprop="url">关于函数式编程和链式编程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-15T13:43:00+08:00">
+                2017-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第一次接触函数式编程和链式语法是在使用Masonry，感觉就是很新颖。比如这样：</p>
+<p>make.top.equalTo(self.view).offset(50)；</p>
+<p>像这样用点语法，将需要执行的代码连起来，这就是链式编程，这样使代码简介易读，书写方便。</p>
+<p>像equalTo(self.view) 这样，通过（）去调用函数，就是函数式编程。</p>
+<p>下面我们来看看如何实现函数式编程和链式编程：</p>
+<p>一、首先是使用 [ ] 来实现连续调用：</p>
+<p>//<br>//  ResponseObject.h<br>//  函数式链式编程<br>//<br>//  Created by 张声扬 on 2017/2/15.<br>//  Copyright © 2017年 张声扬. All rights reserved.<br>//</p>
+<p>-(ResponseObject *)responseObjectFirst;<br>-(ResponseObject *)responseObjectSecond;</p>
+<p>//  ResponseObject.m<br>//  函数式链式编程</p>
+<p>#pragma mark - 用[] 实现连续调用<br>-(ResponseObject *)responseObjectFirst {<br>    NSLog(@”%s”,__FUNCTION__);<br>    return self;<br>}</p>
+<p>-(ResponseObject *)responseObjectSecond {<br>    NSLog(@”%s”,__FUNCTION__);<br>    return self;<br>}</p>
+<p>调用的时候是这样的：</p>
+<p>//用[] 实现连续调用<br>[[self responseObjectFirst] responseObjectSecond];</p>
+<p>二、用（）实现函数式编程</p>
+<p>//  ResponseObject.h<br>//  函数式链式编程<br>-(void (^)())responseObjectThree;<br>-(void (^)())responseObjectFour;</p>
+<p>#pragma mark - 用（）实现函数式编程<br>-(void (^)())responseObjectThree {<br>    void(^responseBlock)() = ^{<br>        NSLog(@”%s”,__FUNCTION__);<br>    };<br>    return responseBlock;<br>}</p>
+<p>-(void (^)())responseObjectFour {<br>    void(^responseBlock)() = ^{<br>        NSLog(@”%s”,__FUNCTION__);<br>    };<br>    return responseBlock;<br>}</p>
+<p>调用是这样的：</p>
+<p>//用（）实现函数式编程<br>self.responseObjectThree();<br>self.responseObjectFour();</p>
+<p>三、链式 + 函数式 无参数 实现</p>
+<p>//  ResponseObject.h<br>//  函数式链式编程<br>-(ResponseObject * (^)())responseObjectFive;<br>-(ResponseObject * (^)())responseObjectSix;</p>
+<p>#pragma mark - 函数式 + 链式 无参数<br>-(ResponseObject * (^)())responseObjectFive {<br>    ResponseObject * (^responseBlock)() = ^{<br>        NSLog(@”%s”,__FUNCTION__);<br>        return self;<br>    };<br>    return responseBlock;<br>}</p>
+<p>-(ResponseObject *(^)())responseObjectSix {<br>    ResponseObject * (^responseBlock)() = ^{<br>        NSLog(@”%s”,__FUNCTION__);<br>        return self;<br>    };<br>    return responseBlock;<br>}</p>
+<p>调用：</p>
+<p>//函数式 + 链式 无参数<br>self.responseObjectFive().responseObjectSix();</p>
+<p>四、链式 + 函数式 有参数 </p>
+<p>//  ResponseObject.h<br>//  函数式链式编程<br>-(ResponseObject * (^)(NSString *name,NSString *detail)) responseObjectSeven;<br>-(ResponseObject * (^)(NSString *name,NSString *detail))responseObjectEight;</p>
+<p>#pragma mark - 函数式 + 链式 有参数<br>-(ResponseObject <em>(^)(NSString *, NSString *))responseObjectSeven {<br>    ResponseObject * (^responseBlock)() = ^(NSString \</em>name, NSString *detail) {<br>        NSLog(@”%s”,__FUNCTION__);<br>        return self;<br>    };<br>    return responseBlock;<br>}</p>
+<p>-(ResponseObject <em>(^)(NSString *, NSString *))responseObjectEight {<br>    ResponseObject *(^responseBlock)() = ^(NSString \</em>name, NSString *detail) {<br>        NSLog(@”%s”,__FUNCTION__);<br>        return self;<br>    };<br>    return responseBlock;<br>}</p>
+<p>调用：</p>
+<p>//函数式 + 链式 有参数<br>self.responseObjectSeven(@”zhangsan”, @”detail:zhangsan”).responseObjectEight(@”lisi”, @”detail:lisi”);</p>
+<p>好了到这，应该就明白链式和函数式编程是怎么回事了，如果想再深入的了解一下的话建议还是通读一下Masonry的源码，相信会有一个很大的进步。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </nav>
+
 
 
           </div>
@@ -545,12 +2476,21 @@
               
                 <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">72</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
             
 
             

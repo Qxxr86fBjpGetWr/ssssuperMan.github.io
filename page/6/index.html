@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="iOS开发">
+<meta property="og:type" content="website">
+<meta property="og:title" content="鲨鱼辣椒">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;6&#x2F;index.html">
+<meta property="og:site_name" content="鲨鱼辣椒">
+<meta property="og:description" content="iOS开发">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/6/"/>
+
+
+
+
+
+  <title>鲨鱼辣椒</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">鲨鱼辣椒</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/13/mac-e4-b8-8b-e7-bf-bb-e5-a2-99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/13/mac-e4-b8-8b-e7-bf-bb-e5-a2-99/" itemprop="url">Mac下翻墙总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-13T00:10:46+08:00">
+                2016-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Other/" itemprop="url" rel="index">
+                    <span itemprop="name">Other</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近百度把血友吧卖出得事情被爆出，网上对百度更加不满了。但是国内现在也并没有一个公司能完全替代百度的位置。就搜索而言吧，百度竞价导致的搜索结果那是相当的恶心，按照自然排名点击词条，点中野鸡网站的几率十有七八吧我感觉，今天就把Mac下翻墙的经验总结一下吧。</p>
+<h2 id="一、ShadowsocksX（影梭）"><a href="#一、ShadowsocksX（影梭）" class="headerlink" title="一、ShadowsocksX（影梭）"></a>一、ShadowsocksX（影梭）</h2><p>1.GitHub项目地址：<a href="https://github.com/breakwa11/shadowsocks-rss/issues/32" target="_blank" rel="noopener">https://github.com/breakwa11/shadowsocks-rss/issues/32</a></p>
+<p>2.下载打开后使用我就不说了，你可以选择去购买账号，途径有很多，这个网站上面有免费得账号，每六个小时更换一次密码，使用频率不高的话，可是用网站上面的账号，上面也有推荐的账号商家。网址是：<a href="http://www.ishadowsocks.com/" target="_blank" rel="noopener">http://www.ishadowsocks.com/</a></p>
+<p>3.使用免费账号的缺点就是不太稳定，如果你能够购买账号的话这种方式应该是优先选择的。支持自定义站点，和全局模式。</p>
+<h2 id="二-修改host文件"><a href="#二-修改host文件" class="headerlink" title="二.修改host文件"></a>二.修改host文件</h2><p>直接干货吧。</p>
+<p>1首先得打开Mac下面的host文件，可以使用终端命令打开host文件并并编辑，偏极客的做法，但是相对不好操作。我推荐一种简单的，点击桌面，也就是Finder下面按shift + command + g 弹出“前往文件夹”的对话框，输入  /private/etc/  在出现的文件中找到“hosts”文件。</p>
+<p>2.按住option键将“hosts”文件复制到桌面，打开文件。</p>
+<p>3.<a href="https://github.com/racaljk/hosts/blob/master/hosts#L2" target="_blank" rel="noopener">https://github.com/racaljk/hosts/blob/master/hosts#L2</a>打开这个GitHub项目，赋值主页host文件中得内容到自己的hosts文件中，保存。</p>
+<p>4.把桌面上面的hosts文件拖到 /private/etc/下面，替换掉原本的hosts文件。</p>
+<p>好了，这样就可以试着打开Google之类的网站了。缺点是需要不定时的更新hosts文件。</p>
+<h2 id="三、Lantern（蓝灯）"><a href="#三、Lantern（蓝灯）" class="headerlink" title="三、Lantern（蓝灯）"></a>三、Lantern（蓝灯）</h2><p>听说背后是Google。开始并不怎么好用，但是最近推出了2.10版本，下载使用了一下，感觉还不错。就是不支持自定义站点，对于普通用户来说应该也足够了。</p>
+<p>官网需要穿墙，附上GitHub地址吧：<a href="https://github.com/getlantern" target="_blank" rel="noopener">https://github.com/getlantern</a>  下载安装即可使用。非常简单。</p>
+<p>当然，随着GFW越来越智能，以上的方案都不是永久的解决办法，一批又一批的服务、软件、技术在实现科学上网的征途中到下，但是紧接着又会出现一批。</p>
+<p>最后总结一句政治正确的话：知识无国界，思想是自由的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/11/2016-e5-b9-b401-e6-9c-8811-e6-97-a5233604/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/11/2016-e5-b9-b401-e6-9c-8811-e6-97-a5233604/" itemprop="url">2016年01月11日23:36:04</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-11T23:52:16+08:00">
+                2016-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index">
+                    <span itemprop="name">Diary</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我得赶在今天结束之前把今天的日记给写了。我想想，今天早上起床很困难，大概是因为昨天晚上做了好多梦吧。上午依旧平淡，没有太多的事情，写写代码签签合同。只是上午的时候跟蓝科的马老师反应了一下公司的情况，我说教学质量太差，你们究竟知不知道。还有就是前期宣传和后期的教学根本不匹配，结果和我预料的一样，他们根本就拿不出什么实质性的说法来，最后还是无疾而终，说了一些不痛不痒的话，现在能指望的就是自己了，希望自己的水平等到年后能找到一份逞心如意的工作，不然到时候贷款可不好还啊。</p>
+<p>今天下午听课还是比较认真的，全程都在听课，中间打了一会瞌睡可能有几分钟吧，随后我又强行清醒了，老赵说今天讲的你可能还能听的懂，等到明天你就懵了。说实话，今天老赵讲课的状态不错，完爆那谁好几条街，真不是我黑。</p>
+<p>一阵讲到下午七点多，不想去饭堂吃饭，直接到学校门外的信阳炒米那买了两份炒米饭，站在班门口把饭给吃了，吃完都冻成狗了好吗。</p>
+<p>晚上回来又上了一个多小时的晚自习，把今天的代码写写，当然是没有写完，明天继续吧。无论怎么着，给自己定个目标就是每天一篇日记，和一篇技术博文，不约束一下，激情真的会消耗殆尽的，把大师兄的文章置顶吧，激励自己。</p>
+<p>晚上回来的时候又和那谁吵架了有没有，天天吵架，不过今天确实怪我。</p>
+<p>然后今天说要去洗衣服也没有洗，其实每次都应该勇敢的打破自己的心里舒适区，不要拖沓不要懒散。有什么事情都要去给做了。这才是办事的样子。</p>
+<p>早点睡吧。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/11/hittest-e5-92-8cpointinside-e5-a6-82-e4-bd-95-e5-93-8d-e5-ba-94-e7-94-a8-e6-88-b7-e7-82-b9-e5-87-bb-e4-ba-8b-e4-bb-b6-ef-bc-88-e8-bd-ac-ef-bc-89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/11/hittest-e5-92-8cpointinside-e5-a6-82-e4-bd-95-e5-93-8d-e5-ba-94-e7-94-a8-e6-88-b7-e7-82-b9-e5-87-bb-e4-ba-8b-e4-bb-b6-ef-bc-88-e8-bd-ac-ef-bc-89/" itemprop="url">hitTest和pointInside如何响应用户点击事件（转）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-11T23:33:21+08:00">
+                2016-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>iOS事件处理，首先应该是找到能处理点击事件的视图，然后在找到的这个视图里处理这个点击事件。</p>
+<p>处理原理如下：</p>
+<p>• 当用户点击屏幕时，会产生一个触摸事件，系统会将该事件加入到一个由UIApplication管理的事件队列中</p>
+<p>• UIApplication会从事件队列中取出最前面的事件进行分发以便处理，通常，先发送事件给应用程序的主窗口(UIWindow)</p>
+<p>• 主窗口会调用hitTest:withEvent:方法在视图(UIView)层次结构中找到一个最合适的UIView来处理触摸事件</p>
+<p>(hitTest:withEvent:其实是UIView的一个方法，UIWindow继承自UIView，因此主窗口UIWindow也是属于视图的一种)</p>
+<p>• hitTest:withEvent:方法大致处理流程是这样的：</p>
+<p>首先调用当前视图的pointInside:withEvent:方法判断触摸点是否在当前视图内：</p>
+<p>▶ 若pointInside:withEvent:方法返回NO，说明触摸点不在当前视图内，则当前视图的hitTest:withEvent:返回nil</p>
+<p>▶ 若pointInside:withEvent:方法返回YES，说明触摸点在当前视图内，则遍历当前视图的所有子视图(subviews)，调用子视图的hitTest:withEvent:方法重复前面的步骤，子视图的遍历顺序是从top到bottom，即从subviews数组的末尾向前遍历，直到有子视图的hitTest:withEvent:方法返回非空对象或者全部子视图遍历完毕：</p>
+<p>▷ 若第一次有子视图的hitTest:withEvent:方法返回非空对象,则当前视图的hitTest:withEvent:方法就返回此对象，处理结束</p>
+<p>▷ 若所有子视图的hitTest:withEvent:方法都返回nil，则当前视图的hitTest:withEvent:方法返回当前视图自身(self)</p>
+<p>• 最终，这个触摸事件交给主窗口的hitTest:withEvent:方法返回的视图对象去处理。</p>
+<h3 id="案列分析"><a href="#案列分析" class="headerlink" title="案列分析"></a>案列分析</h3><p>在UIViewController的self.view上加载一个LGFirstView</p>
+<p>LGFirstView上面有一个UIButton我们叫它buttonFirst</p>
+<p>然后，self.view上加载一个LGSecondView，刚好盖在LGFirstView上面</p>
+<p>LGSecondView上面也有一个UIButton我们叫它buttonSecond</p>
+<h5 id="正常情况下："><a href="#正常情况下：" class="headerlink" title="正常情况下："></a>正常情况下：</h5><p>用户点击LGSecondView（点击的点不在buttonSecond上，但是在buttonFirst撒很难过吗），事件处理流程如下：</p>
+<p>1）调用UIWindow的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在UIWindow上面。</p>
+<p>2）去遍历UIWindow上面的子视图，也就是self.view。同样也是调用self.view的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在self.view上面。</p>
+<p>3）去遍历self.view上的子视图，也就是LGFirstView和LGSecondView。（注意：子视图的遍历顺序是从top到bottom，即从subviews数组的末尾向前遍历）。</p>
+<p>4）所以先调用LGSecondView的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在LGSecondView上面。（此时不会再去遍历LGFirstView，所以正如你所愿buttonFirst的点击事件也不会被调用）</p>
+<p>5）还没有结束，接着回去遍历LGSecondView上的所有子视图，结果所有子视图的hitTest:withEvent:方法都返回nil，因为LGSecondView上面只有secondButton，而点击的点不在secondButton。</p>
+<p>6）最终hitTest:withEvent:方法返回当前视图自身(self)，而LGSecondView没有事件要处理。整个过程结束。</p>
+<h5 id="如果我们想让buttonFirst也响应点击事件怎么办？"><a href="#如果我们想让buttonFirst也响应点击事件怎么办？" class="headerlink" title="如果我们想让buttonFirst也响应点击事件怎么办？"></a>如果我们想让buttonFirst也响应点击事件怎么办？</h5><h5 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h5><p>我们在LGSecondView加入如下代码：</p>
+<p>-(id)hitTest:(CGPoint)point withEvent:(UIEvent *)event<br>{<br>    UIView *hitView = [super hitTest:point withEvent:event];<br>    if (hitView == self)<br>    {<br>        return nil;<br>    }<br>    else<br>    {<br>        return hitView;<br>    }<br>}</p>
+<p>我们再来分析一下：</p>
+<p>还是这个场景，用户点击LGSecondView（点击的点不在buttonSecond上，但是在buttonFirst撒很难过吗），事件处理流程如下：</p>
+<p>1）调用UIWindow的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在UIWindow上面。</p>
+<p>2）去遍历UIWindow上面的子视图，也就是self.view。同样也是调用self.view的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在self.view上面。</p>
+<p>3）去遍历self.view上的子视图，也就是LGFirstView和LGSecondView。（注意：子视图的遍历顺序是从top到bottom，即从subviews数组的末尾向前遍历）。</p>
+<p>4）所以先调用LGSecondView的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在LGSecondView上面。</p>
+<p>5)但是，注意了，这里有个但是， UIView *hitView = [super hitTest:point withEvent:event];就是这句代码发挥了作用。如果hitView是LGSecondView的话，就不处理点击事件。（这跟userInteractionEnabled=NO是不一样的，userInteractionEnabled=NO，LGSecondView上的buttonSecond也不会响应点击事件了。）</p>
+<p>6)这个时候会去调用LGFirstView的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在LGFirstView上面。</p>
+<p>7）再去遍历LGFirstView上面的子视图，也就是buttonFirst，调用buttonFirst的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在buttonFirst上面。</p>
+<p>8）再去遍历buttonFirst上的所有子视图，结果所有子视图的hitTest:withEvent:方法都返回nil，说明点击就在buttonFirst，buttonFirst就用响应的点击方法。</p>
+<h5 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h5><p>在LGSecondView.m</p>
+<p>@interface LGSecondView ()</p>
+<p>@property (nonatomic, strong) NSMutableArray *subControlsArray;</p>
+<p>@end</p>
+<p>@implementation LGSecondView</p>
+<p>- (id)initWithFrame:(CGRect)frame<br>{<br>    if (self = [super initWithFrame:frame]) {<br>        self.subControlsArray = [NSMutableArray array];<br>    }<br>    return self;<br>}</p>
+<p>#pragma mark - 方法二</p>
+<p>- (void)addSubview:(UIView *)view{<br>    [super addSubview:view];<br>    if ([view isKindOfClass:[UIControl class]]) {<br>        [self.subControlsArray addObject:view];<br>    }<br>}</p>
+<p>//set self not response action and self subviews response action<br>- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event;<br>{<br>    BOOL toNext = YES;<br>    for (UIView *view in _subControlsArray) {<br>        if (CGRectContainsPoint(view.frame, point)) {<br>            toNext = NO;<br>            break;<br>        }<br>    }<br>    return !toNext;<br>}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/10/2016-e5-b9-b401-e6-9c-8810-e6-97-a5190820/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/10/2016-e5-b9-b401-e6-9c-8810-e6-97-a5190820/" itemprop="url">2016年01月10日19:08:20</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-10T19:15:33+08:00">
+                2016-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index">
+                    <span itemprop="name">Diary</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天一觉睡到十点半，然后在床上玩手机玩到下午一点多，然后去饭堂了一份黄焖鸡，买饭的时候正好碰见张铭亮，我俩在一块吃的饭，中间聊了聊天。</p>
+<p>下午就一直在班里学习，中间老赵老板里面转了一会就走了，然后就接着写代码啊，直到六点十几分吧，就把东西收拾一下出来吃饭了。现在正在宿舍的床上写日记呢，今天真是太平常了~</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/09/2016-e5-b9-b401-e6-9c-8809-e6-97-a5203629/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/09/2016-e5-b9-b401-e6-9c-8809-e6-97-a5203629/" itemprop="url">2016年01月09日20:36:29</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-09T20:57:15+08:00">
+                2016-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index">
+                    <span itemprop="name">Diary</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天周六，老赵说今天可以不用去班里，想上自习的也可以去，但是我还是去了。早上九点半起床到班里面就十点了，今天把“卖身”的合同签了，早上老王那个傻逼来了不知道干啥，然后把身份证学生证给学习委员去复印了，不签有什么办法呢，反正是欠人家两万块钱呢。上午去了之后发现根本静不下来好吗，写了一会代码，把昨天老赵实现的功能今天给实现了一下，然后去吃了个饭，回来之后实在静不下来，就回宿舍收拾收拾东西，去洗澡了。话说今天又跟那谁吵架，不说了，都是泪。</p>
+<p>出宿舍门的时候竟然碰见老赵了，我问他干啥，他说他来宿舍拿点衣服，他问我是去教室吗，我说我刚从教室回来，那说那你出去干嘛，我说我去洗澡啊。然后我在商专洗澡的时候竟然看见他了，他那耀眼的蓝色双肩包。</p>
+<p>洗完澡后，两条腿和以前一样，刺痒难耐，真他妈不知道是咋回事，我就怀疑是高中那会过敏了一次，留下来的病根，两条腿根本不能受刺激，一旦受了刺激，就他妈像孙悟空拔了定海神针，那叫一个难受。这都是什么稀奇古怪的毛病。等有了时间我得去医院看看。</p>
+<p>接着我就骑着自行车到了国基，直接就去剪了个头发，现在头发终于清爽了，之前头发太长了，眨眼睛不说，每天都得洗一次，对我来说真是够够的。然后去了宿舍，把衣服什么的都收拾收拾放在大姨给的那个很大的双肩包里面。话说王豪买的电子烟很牛逼啊。用王豪的电脑打了一把LOL用大嘴虽然战绩不怎么样，但是对面的ADC前期还在，等到大概七八级的时候就掉了，然后我们最后就翻盘了。</p>
+<p>好长时间没有去宿舍了，见到宿舍的其他三个人真是倍感亲切，这种感觉是以前天天在一快没有的，真是近则远，远则近啊，三个人一块去吃了个饭，回来后，张煊赫也洗过澡了，在那打游戏呢，一直在那玩，所以我就没有等他，先回来了。</p>
+<p>在阳台上先给那姑娘打了个电话，商量了一下找他接的钱的事，有跟大美女打了个电话说明天给我打点钱。哎，钱不够花了，真想能早点找个工作，让财务自由啊。明天去不去班里面还不好说，看心情吧。玩会就睡了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/09/2016-e5-b9-b401-e6-9c-8808-e6-97-a5230412/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/09/2016-e5-b9-b401-e6-9c-8808-e6-97-a5230412/" itemprop="url">2016年01月08日23:04:12</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-09T10:35:42+08:00">
+                2016-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index">
+                    <span itemprop="name">Diary</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天好像没啥特别的事情啊。和往常一样，起床洗漱，到班。</p>
+<p>今天老赵把一般的人全部都赶回去了，在班里说了一会话，大概的意思就是，二班的各方面都比一班好，他让一班回去的原因是他怕一般影响我班的学习，说让我们打起精神，不要管还有多长时间，不要管工作的事情，现在只需要关心技术，总之就是让我们好好学习。还说让我们把百思不看代码写下来出去要15K一点问题都没有，朝着这个目标努力吧。</p>
+<p>下午就是6个小时的讲课，前面几个小时还好，到了最后一会，我听的心烦意乱，只想让他赶紧讲完，然后把代码发下来我自己看看就好了。</p>
+<p>总是感觉沉不下来，总是太在意别人怎么样。吃过饭我我去找那姑娘了，好友加回来了，聊了会天她说她困了，就让他先去休息。</p>
+<p>一会再看看书吧，今天就这样了，明天周末要怎么安排呢，再说吧。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/08/2016-e5-b9-b401-e6-9c-8808-e6-97-a5000510/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/08/2016-e5-b9-b401-e6-9c-8808-e6-97-a5000510/" itemprop="url">2016年01月08日00:05:10</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-08T00:05:25+08:00">
+                2016-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index">
+                    <span itemprop="name">Diary</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一切如旧。只是上午老王说了关于合同的事情，他的意思是说我们要是不满意要是想闹就赶紧的闹，没有人不签合同的话，他就给公司报上去，哎呀，事已至此，也没有啥好说的了。不抱怨，能做的就是抓紧最后一周的时间再进步一点，多学一点，找到工作的机会就多一点，工作后压力就小一点，不管怎么样，我一定要沿着这条路走下去，坚决不半途而废了。</p>
+<p>下午的话一点十几分上课，老赵一口气讲到八点多，中间就休息了十来分钟，根据昨天决定调整的学习方案，今天边听我在下面边敲，效果很明显，可以把老赵调bug和中间一些的空闲时间，把进度赶上来，只是今天最后有段时间没有好好听课，乱了。所以最后一点没有好好的消化，明天要抓紧了，把今天讲的东西消化一下。</p>
+<p>刚刚借马昌辉的手机给那谁打电话，见面就是干呐，我天，打电话就是吵，我真是很无奈啊。为什么要这样呢，我真是很难理解，我感觉就是眼睛里容不下沙子的感觉，吹毛求疵，就算你不爽，也不至于什么事都挂在脸上，都要体现出来，能考虑一下大局吗？你能控制一下自己的情绪吗？事情想往常一样又闹大了…..不说了，今天又学到了两三个比较好的知识技巧，总结一下。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/08/e4-bd-bf-e7-94-a8xib-e8-87-aa-e5-ae-9a-e4-b9-89-e8-be-93-e5-85-a5-e6-a1-86-e4-bb-a5-e5-8f-8a-e9-94-ae-e7-9b-98-e4-bd-8d-e7-bd-ae-e7-9a-84-e5-a4-84-e7-90-86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/08/e4-bd-bf-e7-94-a8xib-e8-87-aa-e5-ae-9a-e4-b9-89-e8-be-93-e5-85-a5-e6-a1-86-e4-bb-a5-e5-8f-8a-e9-94-ae-e7-9b-98-e4-bd-8d-e7-bd-ae-e7-9a-84-e5-a4-84-e7-90-86/" itemprop="url">使用XIB自定义输入框以及键盘位置的处理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-08T00:04:38+08:00">
+                2016-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一、今天在项目中有个这样的需求，在评论页面（tableView）下面添加一个评论框，评论页面是使用XIB了的，从其他控制器push到评论页面的时候这个评论框和评论页面加载的时间和方式都不太一致，因为把评论框添加在了评论页面的navigationController上，事实说明这样是不合适的。（有些时候这样弄有奇效，只不过在这不太合适）。</p>
+<p>合适的做法是，把评论框添加在评论页面上面，这样就能做到随着评论页面的同步。</p>
+<p>错误的做法：</p>
+<p>1.单独弄个toolBar的view，然后XIB</p>
+<p><img src="http://www.zhangshengyang.com/wp-content/uploads/2016/01/Snip20160107_2-300x45.png" alt="Snip20160107_2"></p>
+<p>2.创建一个评论控制器继承自tableviewcontroller</p>
+<p><img src="http://www.zhangshengyang.com/wp-content/uploads/2016/01/Snip20160107_4-300x48.png" alt="Snip20160107_4">  </p>
+<p>3.把toolBar添加进去，通过懒加载加载到navigationController上面</p>
+<p><img src="http://www.zhangshengyang.com/wp-content/uploads/2016/01/Snip20160107_6-300x211.png" alt="Snip20160107_6"></p>
+<p>最后，把评论控制器ZZCommentViewController改成继承自UIViewController，XIB上面加个tableviewcell来弥补没有继承自UITableViewController的功能，然后在ZZCommentViewController的XIB上面创建评论框的View，再使用UIView+Layout调整cell和view的相对位置。</p>
+<p>就像这样：</p>
+<p><img src="http://www.zhangshengyang.com/wp-content/uploads/2016/01/Snip20160107_9-300x238.png" alt="Snip20160107_9"></p>
+<p>二、点击评论框的textField 弹出键盘时，评论框的处理方式</p>
+<p>1.首先注册通知</p>
+<p>//注册键盘监听通知</p>
+<pre><code>\[\[NSNotificationCenter defaultCenter\] addObserver:self selector:@selector(keyBoardChange:) name:UIKeyboardWillChangeFrameNotification object:nil\];</code></pre><p>2.需要改变位置的评论框的约束</p>
+<p>@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstranint;</p>
+<p>3.监听键盘位置变化时执行的方法。改变评论框的位置</p>
+<p>-(void)keyBoardChange:(NSNotification *)notification{</p>
+<pre><code>CGSize size = \[UIScreen mainScreen\].bounds.size;
+
+//键盘显示隐藏的frame
+
+CGRect frame = \[notification.userInfo\[UIKeyboardFrameEndUserInfoKey\]CGRectValue\];
+
+//修改底部的约束
+
+self.bottomConstranint.constant = size.height - frame.origin.y;
+
+//获取键盘升起退出的的动画时间
+
+CGFloat duration = \[notification.userInfo\[UIKeyboardAnimationDurationUserInfoKey\]doubleValue\];
+
+\[UIView animateWithDuration:duration animations:^{
+
+    \[self.view layoutIfNeeded\];
+
+}\];</code></pre><p>}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/07/swift-e4-b8-80-ef-bc-9a-e5-9f-ba-e7-a1-80-e8-af-ad-e6-b3-95-e5-92-8c-e5-b8-b8-e9-87-8f-e5-92-8c-e5-8f-98-e9-87-8f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/07/swift-e4-b8-80-ef-bc-9a-e5-9f-ba-e7-a1-80-e8-af-ad-e6-b3-95-e5-92-8c-e5-b8-b8-e9-87-8f-e5-92-8c-e5-8f-98-e9-87-8f/" itemprop="url">Swift一：基础语法和常量和变量</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-07T08:28:02+08:00">
+                2016-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.Swift是按照从上往下的顺序执行，不需要main函数，写在前面的代码会自动被当做是程序的入口</p>
+<p>2.不需要在每一条语句后面加上分号，加上也不会报错，但是一行上面有多条语句的时候需要加分号</p>
+<p>3.注释：OC里面不允许多行嵌套注释，但是Swift可以。单行注释基本是一样的。</p>
+<p>声明常量和变量：</p>
+<pre><code>//在Swift中使用let来声明一个常量，比如:
+let num1 = 3
+//在Swift中使用var来声明一个变量，比如:
+var str = &quot;Hello, playground&quot;
+//在Swift中使用var来声明多个常量，比如:
+var x = 0.0, y = 0.0, z = 0.0</code></pre><p>创建一个按钮：</p>
+<p>//使用Swift创建一个button<br>        let button = UIButton()<br>        button.frame = CGRectMake(0, 0, 100, 100)<br>        button.backgroundColor = UIColor.redColor()<br>        //添加到view<br>        self.view.addSubview(button)</p>
+<p>拼接两个字符串的时候：</p>
+<pre><code>//做字符串拼接
+let str1 = &quot;11111&quot;
+let str2 = &quot;ddddd&quot;
+var str3 = str1 + str2</code></pre><p>未完待续。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/07/2016-e5-b9-b401-e6-9c-8806-e6-97-a5224324/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/07/2016-e5-b9-b401-e6-9c-8806-e6-97-a5224324/" itemprop="url">2016年01月06日22:43:24</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-07T08:16:44+08:00">
+                2016-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index">
+                    <span itemprop="name">Diary</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天早上起的还是比较早的，到班里八点。有点反常的时，老赵今天来的有些晚，上午十一点多的时候来到教室，估计是一班有人没来吧，他在班里很生气的打了一个电话，下午的上课，老赵就上午的问题质问一班的同学，气氛有点尴尬，火药味有点重，老赵言辞也很激烈，说了一大堆，我怎么怎么为你们好，你们怎么怎么白眼狼。</p>
+<p>就像六爷说的一码归一码，老赵虽然平时总是骂骂咧咧的，但是我感觉他是为了我们好，还有就是平时一些细节我也感觉他是个性情中人，不管怎么说吧，总会有人不满意。我今天在群里顶他了，在其他人匿名踩他的时候。</p>
+<p>我反思了一下今天的学习情况，不能这样了，明天就不能这样了，太浪费时间，老赵在上面讲着，我也得在下面敲着，再不济也得跟着源码看着，边讲，我得边消化，不然每天留下练习的时间太少了。再加上bug，每天都有种不充实的感觉，疲于奔命。还有就是我得再自信一些，不要自己乱了阵脚，按照自己的想法走就好了。明天接着搞起。不说了，看代码去了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zhangshengyang</p>
+              <p class="site-description motion-element" itemprop="description">iOS开发</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangshengyang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
