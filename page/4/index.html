@@ -260,163 +260,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/18/nsuserdefaults-standarduserdefaults-e7-9a-84-e4-bd-bf-e7-94-a8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="鲨鱼辣椒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/18/nsuserdefaults-standarduserdefaults-e7-9a-84-e4-bd-bf-e7-94-a8/" itemprop="url">NSUserDefaults standardUserDefaults的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-18T10:40:20+08:00">
-                2016-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Home/" itemprop="url" rel="index">
-                    <span itemprop="name">Home</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>NSUserDefaults用于存储数据量小的数据，例如用户配置。并不是所有的东西都能往里放的，只支持：NSString,NSNumber, NSDate, NSArray, NSDictionary (之前有面试官问我这个问题来着：“用户偏好设置什么时候用？怎么用？可以存放NSMutableArray/Dictionary吗？我没有回答上来”)，详细方法可以查看类文件。</code></pre><p>NSUserDefaultsstandardUserDefaults用来记录一下永久保留的数据非常方便，不需要读写文件，而是保留到一个NSDictionary字典里，由系统保存到文件里，系统会保存到该应用下的/Library/Preferences/gongcheng.plist文件中。需要注意的是如果程序意外退出，NSUserDefaultsstandardUserDefaults数据不会被系统写入到该文件，不过可以使用［[NSUserDefaultsstandardUserDefaults] synchronize］命令直接同步到文件里，来避免数据的丢失。</p>
-<p>[code lang=”objc”] 一、将数据存储到NSUserDefaults： //UISwitch - (IBAction)switchChanged:(id)sender{ NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults]; [userDefaults setBool:_theSwitch.on forKey:@”switchValue”]; } //UITextField - (IBAction)inputChanged:(id)sender{ NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults]; [userDefaults setObject:_textField.text forKey:@”inputValue”]; } [/code]</p>
-<p>二、读取NSUserDefaults中的数据：</p>
-<p>[code lang=”objc”] UISwitchNSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults]; BOOL sw = [userDefaults boolForKey:@”switchValue”]; [_theSwitch setOn:sw]; UITextFieldNSString *str = [userDefaults stringForKey:@”inputValue”]; [_textField setText:str]; [/code]</p>
-<p>registerDefaults:方法是注册偏好设置的子集，它是不写入到plist文件中的，但在ND中取确实能取到。<br>也就是说plist文件中看到的数据是你显示的设置进去的。<br>比如调用setxxx方法</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/17/e5-8f-96-e6-b6-88tableview-section-e7-9a-84headerview-e5-92-8cfooterview-e7-9a-84-e6-bb-9e-e7-95-99-e6-95-88-e6-9e-9c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1881,6 +1724,174 @@ return _pictureView;</code></pre><p>}</p>
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/12/30/ios-e4-bb-a3-e7-a0-81-e6-8f-92-e4-bb-b6-e6-b5-8b-e8-af-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/30/ios-e4-bb-a3-e7-a0-81-e6-8f-92-e4-bb-b6-e6-b5-8b-e8-af-95/" itemprop="url">iOS代码插件测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-30T23:48:31+08:00">
+                2015-12-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>-(void)loadNewData<br>{</p>
+<pre><code>NSMutableDictionary *params = \[NSMutableDictionary dictionary\];
+params\[@&quot;a&quot;\] = @&quot;list&quot;;
+params\[@&quot;c&quot;\] = @&quot;data&quot;;
+params\[@&quot;type&quot;\] = @(self.type);
+
+\[self.manager GET:@&quot;http://api.budejie.com/api/api\_open.php&quot; parameters:params progress:^(NSProgress * \_Nonnull downloadProgress) {
+
+
+} success:^(NSURLSessionDataTask * \_Nonnull task, id  \_Nullable responseObject) {
+
+
+    self.topics = \[ZZTopic mj_objectArrayWithKeyValuesArray:responseObject\[@&quot;list&quot;\]\];
+
+
+    // 刷新
+    \[self.tableView reloadData\];
+
+
+    // 停止
+    \[self.tableView.header endRefreshing\];
+
+
+} failure:^(NSURLSessionDataTask * \_Nullable task, NSError * \_Nonnull error) {
+
+    NSLog(@&quot;%@--&quot;,error);
+}\];</code></pre><p>}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1931,7 +1942,7 @@ return _pictureView;</code></pre><p>}</p>
               
                 <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
