@@ -1,0 +1,2348 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="iOS开发">
+<meta property="og:type" content="website">
+<meta property="og:title" content="鲨鱼辣椒">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;2&#x2F;index.html">
+<meta property="og:site_name" content="鲨鱼辣椒">
+<meta property="og:description" content="iOS开发">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
+
+
+
+
+
+  <title>鲨鱼辣椒</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">鲨鱼辣椒</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/10/mac-e4-b8-8b-e8-ae-be-e7-bd-aeterminal-e8-b5-b0-e4-bb-a3-e7-90-86-e7-9a-84-e6-96-b9-e6-b3-95-e3-80-82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/10/mac-e4-b8-8b-e8-ae-be-e7-bd-aeterminal-e8-b5-b0-e4-bb-a3-e7-90-86-e7-9a-84-e6-96-b9-e6-b3-95-e3-80-82/" itemprop="url">Mac下设置Terminal走代理的方法。</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-10T17:27:47+08:00">
+                2017-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天用CocoaPods更新网易云信的SDK更新了俩小时没有更新成功，就想着能不能让终端也走个代理，在网上找到了方法记录一下。</p>
+<p>1.使用终端 open ~/.gitconfig。</p>
+<p>2、添加本地代理地址：</p>
+<p>[http]<br>proxy = socks5://127.0.0.1:1080</p>
+<p>[https]<br>proxy = socks5://127.0.0.1:1080</p>
+<p>但是这样做的话，在后来的使用中我发现并不是所有的情况都能这么干，今天用Alcatraz下载Xcode插件的时候报错：<img src="/wp-content/uploads/2017/01/20170110032542_77383.png" alt=""></p>
+<p>解决办法就是把添加进去的那两行给删掉，用的时候再添加上喽。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/22/e5-85-b3-e4-ba-8eblock-e5-be-aa-e7-8e-af-e5-bc-95-e7-94-a8-e7-9a-84-e9-97-ae-e9-a2-98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/22/e5-85-b3-e4-ba-8eblock-e5-be-aa-e7-8e-af-e5-bc-95-e7-94-a8-e7-9a-84-e9-97-ae-e9-a2-98/" itemprop="url">关于Block循环引用的问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-22T18:50:17+08:00">
+                2016-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>来看一个例子，我们有两个控制器类，一个叫ViewController，另一个叫HYBAController。其中，ViewController有一个按钮，点击时会push到HYBAController下。</p>
+<p>HYBAController</p>
+<p>// 公开了一个方法<br>- (instancetype)initWithCallback:(HYBCallbackBlock)callback;</p>
+<p>// 非公开的属性，这里放出来只是告诉大家，HYBAController会对这个属性强引用<br>@property (nonatomic, copy) HYBCallbackBlock callbackBlock;</p>
+<p>ViewController</p>
+<p>@interface ViewController ()</p>
+<p>// 引用按钮只是为了测试<br>@property (nonatomic, strong) UIButton *button;<br>// 只是为了测试内存问题，引用之。在开发中，有很多时候我们是<br>// 需要引用另一个控制器的，因此这里模拟之。<br>@property (nonatomic, strong) HYBAController *vc;</p>
+<p>@end</p>
+<p>// 点击button时<br>- (void)goToNext {<br>  HYBAController *vc = [[HYBAController alloc]initWithCallback:^{<br>    [self.button setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];<br>  }];<br>  self.vc = vc;<br>  [self.navigationControllerpushViewController:vcanimated:YES];<br>}</p>
+<p>现在我们就来分析一下，这段代码是不是有循环引用的问题（当然有啊，没有我就不写出来了）。</p>
+<p>首先从 ViewController 的 goToNext方法说起，callback持有ViewController，而ViewController持有HYBAController，</p>
+<p>HYBAController持有callbackBlock。</p>
+<p>callback -&gt; ViewController -&gt; HYBAController -&gt; callbackBlock  </p>
+<p>这就形成了一个循环引用，解决办法是在callbackBlock中对ViewController的引用改为弱引用：</p>
+<p>- (void)goToNext {<br>  __weak __typeof(self) weakSelf = self;<br>  HYBAController *vc = [[HYBAController alloc]initWithCallback:^{<br>    [weakSelf.buttonsetTitleColor:[UIColor greenColor]forState:UIControlStateNormal];<br>  }];<br>//  self.vc = vc;<br>  [self.navigationControllerpushViewController:vcanimated:YES];<br>}</p>
+<p>还有就是一开发者认为在block中不使用点语法直接访问属性合成的成员变量就不会持有当前对象了，看下面代码：</p>
+<p>- (void)goToNext {<br>  __weak __typeof(self) weakSelf = self;<br>  HYBAController *vc = [[HYBAController alloc]initWithCallback:^{<br>    [_button setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];<br>  }];</p>
+<p>  [self.navigationControllerpushViewController:vcanimated:YES];<br>}</p>
+<p>实际上则不然，因为实例变量是和self所指代的实例关联在一起的，如果通过读取或者写入方法持有了实例变量，那么也  </p>
+<p>会把self一块持有。</p>
+<p>还有一种循环引用比上一种更加难以发现：</p>
+<p>EOCNerworkFetcher.h<br>typedef void (^EOCNetworkFetcherCompletionHandler) (NSData *data);<br>@propery (nonatomic, strong) NSUrl *url;<br>@propery (nonatomic, copy) EOCNetworkFetcherCompletionHandler  completionHandler;</p>
+<p>EOCNerworkFetcher.m<br>-(void)startWithCompletionHandler:(EOCNetworkFetcherCompletionHandler )completionHandler {<br>    self.completionHandler = completionHandler;<br>    //请求完成后设置_downloadData<br>    //请求完成后，调用p_requestCompled<br>}<br>-（void）p_requestCompled {<br>    if (_completionHandler ) {<br>        _completionHandler(_downloadData);<br>    }<br>}</p>
+<p>在另外的类中请求数据：</p>
+<p>-(void)downloadData {<br>    NSUrl *url = [NSUrl alloc ] initwithUrl………];<br>    EOCNerworkFetcher    *nerworkFetcher = [EOCNerworkFetcher alloc] initwithUrl:url];<br>    [nerworkFetcher startWithCompletionHandler:^(NSData *data){<br>        NSLog(@”%@”,nerworkFetcher.url);<br>        _fetchedData = data;<br>    }]<br>}</p>
+<p>completionHandler块会根据获取器对象来访问url，于是块就保留了获取器，而获取器把completionHandler设成了</p>
+<p>属性保留了这个快，解决办法是运行过completionHandler之后就没有必要保留他了，解决办法如下：</p>
+<p>-(void) p_requestCompled {<br>   if (_completionHandler) {<br>      _completionHandler(_downloadData);<br>   }<br>   self.completionHandler = nil;<br>}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/06/socket-ef-bc-88-e4-ba-8c-ef-bc-89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/06/socket-ef-bc-88-e4-ba-8c-ef-bc-89/" itemprop="url">Socket（二）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-06T15:06:35+08:00">
+                2016-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>Socket（一）是对一些基本概念的描述，这篇就说一下Socket具体在iOS中是怎么实现通信的。</code></pre><h2 id="一、建立连接"><a href="#一、建立连接" class="headerlink" title="   一、建立连接"></a>   一、建立连接</h2><pre><code>1.定义输入输出流。</code></pre><p>- (void)connectToHost:(id)sender {<br>   //定义服务器的地址和端口号<br>   NSString *host = @”127.0.0.1”;<br>    int port = 12345;</p>
+<pre><code>// 定义C语言输入输出流
+CFReadStreamRef readStream;
+CFWriteStreamRef writeStream;
+CFStreamCreatePairWithSocketToHost(NULL, (__bridge CFStringRef)host, port, &amp;readStream, &amp;writeStream);
+
+// 把C语言的输入输出流转化成OC对象
+\_inputStream = (\_\_bridge NSInputStream *)(readStream);
+\_outputStream = (\_\_bridge NSOutputStream *)(writeStream);
+
+
+// 设置代理
+_inputStream.delegate = self;
+_outputStream.delegate = self;
+
+
+// 把输入输入流添加到主运行循环
+// 不添加主运行循环 代理有可能不工作
+\[_inputStream scheduleInRunLoop:\[NSRunLoop mainRunLoop\] forMode:NSDefaultRunLoopMode\];
+\[_outputStream scheduleInRunLoop:\[NSRunLoop mainRunLoop\] forMode:NSDefaultRunLoopMode\];
+
+// 打开输入输出流
+\[_inputStream open\];
+\[_outputStream open\];</code></pre><p>}</p>
+<pre><code>2.实现登录</code></pre><p>-（void）login{<br>    //登录的指令，格式是自己定义的，跟后台商量<br>    NSString *loginStr = @”iam:zhangsan”;</p>
+<pre><code>//把Str转成NSData
+NSData *data = \[loginStr dataUsingEncoding:NSUTF8StringEncoding\];
+
+\[_outputStream write:data.bytes maxLength:data.length\];</code></pre><p>}</p>
+<pre><code>3.NSStreamDelegate 代理方法，从一开始的时候代理方法就已经在执行了。</code></pre><p>-(void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode{<br>//打印结果为主线程，说明事件的处理是在主线程。<br>    NSLog(@”%@”,[NSThread currentThread]);</p>
+<p>//    NSStreamEventOpenCompleted = 1UL &lt;&lt; 0,//输入输出流打开完成<br>//    NSStreamEventHasBytesAvailable = 1UL &lt;&lt; 1,//有字节可读<br>//    NSStreamEventHasSpaceAvailable = 1UL &lt;&lt; 2,//可以发放字节<br>//    NSStreamEventErrorOccurred = 1UL &lt;&lt; 3,// 连接出现错误<br>//    NSStreamEventEndEncountered = 1UL &lt;&lt; 4// 连接结束<br>    switch (eventCode) {<br>        case NSStreamEventOpenCompleted:<br>            NSLog(@”输入输出流打开完成”);<br>            break;<br>        case NSStreamEventHasBytesAvailable:<br>            NSLog(@”有字节可读”);<br>            [self readData];<br>            break;<br>        case NSStreamEventHasSpaceAvailable:<br>            NSLog(@”可以发送字节”);<br>            break;<br>        case NSStreamEventErrorOccurred:<br>            NSLog(@” 连接出现错误”);<br>            break;<br>        case NSStreamEventEndEncountered:<br>             NSLog(@”连接结束”);</p>
+<pre><code>        // 关闭输入输出流
+        \[_inputStream close\];
+        \[_outputStream close\];
+
+        // 从主运行循环移除
+        \[_inputStream removeFromRunLoop:\[NSRunLoop mainRunLoop\] forMode:NSDefaultRunLoopMode\];
+        \[_outputStream removeFromRunLoop:\[NSRunLoop mainRunLoop\] forMode:NSDefaultRunLoopMode\];
+        break;
+    default:
+        break;
+}   </code></pre><p>}</p>
+<pre><code>4.readData读取数据的方法</code></pre><p>-(void)readData{</p>
+<pre><code>//建立一个缓冲区 可以放1024个字节
+uint8_t buf\[1024\];
+
+// 返回实际装的字节数
+NSInteger len = \[_inputStream read:buf maxLength:sizeof(buf)\];
+
+// 把字节数组转化成字符串
+NSData *data = \[NSData dataWithBytes:buf length:len\];
+
+// 从服务器接收到的数据
+NSString *recStr =  \[\[NSString alloc\] initWithData:data encoding:NSUTF8StringEncoding\];
+
+NSLog(@&quot;%@&quot;,recStr);
+
+\[self reloadDataWithText:recStr\];</code></pre><p>}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/06/socket-ef-bc-88-e4-b8-80-ef-bc-89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/06/socket-ef-bc-88-e4-b8-80-ef-bc-89/" itemprop="url">Socket（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-06T14:53:20+08:00">
+                2016-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>最近一直忙着赶项目很长时间没有写东西了，惭愧。最近突然发现Socket这些东西长时间不用，都忘得差不多了。写出来记录一下，一是加深记忆复习巩固，二是可以经常拿出来看看。
+
+OSI、TCP\\IP参考模型</code></pre><hr>
+<pre><code>![](/wp-content/uploads/2016/12/20161206003529_99210.png)
+
+一图胜千言，简单解释一下：</code></pre><ol>
+<li><p>物理层：主要定义物理设备标准，如网线的接口类型、各种传输介质的传输速率等。</p>
+</li>
+<li><p>数据链路层：主要将从物理层接收的数据进行MAC地址的封装与解封装。</p>
+</li>
+<li><p>网络层：选择合适的网间路由和交换结点，确保数据及时传送，将从下层接收到的数据进行IP地址的封装与解封装。</p>
+</li>
+<li><p>传输层：定义了一些传输数据的协议和端口，如TCP、UDP协议，主要将从下层接收的数据进行分段和传输，到达目的地址后再进行重组，以往把这一层数据叫做段。</p>
+</li>
+<li><p>会话层：通过传输层建立数据传输通路。</p>
+</li>
+<li><p>表示层：主要是进行对接收的数据进行解释、压缩与解压缩等，即把计算机能够识别的东西转化成人能够识别的东西（如图片、声音等）。</p>
+</li>
+<li><p>应用层：主要是一些终端的应用，比如说FTP（各种文件下载）、浏览器、QQ等，可以将其理解为在电脑屏幕上可以看到的东西，也就是终端应用。</p>
+</li>
+</ol>
+<pre><code>网络通讯要素：</code></pre><hr>
+<pre><code>   IP地址：网络中设备的标识。
+
+   端口号：用来标识进程的逻辑地址，不同的进程的标示。（比如服务器上面跑着多项任务，一个端口号对应着一个任务）。
+
+   传输协议：用什么样的方式进行交互，常见协议TCP/IP。
+
+
+
+TCP/UDP</code></pre><hr>
+<pre><code>TCP:</code></pre><ol>
+<li><p>建立连接，形成数据传输通道。</p>
+</li>
+<li><p>传输数据的大小不受限制。</p>
+</li>
+<li><p>可靠协议，安全送达，三次握手。</p>
+</li>
+<li><p>每次都需要建立连接，效率较低。</p>
+<p>  UDP:</p>
+</li>
+<li><p>不需要建立连接，将数据装在数据包中。</p>
+</li>
+<li><p>每个数据包的大小都有限制64K以内。</p>
+</li>
+<li><p>不建立连接，是不可靠协议。</p>
+</li>
+<li><p>不用建立连接，效率较高。</p>
+<p> Socket</p>
+</li>
+</ol>
+<hr>
+<pre><code> ![](/wp-content/uploads/2016/12/20161206005046_76625.png)      
+
+
+
+1.网络提供服务的一种机制
+
+2.通信的两端都是socket
+
+3.网络通信其实就是socket间的通信
+
+4.数据在两个socket间通过IO传输</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/06/e9-80-a0-e8-bd-ae-e5-ad-90-ef-bc-9azsyframeautoscale-e5-b1-8f-e5-b9-95-e9-80-82-e9-85-8d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/06/e9-80-a0-e8-bd-ae-e5-ad-90-ef-bc-9azsyframeautoscale-e5-b1-8f-e5-b9-95-e9-80-82-e9-85-8d/" itemprop="url">造轮子：ZSYFrameAutoScale屏幕适配</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-06T16:53:23+08:00">
+                2016-09-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.再开发过程当中我一般都是使用initWithFrame:来创建一个控件的：</p>
+<p>[code lang=”objc”]&lt;br /&gt;<br /> UISearchBar *tempDoctorSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, NAV_HEIGHT, maxWidth, SEARCH_BAR_HEIGHT)];&lt;br /&gt;<br /> [self.view addSubview:tempDoctorSearchBar];&amp;lt;/pre&amp;gt;&lt;br /&gt;<br /> [/code]</p>
+<p>这样写是没有错但是当切换当前设备的时候尺寸就会改变，比如在iPhone 6 固定的高度到了iPhone 6 +上位置就会不对，并且每次这样写都很麻烦，有没有解决的办法呢？我们先来看看各个设备的长宽比：</p>
+<p>设备</p>
+<p>宽高比</p>
+<p>iPhone 5/ 5s</p>
+<p>320 / 568 = 0.563</p>
+<p>iPhone 6/ 6s</p>
+<p>375 / 667 = 0.562</p>
+<p>iPhone6+</p>
+<p>424 / 736 = 0.5625</p>
+<p>各个设备的宽高比都是差不多的，所以我们可以把不同的尺寸按照伸缩比移植到各个设备上。这个就是大致的思路。</p>
+<p>[code lang=”objc”]&lt;br /&gt;<br /> // 在AppDelegate.h中@property float autoSizeScaleX;&lt;br /&gt;<br /> @property float autoSizeScaleY;&lt;br /&gt;<br /> // 在AppDelegate.m中&lt;br /&gt;<br /> #define ScreenHeight [[UIScreen mainScreen] bounds].size.height&lt;br /&gt;<br /> #define ScreenWidth [[UIScreen mainScreen] bounds].size.width&lt;br /&gt;<br /> - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {&lt;br /&gt;<br /> AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate]; if(ScreenHeight &amp;amp;gt; 480){ // 这里以(iPhone4S)为准&lt;br /&gt;<br /> myDelegate.autoSizeScaleX = ScreenWidth/320;&lt;br /&gt;<br /> myDelegate.autoSizeScaleY = ScreenHeight/568;&lt;br /&gt;<br /> }else{&lt;br /&gt;<br /> myDelegate.autoSizeScaleX = 1.0;&lt;br /&gt;<br /> myDelegate.autoSizeScaleY = 1.0;&lt;br /&gt;<br /> }&lt;br /&gt;<br /> }&lt;br /&gt;<br /> [/code]</p>
+<p>因为iPhone4s屏幕的高度是480, 因此当屏幕尺寸大于iPhone4时, autoSizeScaleX和autoSizeScaleY即为当前屏幕和iPhone5尺寸的宽高比, 比如,<br>如果是5，autoSizeScaleX=1，autoSizeScaleY=1；<br>如果是6，autoSizeScaleX=1.171875，autoSizeScaleY=1.17429577；<br>如果是6Plus，autoSizeScaleX=1.29375，autoSizeScaleY=1.2957；<br>现在我们获取了比例关系后，先来看一下如何解决代码设置界面时的适配。CGRectMake(CGFloat x, CGFloat y, CGFloat width, CGFloat height)这个方法使我们常用的设置尺寸的方法，现在我设置了一个类似于这样的方法。在.m文件中</p>
+<p>[code lang=”objc”]&lt;br /&gt;<br /> CG_INLINE CGRectTS_CGRectMake(CGFloat x, CGFloat y, CGFloat width, CGFloat height)&lt;br /&gt;<br /> {&lt;br /&gt;<br /> AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate]; CGRect rect;&lt;br /&gt;<br /> rect.origin.x = x * myDelegate.autoSizeScaleX;&lt;br /&gt;<br /> rect.origin.y = y * myDelegate.autoSizeScaleY;&lt;br /&gt;<br /> rect.size.width = width * myDelegate.autoSizeScaleX;&lt;br /&gt;<br /> rect.size.height = height * myDelegate.autoSizeScaleY; return rect;&lt;br /&gt;<br /> }&lt;br /&gt;<br /> [/code]</p>
+<p>如果整个项目做完后才开始做适配的话这个方法的优势就体现出来了,面对几十个工程文件,只需自定义并且替换你的CGRectMake方法,再加上storyBoradAutoLay这个方法就瞬间完成大部分甚至全部的适配,如果遇到tableView的或者其他的手动调整一下即可.</p>
+<p>这个我已经设计了一个类，欢迎交流。</p>
+<p>Github:<a href="https://github.com/ssssuperMan/ZSYFrameAutoScale" target="_blank" rel="noopener">https://github.com/ssssuperMan/ZSYFrameAutoScale</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/01/e6-9b-b4-e8-bd-bb-e9-87-8f-e7-9a-84viewcontrollers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/01/e6-9b-b4-e8-bd-bb-e9-87-8f-e7-9a-84viewcontrollers/" itemprop="url">更轻量的ViewControllers</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-01T17:18:15+08:00">
+                2016-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>View controllers 通常是 iOS 项目中最大的文件，并且它们包含了许多不必要的代码。所以 View controllers 中的代码几乎总是复用率最低的。我们将会看到给 view controllers 瘦身的技术，让代码变得可以复用，以及把代码移动到更合适的地方。</p>
+<h2 id="把-Data-Source-和其他-Protocols-分离出来"><a href="#把-Data-Source-和其他-Protocols-分离出来" class="headerlink" title="把 Data Source 和其他 Protocols 分离出来"></a>把 Data Source 和其他 Protocols 分离出来</h2><p>把 <code>UITableViewDataSource</code> 的代码提取出来放到一个单独的类中，是为 view controller 瘦身的强大技术之一。当你多做几次，你就能总结出一些模式，并且创建出可复用的类。</p>
+<p>举个例，在示例项目中，有个 <code>PhotosViewController</code> 类，它有以下几个方法：</p>
+<p>[code lang=”objc”] # pragma mark Pragma - (Photo<em>)photoAtIndexPath:(NSIndexPath</em>)indexPath { return photos[(NSUInteger)indexPath.row]; } - (NSInteger)tableView:(UITableView<em>)tableView numberOfRowsInSection:(NSInteger)section { return photos.count; } - (UITableViewCell</em>)tableView:(UITableView<em>)tableView cellForRowAtIndexPath:(NSIndexPath</em>)indexPath { PhotoCell* cell = [tableView dequeueReusableCellWithIdentifier:PhotoCellIdentifier forIndexPath:indexPath]; Photo* photo = [self photoAtIndexPath:indexPath]; cell.label.text = photo.name; return cell; } [/code]</p>
+<p>这些代码基本都是围绕数组做一些事情，更针对地说，是围绕 view controller 所管理的 photos 数组做一些事情。我们可以尝试把数组相关的代码移到单独的类中。我们使用一个 block 来设置 cell，也可以用 delegate 来做这件事，这取决于你的习惯。</p>
+<p>[code lang=”objc”] @implementation ArrayDataSource - (id)itemAtIndexPath:(NSIndexPath<em>)indexPath { return items[(NSUInteger)indexPath.row]; } - (NSInteger)tableView:(UITableView</em>)tableView numberOfRowsInSection:(NSInteger)section { return items.count; } - (UITableViewCell<em>)tableView:(UITableView</em>)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath { id cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath]; id item = [self itemAtIndexPath:indexPath]; configureCellBlock(cell,item); return cell; } @end [/code]</p>
+<p>现在，你可以把 view controller 中的这 3 个方法去掉了，取而代之，你可以创建一个 <code>ArrayDataSource</code> 类的实例作为 table view 的 data source。 </p>
+<p>[code lang=”objc”] void (^configureCell)(PhotoCell<em>, Photo</em>) = ^(PhotoCell* cell, Photo* photo) { cell.label.text = photo.name; }; photosArrayDataSource = [[ArrayDataSource alloc] initWithItems:photos cellIdentifier:PhotoCellIdentifier configureCellBlock:configureCell]; self.tableView.dataSource = photosArrayDataSource; [/code]</p>
+<p>现在你不用担心把一个 index path 映射到数组中的位置了，每次你想把这个数组显示到一个 table view 中时，你都可以复用这些代码。你也可以实现一些额外的方法，比如<code>tableView:commitEditingStyle:forRowAtIndexPath:</code>，在 table view controllers 之间共享。</p>
+<p>这样的好处在于，你可以单独测试这个类，再也不用写第二遍。该原则同样适用于数组之外的其他对象。</p>
+<p>在今年我们做的一个应用里面，我们大量使用了 Core Data。我们创建了相似的类，但和之前使用的数组不一样，它用一个 fetched results controller 来获取数据。它实现了所有动画更新、处理 section headers、删除操作等逻辑。你可以创建这个类的实例，然后赋予一个 fetch request 和用来设置 cell 的 block，剩下的它都会处理，不用你操心了。</p>
+<p>此外，这种方法也可以扩展到其他 protocols 上面。最明显的一个就是 <code>UICollectionViewDataSource</code>。这给了你极大的灵活性；如果，在开发的某个时候，你想用 <code>UICollectionView</code> 代替 <code>UITableView</code>，你几乎不需要对 view controller 作任何修改。你甚至可以让你的 data source 同时支持这两个协议。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/23/effective-objective-c-2-0-ef-bc-88-e4-b8-83-ef-bc-89-e7-b3-bb-e7-bb-9f-e6-a1-86-e6-9e-b6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/23/effective-objective-c-2-0-ef-bc-88-e4-b8-83-ef-bc-89-e7-b3-bb-e7-bb-9f-e6-a1-86-e6-9e-b6/" itemprop="url">Effective Objective-C 2.0 （七）系统框架</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-23T21:27:07+08:00">
+                2016-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="熟悉系统框架"><a href="#熟悉系统框架" class="headerlink" title="熟悉系统框架"></a>熟悉系统框架</h3><p><code>CFNetwork</code>，此框架提供了 C 语言级别的网络通信能力，它将 BSD 抽象成易于使用的网络接口。而 Foundation 则将该框架李的部分内容封装为 OC 的接口</p>
+<p><code>CoreAudio</code>，此框架提供的 C 语言 API 可以用来操作设备商的音频硬件</p>
+<p><code>AVFoundation</code>，用来回访并录制音频及视频</p>
+<p><code>CoreData</code>，将对象放入数据库</p>
+<p><code>CoreText</code>，可以高效执行文字排版及渲染操作</p>
+<h3 id="多用块枚举，少用-for-循环"><a href="#多用块枚举，少用-for-循环" class="headerlink" title="多用块枚举，少用 for 循环"></a>多用块枚举，少用 for 循环</h3><h3 id="构建缓存时选用NSCache而非NSDictionary"><a href="#构建缓存时选用NSCache而非NSDictionary" class="headerlink" title="构建缓存时选用NSCache而非NSDictionary"></a>构建缓存时选用<code>NSCache</code>而非<code>NSDictionary</code></h3><p>精简<code>initialize</code>与<code>load</code>的实现代码</p>
+<p><code>+ (void)load</code>，只调用一次。</p>
+<p><code>+ (void)initialize</code>，该方法在程序首次使用该类之前调用，且只调用一次</p>
+<h3 id="NSTimer会保留其目标对象"><a href="#NSTimer会保留其目标对象" class="headerlink" title="NSTimer会保留其目标对象"></a><code>NSTimer</code>会保留其目标对象</h3><p>NSTimer很容易出现引用循环</p>
+<p>到此52条已经基本总结完毕，后续如果有新的心得会接着加入。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/23/effective-objective-c-2-0-ef-bc-88-e5-85-ad-ef-bc-89-e5-9d-97-e4-b8-8e-e5-a4-a7-e4-b8-ad-e6-9e-a2-e6-b4-be-e5-8f-91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/23/effective-objective-c-2-0-ef-bc-88-e5-85-ad-ef-bc-89-e5-9d-97-e4-b8-8e-e5-a4-a7-e4-b8-ad-e6-9e-a2-e6-b4-be-e5-8f-91/" itemprop="url">Effective Objective-C 2.0 （六）块与大中枢派发</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-23T21:22:41+08:00">
+                2016-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第三十七条：理解“块”这一概念</p>
+<h3 id="使用弱引用来避免循环引用"><a href="#使用弱引用来避免循环引用" class="headerlink" title="使用弱引用来避免循环引用"></a>使用弱引用来避免循环引用</h3><h3 id="理解Block"><a href="#理解Block" class="headerlink" title="理解Block"></a>理解<code>Block</code></h3><p>如果<code>block</code>所捕获的变量是对象类型，那么就会自动保留它。系统在释放这个块的时候，也会将其一并释放。这引出一个重要问题。<code>block</code>块本身可视为对象，也有引用计数。</p>
+<p>如果将<code>block</code>块定义在实例方法中，那么除了可以访问类的所有实例变量之外，还可以使用 self<br>变量，块总能修改实例变量，所以在声明时无需加<code>__block</code>。不过，如果通过读取或者写入操作捕获了实例比那两，那么也会自动把<code>self</code>变量一并捕获了，因为实例变量是与<code>self</code>所指代的实例关联在一起的。</p>
+<p><strong>全局块</strong></p>
+<p>定义块的时候，占的内存区域是分配在<em>栈</em>中的</p>
+<p>给块发送<code>copy</code>消息拷贝，这样就可以把块从栈复制到堆了。</p>
+<p>全局块不会捕捉任何状态，运行时也无须有状态来参与。</p>
+<h3 id="第三十八条：为常用的块类型创建typedef"><a href="#第三十八条：为常用的块类型创建typedef" class="headerlink" title="第三十八条：为常用的块类型创建typedef"></a>第三十八条：为常用的块类型创建<code>typedef</code></h3><h3 id="第三十九条：用handler块降低代码分散程度"><a href="#第三十九条：用handler块降低代码分散程度" class="headerlink" title="第三十九条：用handler块降低代码分散程度"></a>第三十九条：用<code>handler</code>块降低代码分散程度</h3><h3 id="第四十条：使用block块引用所属对象不要出现引用循环"><a href="#第四十条：使用block块引用所属对象不要出现引用循环" class="headerlink" title="第四十条：使用block块引用所属对象不要出现引用循环"></a>第四十条：使用<code>block</code>块引用所属对象不要出现引用循环</h3><h3 id="第四十一条：多用派发队列，少用同步锁"><a href="#第四十一条：多用派发队列，少用同步锁" class="headerlink" title="第四十一条：多用派发队列，少用同步锁"></a>第四十一条：多用派发队列，少用同步锁</h3><p><code>@synchronized(self)</code>根据给定的对象，自动创建一个锁，并等待块中的代码执行完毕</p>
+<p><code>NSLock</code></p>
+<p>不过最好使用 GCD，它能更简单，更搞笑的形式为代码加锁</p>
+<p>使用<strong>串行同步队列</strong>，将读取操作以及写入操作都安排在同一个队列里，可保证数据同步</p>
+<pre><code>_syncQueue = dispatch_queue_create(&quot;com.xx&quot;, NULL);
+
+dispatch_sync(_syncQueue, ^{
+    _someString = someString;
+});</code></pre><p>把设置和获取操作都安排在序列化的队列里执行，这样的话所有针对属性的访问操作都同步了</p>
+<p><code>dispatch_barrier_async(dispatch_queue_t queue,disaptch_block_t block);</code></p>
+<p>在<code>barrier</code>中必须单独执行，不能与其他块并行</p>
+<h3 id="第四十二条：多使用-GCD，少用performSelector系列方法"><a href="#第四十二条：多使用-GCD，少用performSelector系列方法" class="headerlink" title="第四十二条：多使用 GCD，少用performSelector系列方法"></a>第四十二条：多使用 GCD，少用<code>performSelector</code>系列方法</h3><p>延后执行某个任务</p>
+<pre><code>dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    [self doSomething];
+});</code></pre><p>想把任务放在主线程上执行</p>
+<pre><code>dispatch_async(dispatch_get_main_queue(), ^{
+    [self doSomething];
+});</code></pre><h3 id="第四十三条：掌握-GCD-及操作队列的使用时机"><a href="#第四十三条：掌握-GCD-及操作队列的使用时机" class="headerlink" title="第四十三条：掌握 GCD 及操作队列的使用时机"></a>第四十三条：掌握 GCD 及操作队列的使用时机</h3><p>在执行后台任务时，GCD 并不一定是最佳方式，还有一种技术叫做<code>NSOperationQueue</code></p>
+<p>比如，从服务器端下载并处理文件的动作，可以用操作来表示，而在处理其他文件之前，必须先下载清单文件，后续的下载操作，都要依赖于先下载清单文件这一操作。如果操作队列允许并发的话，那么后续的多个下载操作就可以同时执行，但前提是它们所依赖的那个清单文件下载操作已经执行完毕</p>
+<p><code>NSOperation</code>对象有许多属性都适合 KVO 来监听，<code>isCancelled</code>来判断任务是否取消，或者通过<code>isFinished</code>来判断任务是否完成。</p>
+<p><code>NSOperation</code>对象也有线程优先级</p>
+<h3 id="通过dispatch-group机制，根据系统资源状况来执行任务"><a href="#通过dispatch-group机制，根据系统资源状况来执行任务" class="headerlink" title="通过dispatch group机制，根据系统资源状况来执行任务"></a>通过<code>dispatch group</code>机制，根据系统资源状况来执行任务</h3><h3 id="使用dispatch-once来执行只需一次的线程安全代码"><a href="#使用dispatch-once来执行只需一次的线程安全代码" class="headerlink" title="使用dispatch_once来执行只需一次的线程安全代码"></a>使用<code>dispatch_once</code>来执行只需一次的线程安全代码</h3><p>单例使用</p>
+<h3 id="不要使用dispatch-get-current-queue"><a href="#不要使用dispatch-get-current-queue" class="headerlink" title="不要使用dispatch_get_current_queue"></a>不要使用<code>dispatch_get_current_queue</code></h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/22/effective-objective-c-2-0-ef-bc-88-e4-ba-94-ef-bc-89-e5-86-85-e5-ad-98-e7-ae-a1-e7-90-86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/22/effective-objective-c-2-0-ef-bc-88-e4-ba-94-ef-bc-89-e5-86-85-e5-ad-98-e7-ae-a1-e7-90-86/" itemprop="url">Effective Objective-C 2.0 （五）内存管理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-22T17:53:35+08:00">
+                2016-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第二十九条：理解引用计数</p>
+<p><code>retain</code> 增计数<br><code>release</code> 减计数<br><code>autorelease</code> 待稍后清理<code>autorelease pool</code>时，再减少计数</p>
+<p>对象创建出来时，其保留计数至少为1</p>
+<p>第三十条：以ARC简化引用计数</p>
+<p>若方法名以下列词语开头，则返回的对象归调用者所有</p>
+<ul>
+<li><p>alloc</p>
+</li>
+<li><p>new</p>
+</li>
+<li><p>copy</p>
+</li>
+<li><p>mutableCopy</p>
+</li>
+</ul>
+<p>在应用程序中，可用下列修饰符来改变局部变量与实例变量的语义</p>
+<p><code>__strong</code> 默认语义，保留这个值</p>
+<p><code>__unsafe_unretained</code> 不保留这个值，这么做可能不安全，因为等到再次使用变量时，其对象可能已经回收了</p>
+<p><code>__weak</code> 不保留这个值，但是变量可以安全使用，因为如果系统把这个对象回收了，那么变量也会自动清空</p>
+<p><code>__autoreleasing</code> 把对象_按引用传递_给方法时，使用这个特殊的修饰符，此值在方法返回时自动释放</p>
+<p>比如，想令实例变量的语义与不使用 ARC 时相同，可以使用<code>__weak</code>或<code>__unsafe_unretained</code>修饰符</p>
+<p>block 块会自动保留其所捕获的全部对象，而如果这其中有某个对象又保留了块本身，那么就可能导致循环引用，可以用<code>__weak</code>局部变量来打破这种循环引用</p>
+<p>注意：<code>CoreFoundation</code>对象不归 ARC 管理，开发者必须适时调用<code>CFRetain/CFRelease</code></p>
+<p><code>第三十一条：在dealdealloc方法中只释放引用并解除监听</code></p>
+<p>把原来配置过的观测行为都清除掉，如果使用<code>NSNotificationCenter</code>给此对象注册过某种通知，那么一般应该在这里注销</p>
+<p>第三十二条：编写“异常安全代码”是留意内存泄露问题</p>
+<p>1.捕获异常时，一定要注意try块内所创立的对象清理干净</p>
+<p>2.在默认情况下，ARC不生成安全处理异常所需要的清理代码。开启编译器标志之后可以生成这种代码，不过会导致程序变大，并且降低运行效率。</p>
+<p>第三十三条：以弱引用避免保留环</p>
+<p>第三十四条：用“自动释放池”块 来降低内存峰值</p>
+<p>第三十五条：用僵尸对象来调试内存管理问题</p>
+<p>第三十六条：不要使用retainCount</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/22/effective-objective-c-2-0-ef-bc-88-e5-9b-9b-ef-bc-89-e5-8d-8f-e8-ae-ae-e4-b8-8e-e5-88-86-e7-b1-bb-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/22/effective-objective-c-2-0-ef-bc-88-e5-9b-9b-ef-bc-89-e5-8d-8f-e8-ae-ae-e4-b8-8e-e5-88-86-e7-b1-bb-2/" itemprop="url">Effective Objective-C 2.0 （四）协议与分类</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-22T16:44:16+08:00">
+                2016-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第二十三条：通过委托与数据源协议进行对象间的通信</p>
+<p>1.讲解了委托的具体使用方法，当创建delegate属性的时候，要把属性的语义定义成weak而不是strong，否则可能会造成循环引用的问题（引用环）。</p>
+<p>2.如果协议中有很多个方法，而你可能需要不停的判断是否有代理响应其代理方法，那么可以不用重复的书写</p>
+<p>[code lang=”objc”] if([_delegate respondsToSelector:@selector(方法名)]){ [_delegate 方法名]; } [/code]</p>
+<p>而是这样写：</p>
+<p>[code lang=”objc”] struct data{ unsigned int didReceiceDataOne : 1; unsigned int didReceiceDataTwo : 1; unsigned int didReceiceDataThree : 1; } _delegate; if(_delegate.didReceiceDataOne){ //yes } if(_delegate.didReceiceDataTwo){ //yes } … [/code]</p>
+<p>如果需要频繁的调用数据源方法那么则可以进行这种优化，可以提高程序效率。</p>
+<p>第二十四条：将类的实现代码分散到便于管理的数个分类中</p>
+<p>就是讲解分类的详细用法。</p>
+<p>1.使用分类机制把类的实现代码划分成易于管理的小块。</p>
+<p>2.将应该视为“私有”的方法归入到名为private的分类中，以隐藏其实现细节。</p>
+<p>第二十五条：总是为第三方的类的分类名称加前缀</p>
+<p>1.向第三方类中添加分类时，总应给其名称加上你的专用前缀。</p>
+<p>2.向第三方类中添加分类时，总应给其方法名加上你的专用前缀。</p>
+<p>第二十六条：不要在分类中声明属性</p>
+<p>属性是封装数据的方式，尽管从技术上说分类中也可以声明属性，但是这种做法还是要尽量避免，因为除了“class-continuetion”其他分类都不能合成实行所需要的实例变量。</p>
+<p>第二十七条：使用class-continuetion分类隐藏实现细节</p>
+<p>1.class-continuetion是一个特殊的分类（就是在.m文件上面声明的，可以再其中声明属性和方法）。</p>
+<p>2.如果.h中的属性是只读类型，但是对内又想让自己使用这个属性那么就可以在class-continuetion中重新声明此属性，只是把只读属性换成读写。</p>
+<p>3.把私有方法的原型声明放在class-continuetion中。</p>
+<p>4.若想使类所遵守的协议不为人所知，则可于class-continuetion中声明。</p>
+<p>第二十八条：通过协议提供匿名对象</p>
+<p>@property （nonatomic ， weak）id <EOCDelegate> delegate;</p>
+<p>该属性的类型是id <EOCDelegate>，所以实际上任何类的对象都能充当这一属性，即便该类不继承自NSObject亦可以，只要遵守EOCDelegate协议就行。对于具备此属性的类来说，delegate就是匿名的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zhangshengyang</p>
+              <p class="site-description motion-element" itemprop="description">iOS开发</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangshengyang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

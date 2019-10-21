@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="2017年12月16日17:08:58更新 视频上传这块后期代码还是优化了，为了解决上传视频的时候内存过大的问题现在的做法是创建socket任务的时候给上tag值，然后根据这个tag值来判断这个任务上传的这一片数据是否上传完毕，然后再创建下一个任务，当一个任务新建的时候上个任务已经被释放了，这样的话内存的占用就可以维持在一个很稳定的数值上下。  iPhone 7出来之后苹果默认的照片格式是HEIF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS8及以上上传原图以及原视频">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2017&#x2F;02&#x2F;21&#x2F;ios8-e5-8f-8a-e4-bb-a5-e4-b8-8a-e4-b8-8a-e4-bc-a0-e5-8e-9f-e5-9b-be-e4-bb-a5-e5-8f-8a-e5-8e-9f-e8-a7-86-e9-a2-91&#x2F;index.html">
+<meta property="og:site_name" content="鲨鱼辣椒">
+<meta property="og:description" content="2017年12月16日17:08:58更新 视频上传这块后期代码还是优化了，为了解决上传视频的时候内存过大的问题现在的做法是创建socket任务的时候给上tag值，然后根据这个tag值来判断这个任务上传的这一片数据是否上传完毕，然后再创建下一个任务，当一个任务新建的时候上个任务已经被释放了，这样的话内存的占用就可以维持在一个很稳定的数值上下。  iPhone 7出来之后苹果默认的照片格式是HEIF">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-20T16:38:36.701Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/02/21/ios8-e5-8f-8a-e4-bb-a5-e4-b8-8a-e4-b8-8a-e4-bc-a0-e5-8e-9f-e5-9b-be-e4-bb-a5-e5-8f-8a-e5-8e-9f-e8-a7-86-e9-a2-91/"/>
+
+
+
+
+
+  <title>iOS8及以上上传原图以及原视频 | 鲨鱼辣椒</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">鲨鱼辣椒</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/21/ios8-e5-8f-8a-e4-bb-a5-e4-b8-8a-e4-b8-8a-e4-bc-a0-e5-8e-9f-e5-9b-be-e4-bb-a5-e5-8f-8a-e5-8e-9f-e8-a7-86-e9-a2-91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS8及以上上传原图以及原视频</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-21T11:14:36+08:00">
+                2017-02-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="2017年12月16日17-08-58更新"><a href="#2017年12月16日17-08-58更新" class="headerlink" title="2017年12月16日17:08:58更新"></a>2017年12月16日17:08:58更新</h2><ul>
+<li><p>视频上传这块后期代码还是优化了，为了解决上传视频的时候内存过大的问题现在的做法是创建<code>socket</code>任务的时候给上<code>tag</code>值，然后根据这个tag值来判断这个任务上传的这一片数据是否上传完毕，然后再创建下一个任务，当一个任务新建的时候上个任务已经被释放了，这样的话内存的占用就可以维持在一个很稳定的数值上下。</p>
+</li>
+<li><p>iPhone 7出来之后苹果默认的照片格式是<code>HEIF</code>也就是Live图，这个图目前想做到原图上传，我没有太好的解决方案，现在我们的做法仍然是使用<code>PhotoKit</code>将后缀名为<code>HEIF</code>的图片转换成<code>JPG</code>格式的照片，然后“原图上传”。（虽然现在已经不存在什么原图了）</p>
+</li>
+<li><p>&gt; <em>“NSData(contentsOfFile: String&gt;, options: NSDataReadingOptions.DataReadingMappedAlways)是可以不让内存暴增，但是这个貌似是有大小限制的，太大的文件比如2G的文件就不行了，使用NSInputSteam的话可以从特定位置截取一段数据上传吗？”</em></p>
+</li>
+</ul>
+<p>这个问题当时是我提出来的，现在我看有人给我推荐了一个方法：</p>
+<pre><code>_stream = [[NSInputStream alloc]initWithFileAtPath:self.srcFilePath];
+[_stream setProperty:[NSNumber numberWithUnsignedLongLong:self.srcFileFinishedSize] forKey:NSStreamFileCurrentOffsetKey];
+
+可以从某个offset开始读取流，实现断点上传。</code></pre><p>这个方法我当时应该也尝试过，但是不太能够满足我的需求，但是可能大家的使用场景都不一样，所以我还是把这个方法贴出来，大家看能不能提供一种思路。</p>
+<h2 id="以下是原文："><a href="#以下是原文：" class="headerlink" title="以下是原文："></a>以下是原文：</h2><p>iPhone手机相册中的图片的默认格式都是jpg的，假设我把一张bmp或者gif等其他格式的图片保存到本地相册那么上传到服务器的话就需要判断图片是哪种格式的，然后做出相应的操作。同理，视频也是这样如果我们需要上传原图原视频是需要处理一下的。</p>
+<blockquote>
+<p>文章大概分为三个部分： 一、怎么上传相册中各种格式的原图上传。 二、怎么上传各种格式的原视频。 三、上传大图片以及大视频面临的内存优化问题。</p>
+</blockquote>
+<p>一、<strong>上传bmp、gif、jpg、png等格式的原图上传（前提是后台也支持接受各种格式）</strong></p>
+<pre><code>//imagePickerController代理方法
+-(void)imagePickerController:(UIImagePickerController )picker didFinishPickingMediaWithInfo:(NSDictionary&lt;NSString ,id&gt; )info {
+//获取原始文件的URL，注意这个地方的URL并不是沙盒中的物理路径，而是一个AssetURL，只能使用系统提供的AssetsLibrary框架进行访问。
+    NSURL assetURL = info[UIImagePickerControllerReferenceURL];
+    //根据URL创建PHFetchResult对象。
+    PHFetchResult fetchResult = [PHAsset fetchAssetsWithALAssetURLs:@[assetURL] options:nil];
+    //获取PHAsset
+    PHAsset asset = [fetchResult firstObject];
+@autoreleasepool {
+                PHImageManager imageManager = [[PHImageManager alloc] init];
+                [imageManager requestImageDataForAsset : assets options :nil resultHandler:^(NSData  _Nullable imageData, NSString  _Nullable dataUTI, UIImageOrientation orientation, NSDictionary  _Nullable info) {
+
+                    UIImage photo = [UIImage imageWithData: imageData];
+                    BOOL downloadFinined = (![[info objectForKey : PHImageCancelledKey] boolValue] &amp;&amp; ![info objectForKey : PHImageErrorKey]);
+                    if (downloadFinined &amp;&amp; imageData) {//这个地方的imageData为原图的二进制数据
+                        [weakSelf updataImageWithArray : photo index:i amount : assets.count imageData : imageData];
+                    }
+                    //用来判断图片的格式
+                    //if ([dataUTI isEqualToString:(__bridge NSString )kUTTypeJPEG]) {}
+                    //如果不想在这个地方进行格式判断，也可是在下面调用的方法中根据imageData判断文件头来判断文件格式
+                }];
+            }
+}</code></pre><p><strong>二、上传原视频</strong></p>
+<pre><code>//imagePickerController代理方法
+    -(void)imagePickerController:(UIImagePickerController )picker didFinishPickingMediaWithInfo:(NSDictionary&lt;NSString ,id&gt; )info {
+        //获取原始文件的URL，注意这个地方的URL并不是沙盒中的物理路径，而是一个AssetURL，只能使用系统提供的AssetsLibrary框架进行访问。
+        NSURL assetURL = info[UIImagePickerControllerReferenceURL];
+        //根据URL创建PHFetchResult对象。
+        PHFetchResult fetchResult = [PHAsset fetchAssetsWithALAssetURLs:@[assetURL] options : nil];
+        //获取PHAsset
+        PHAsset asset = [fetchResult firstObject];
+        //创建导出视频的选项
+        PHVideoRequestOptions videoOptions = [[PHVideoRequestOptions alloc] init];
+        //设置导出版本为PHVideoRequestOptionsVersionOriginal，原图选项。但是这个地方的视频仍然会被压缩。
+        videoOptions.version = PHVideoRequestOptionsVersionOriginal;
+        [[PHImageManager defaultManager] requestExportSessionForVideo : asset options : videoOptions exportPreset : AVAssetExportPresetHighestQuality resultHandler:^(AVAssetExportSession  _Nullable exportSession, NSDictionary  _Nullable info) {
+            NSDateFormatter formater = [[NSDateFormatter alloc] init];
+            [formater setDateFormat:@”yyyy - MM - dd - HH : mm : ss”];
+            //读取到沙盒中
+            NSString videoPath = [NSHomeDirectory() stringByAppendingFormat:@”/Library/Caches/output-%@.%@”, [formater stringFromDate:[NSDate date]],[assetURL pathExtension]];
+            //设置导出地址
+            exportSession.outputURL = [NSURL fileURLWithPath: videoPath];
+            //设置导出文件类型
+            exportSession.outputFileType = [self chooseVideoType:[assetURL pathExtension]];
+            //导出
+            [exportSession exportAsynchronouslyWithCompletionHandler:^{
+                switch (exportSession.status) {
+                    case AVAssetExportSessionStatusCompleted:{
+                    //转成NSData用来上传，使用dataWithContentsOfFile：options：error方法并不会把数据全部加载进内存里面,而是使用内存映射的方式获取NSData。不会导致内存暴增而导致崩溃。
+                    NSData data = [NSData dataWithContentsOfFile : videoPath options : NSDataReadingMappedIfSafe error : nil];
+                        NSLog(@”%ld”,data.length);
+                    }
+                        break;
+                    default:
+                        break;
+                }
+            }];
+        }];
+    }
+
+    //这个地方试试链式语法
+    -(NSString )chooseVideoType:(NSString )videoType {
+        if ([videoType isEqualToString:@”MOV”]) {
+            return AVFileTypeQuickTimeMovie;
+        }else if ([videoType isEqualToString:@”MP4”]) {
+            return AVFileTypeMPEG4;
+        }
+        return nil;
+    }</code></pre><p>首先，我必须得说一下就是使用UIImagePickerController来选择上传视频，在选择之后，系统会自动帮你压缩，这个步骤暂时是去不掉的。具体参考Stack Overflow的答案，因为这一块的资料也比较少，根据我掌握的资料来看还是需要使用PhotoKit的API。 对于沙盒中的大文件上传具体是有两个方法来避免上传时直接拷贝到内存导致内存占用过大导致崩溃。<a href="http://www.jianshu.com/p/157cb9d5350b" target="_blank" rel="noopener">简书一个作者的心血总结</a> 第一个方法就是使用推荐使用<code>NSInputStream(fileAtPath: fileUrl)</code>初始化为文件流，不占内存。也可以使用<code>NSData(contentsOfFile: String&amp;gt;, options: NSDataReadingOptions.DataReadingMappedAlways)</code>，使用内存映射的方式获取NSData。关于内存映射的问题，他提供了一个Stack Overflow的答案 而第一种方法我暂时没有时间去研究，他是这么说的： 对于系统相册的文件，在此处具体来说就是一个ALAsset对象，我们能够通过<code>ALAssetRepresentation</code>的<code>getBytes</code>方法获取到文件的内容到一段缓冲区，继而生成NSData，但是这个NSData并不是内存映射的，所以文件多大，就会占用多少内存。</p>
+<pre><code>let rept =  asset.defaultRepresentation()
+let imageBuffer = UnsafeMutablePointer&lt;UInt8&gt;.alloc(Int(rept.size()))
+let bufferSize = rept.getBytes(imageBuffer, fromOffset: Int64(0),length: Int(rept.size()), error: nil)
+let data =  NSData(bytesNoCopy:imageBuffer ,length:bufferSize, freeWhenDone:true)
+此时我们需要把ALAsset转化为NSInputStream，通过CFStreamCreateBoundPair这个类。在苹果的官方文档上有对这个类的使用场景介绍，但是没有官方例子。
+
+For large blocks of constructed data, call CFStreamCreateBoundPair to create a pair of streams, then call the setHTTPBodyStream: method to tell NSMutableURLRequest to use one of those streams as the source for its body content. By writing into the other stream, you can send the data a piece at a time.</code></pre><p>根据官方文档，以及我收集的资料，具体的做法是使用<code>CFStreamCreateBoundPair</code>创建一对<code>readStream/writeStream</code>，<code>readStream</code>就作为<code>HTTPBodyStream</code>，设置<code>NSStream</code>的代理，<code>writeStream</code>加入<code>Runloop</code>，监测其<code>NSStreamEvent</code>是<code>HasSpaceAvailable</code>时，调用<code>getBytes</code>方法获取一段<code>NSData</code>，写入到<code>writeStream</code>中。主要的代码如下。</p>
+<pre><code>func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
+    switch (eventCode) {
+    case NSStreamEvent.None:
+        break
+
+    case NSStreamEvent.OpenCompleted:
+        break
+
+    case NSStreamEvent.HasBytesAvailable:
+        break
+
+    case NSStreamEvent.HasSpaceAvailable:
+        self.write()
+        break
+
+    case NSStreamEvent.ErrorOccurred :
+        self.finish()
+        break
+    case NSStreamEvent.EndEncountered:
+        // weird error: the output stream is full or closed prematurely, or canceled.
+        self.finish()
+        break
+    default:
+        break
+    }
+}
+
+func write() {
+    let rept =  asset.defaultRepresentation()
+    let length = self.assetSize - self.offset &amp;gt; self.bufferSize ? self.bufferSize :  self.assetSize - self.offset
+    if length &amp;gt; 0 {
+        let writeSize = rept.getBytes(assetBuffer, fromOffset: self.offset ,length: length, error:nil)
+        let written = self.writeStream.write(assetBuffer, maxLength: writeSize)
+        self.offset += written
+    } else {
+        self.finish()
+    }
+}
+
+func finish() {
+    self.writeStream.close()
+    self.writeStream.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
+    self.strongSelf = nil
+}</code></pre><p>完整的代码我上传在了github，<code>ALAssetToNSInputStream</code>，把<code>ALAssetToNSInputStream.swift</code>加入工程即可使用，Demo暂时还没有，有时间会补上。 这是作者这个工程的GitHub，我猜测就是类似于socket做大文件上传的实现方式，就是使用系统提供的C函数来实现的部分功能。 <strong>三、上传大文件时的内存优化问题</strong> 这个问题我在上面的两个问题里面其实都已经提到过了。大致有几个思路。 1.对于普通的上传文件会创建大量的UIImage对象，使用ARC的话可能内存不会及时的释放，所以我们可以在适当的地方手动加上自动释放池。 2.对于在沙盒中的文件可以使用contentWithFile等方法转化成NSData，通过映射的方式可以解决这个问题。 3.就是使用socket的方式进行上传。等我有时间写个demo放到GitHub上吧。 4.分片上传，这个方法我也只是在各大论坛听说可以这样实现，具体实现我并没有写过，继续研究吧。 总结：接触的越多发现不会的越多，发现还是有很多需求其实挺难实现的。这算是PhotoKit框架的初体验吧。因为我们的项目不支持iOS8以下，所以需要支持iOS8一下的同学，可以在网上找找实现方法，都差不多的，有的API貌似比iOS8之后的还好用一些。就这么些吧，等想到了再补充。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/15/e5-85-b3-e4-ba-8e-e5-87-bd-e6-95-b0-e5-bc-8f-e7-bc-96-e7-a8-8b-e5-92-8c-e9-93-be-e5-bc-8f-e7-bc-96-e7-a8-8b/" rel="next" title="关于函数式编程和链式编程">
+                <i class="fa fa-chevron-left"></i> 关于函数式编程和链式编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/12/this-application-is-modifying-the-autolayout-engine-from-a-background-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-a1-88/" rel="prev" title="This application is modifying the autolayout engine from a background 的解决方案">
+                This application is modifying the autolayout engine from a background 的解决方案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zhangshengyang</p>
+              <p class="site-description motion-element" itemprop="description">iOS开发</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2017年12月16日17-08-58更新"><span class="nav-number">1.</span> <span class="nav-text">2017年12月16日17:08:58更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以下是原文："><span class="nav-number">2.</span> <span class="nav-text">以下是原文：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangshengyang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
