@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="面试题13: block的原理是什么样的？本质是什么？  block本质是封装了函数调用和调用环境的OC对象，block结构体内部有需要执行的代码块funcPtr和自己的大小size。  面试题14:__block 的作用是什么？有什么使用的注意点？   __block修饰的变量可以在block内部修改。 解决循环引用的问题（并不常用）   面试题15： block的属性修饰词为什么是copy？">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS原理(10) __block的内存管理">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;18&#x2F;iOS%E5%8E%9F%E7%90%86(10)-__block%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86&#x2F;index.html">
+<meta property="og:site_name" content="鲨鱼辣椒">
+<meta property="og:description" content="面试题13: block的原理是什么样的？本质是什么？  block本质是封装了函数调用和调用环境的OC对象，block结构体内部有需要执行的代码块funcPtr和自己的大小size。  面试题14:__block 的作用是什么？有什么使用的注意点？   __block修饰的变量可以在block内部修改。 解决循环引用的问题（并不常用）   面试题15： block的属性修饰词为什么是copy？">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;18&#x2F;iOS%E5%8E%9F%E7%90%86(10)-__block%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86&#x2F;wx3.sinaimg.cn&#x2F;mw690&#x2F;76a55189ly1g7l5j5gy93j20yw0qq7d1.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;18&#x2F;iOS%E5%8E%9F%E7%90%86(10)-__block%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86&#x2F;wx4.sinaimg.cn&#x2F;mw690&#x2F;76a55189ly1g7lboc7o8kj21ly0quwtl.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;18&#x2F;iOS%E5%8E%9F%E7%90%86(10)-__block%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86&#x2F;wx3.sinaimg.cn&#x2F;mw690&#x2F;76a55189ly1g7lbp8fdc3j20rs0okjva.jpg">
+<meta property="og:updated_time" content="2019-10-24T16:00:14.136Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;18&#x2F;iOS%E5%8E%9F%E7%90%86(10)-__block%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86&#x2F;wx3.sinaimg.cn&#x2F;mw690&#x2F;76a55189ly1g7l5j5gy93j20yw0qq7d1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/18/iOS原理(10)-__block的内存管理/"/>
+
+
+
+
+
+  <title>iOS原理(10) __block的内存管理 | 鲨鱼辣椒</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">鲨鱼辣椒</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/18/iOS%E5%8E%9F%E7%90%86(10)-__block%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS原理(10) __block的内存管理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-18T23:22:20+08:00">
+                2019-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>面试题13: block的原理是什么样的？本质是什么？</p>
+</blockquote>
+<p>block本质是封装了函数调用和调用环境的OC对象，block结构体内部有需要执行的代码块funcPtr和自己的大小size。</p>
+<blockquote>
+<p>面试题14:__block 的作用是什么？有什么使用的注意点？</p>
+</blockquote>
+<ol>
+<li>__block修饰的变量可以在block内部修改。</li>
+<li>解决循环引用的问题（并不常用）</li>
+</ol>
+<blockquote>
+<p>面试题15： block的属性修饰词为什么是copy？使用block有哪些使用注意？</p>
+</blockquote>
+<p>如果block在栈空间上，那么block可能会被释放，使用copy是为了把block拷贝到堆上。注意循环引用的问题。</p>
+<blockquote>
+<p>面试题16:block在修改NSMutableArray，需不需要添加__block？</p>
+</blockquote>
+<p>如果是调用NSMutablearray的<code>addObject</code>方法，则不需要添加__block，如果直接修改NSMutablearray则需要。</p>
+<a id="more"></a>
+
+
+
+<h5 id="一、-block的内存管理"><a href="#一、-block的内存管理" class="headerlink" title="一、__block的内存管理"></a>一、__block的内存管理</h5><ol>
+<li><p>当block在栈上时，并不会对__block变量产生强引用</p>
+</li>
+<li><p>当block被copy到堆时<br>会调用block内部的copy函数<br>copy函数内部会调用<code>_Block_object_assign</code>函数<br><code>_Block_object_assign</code>函数会对<code>__block</code>变量形成强引用（retain）</p>
+</li>
+</ol>
+<h5 id="二、block-的forwarding指针"><a href="#二、block-的forwarding指针" class="headerlink" title="二、block 的forwarding指针"></a>二、<strong>block 的</strong>forwarding指针</h5><p><img src="wx3.sinaimg.cn/mw690/76a55189ly1g7l5j5gy93j20yw0qq7d1.jpg" alt="image"></p>
+<h5 id="三、对象类型的auto变量、-block变量被block引用的内存管理"><a href="#三、对象类型的auto变量、-block变量被block引用的内存管理" class="headerlink" title="三、对象类型的auto变量、__block变量被block引用的内存管理"></a>三、对象类型的auto变量、__block变量被block引用的内存管理</h5><ol>
+<li><p>当block在栈上时，对它们都不会产生强引用</p>
+</li>
+<li><p>当block拷贝到堆上时，都会通过copy函数来处理它们<br>__block变量（假设变量名叫做a）<br><code>_Block_object_assign((void*)&amp;dst-&gt;a, (void*)src-&gt;a, 8/*BLOCK_FIELD_IS_BYREF*/);</code></p>
+</li>
+<li><p>对象类型的auto变量（假设变量名叫做p）<br><code>_Block_object_assign((void*)&amp;dst-&gt;p, (void*)src-&gt;p, 3/*BLOCK_FIELD_IS_OBJECT*/);</code></p>
+</li>
+<li><p>当block从堆上移除时，都会通过dispose函数来释放它们<br><code>__block变量（假设变量名叫做a）
+_Block_object_dispose((void*)src-&gt;a, 8/*BLOCK_FIELD_IS_BYREF*/);</code></p>
+</li>
+<li><p>对象类型的auto变量（假设变量名叫做p）<br><code>_Block_object_dispose((void*)src-&gt;p, 3/*BLOCK_FIELD_IS_OBJECT*/);</code></p>
+</li>
+</ol>
+<h5 id="四、被-block修饰的对象类型-被block引用的内存管理"><a href="#四、被-block修饰的对象类型-被block引用的内存管理" class="headerlink" title="四、被__block修饰的对象类型 被block引用的内存管理"></a>四、被__block修饰的对象类型 被block引用的内存管理</h5><ol>
+<li><p>当__block变量在栈上时，不会对指向的对象产生强引用</p>
+</li>
+<li><p>当<strong>block变量被copy到堆时<br>会调用</strong>block变量内部的copy函数<br>copy函数内部会调用<code>_Block_object_assign</code>函数<br><code>_Block_object_assign</code>函数会根据所指向对象的修饰符（<code>__strong、__weak、__unsafe_unretained</code>）做出相应的操作，形成强引用（retain）或者弱引用 ==（注意：这里仅限于ARC时会retain，MRC时不会retain）==</p>
+</li>
+<li><p>如果<strong>block变量从堆上移除<br>会调用</strong>block变量内部的dispose函数<br>dispose函数内部会调用<code>_Block_object_dispose</code>函数<br><code>_Block_object_dispose</code>函数会自动释放指向的对象（release）</p>
+</li>
+</ol>
+<h5 id="五、block循环引用的问题"><a href="#五、block循环引用的问题" class="headerlink" title="五、block循环引用的问题"></a>五、block循环引用的问题</h5><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">SYPerson.h</span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">NS_ASSUME_NONNULL_BEGIN</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">SYPerson</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">copy</span>, <span class="keyword">nonatomic</span>) <span class="keyword">void</span>(^myblock)(<span class="keyword">void</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">assign</span>, <span class="keyword">nonatomic</span>) <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">NS_ASSUME_NONNULL_END</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">main.h</span><br><span class="line"></span><br><span class="line">SYPerson *person = [[SYPerson alloc] init];</span><br><span class="line">person.age = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//会造成循环引用，person引用block，block引用person</span></span><br><span class="line"></span><br><span class="line">person.myblock = ^&#123;</span><br><span class="line">   <span class="built_in">NSLog</span>(<span class="string">@"%d"</span>, person.age);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="六、ARC下循环引用问题解决"><a href="#六、ARC下循环引用问题解决" class="headerlink" title="六、ARC下循环引用问题解决"></a>六、ARC下循环引用问题解决</h5><p><img src="wx4.sinaimg.cn/mw690/76a55189ly1g7lboc7o8kj21ly0quwtl.jpg" alt="image"></p>
+<h5 id="七、MRC下循环引用问题解决"><a href="#七、MRC下循环引用问题解决" class="headerlink" title="七、MRC下循环引用问题解决"></a>七、MRC下循环引用问题解决</h5><p><img src="wx3.sinaimg.cn/mw690/76a55189ly1g7lbp8fdc3j20rs0okjva.jpg" alt="image"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/17/iOS%E5%8E%9F%E7%90%86(9)-block%E3%80%81copy%E3%80%81-block%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" rel="next" title="iOS原理(9) block、copy、__block底层原理">
+                <i class="fa fa-chevron-left"></i> iOS原理(9) block、copy、__block底层原理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/19/iOS%E5%8E%9F%E7%90%86(11)-isa%E8%AF%A6%E8%A7%A3%E3%80%81%E4%BD%8D%E8%BF%90%E7%AE%97%E3%80%81%E5%85%B1%E7%94%A8%E4%BD%93%E3%80%81%E4%BD%8D%E5%9F%9F/" rel="prev" title="iOS原理(11) isa详解、位运算、共用体、位域">
+                iOS原理(11) isa详解、位运算、共用体、位域 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zhangshengyang</p>
+              <p class="site-description motion-element" itemprop="description">iOS开发</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、-block的内存管理"><span class="nav-number">1.</span> <span class="nav-text">一、__block的内存管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、block-的forwarding指针"><span class="nav-number">2.</span> <span class="nav-text">二、block 的forwarding指针</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三、对象类型的auto变量、-block变量被block引用的内存管理"><span class="nav-number">3.</span> <span class="nav-text">三、对象类型的auto变量、__block变量被block引用的内存管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#四、被-block修饰的对象类型-被block引用的内存管理"><span class="nav-number">4.</span> <span class="nav-text">四、被__block修饰的对象类型 被block引用的内存管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#五、block循环引用的问题"><span class="nav-number">5.</span> <span class="nav-text">五、block循环引用的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#六、ARC下循环引用问题解决"><span class="nav-number">6.</span> <span class="nav-text">六、ARC下循环引用问题解决</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#七、MRC下循环引用问题解决"><span class="nav-number">7.</span> <span class="nav-text">七、MRC下循环引用问题解决</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangshengyang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
