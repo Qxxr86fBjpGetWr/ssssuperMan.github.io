@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.2" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.2">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="十一、NSConditionLockNSConditionLock是对NSCondition的进一步封装，可以设置具体的条件值 十二、dispatch_semaphore semaphore叫做”信号量” 信号量的初始值，可以用来控制线程并发访问的最大数量 信号量的初始值为1，代表同时只允许1条线程访问资源，保证线程同步。  十三、dispatch_queue直接使用GCD的串行队列，也是可以实现">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS原理（22）锁（二）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;27&#x2F;iOS%E5%8E%9F%E7%90%86%EF%BC%8822%EF%BC%89%E9%94%81%EF%BC%88%E4%BA%8C%EF%BC%89&#x2F;index.html">
+<meta property="og:site_name" content="鲨鱼辣椒">
+<meta property="og:description" content="十一、NSConditionLockNSConditionLock是对NSCondition的进一步封装，可以设置具体的条件值 十二、dispatch_semaphore semaphore叫做”信号量” 信号量的初始值，可以用来控制线程并发访问的最大数量 信号量的初始值为1，代表同时只允许1条线程访问资源，保证线程同步。  十三、dispatch_queue直接使用GCD的串行队列，也是可以实现">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http:&#x2F;&#x2F;wx4.sinaimg.cn&#x2F;large&#x2F;76a55189ly1g8brze21vyj20rs08kk3v.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;wx4.sinaimg.cn&#x2F;mw690&#x2F;76a55189ly1g8bs34de0lj20rs096n9a.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;wx1.sinaimg.cn&#x2F;large&#x2F;76a55189ly1g8bwhuzjhaj20q60rskjl.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;wx1.sinaimg.cn&#x2F;large&#x2F;76a55189ly1g8bwjod6qnj20rs092jx1.jpg">
+<meta property="og:updated_time" content="2019-10-27T05:34:53.923Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;wx4.sinaimg.cn&#x2F;large&#x2F;76a55189ly1g8brze21vyj20rs08kk3v.jpg">
+  <link rel="canonical" href="http://yoursite.com/2019/10/27/iOS%E5%8E%9F%E7%90%86%EF%BC%8822%EF%BC%89%E9%94%81%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>iOS原理（22）锁（二） | 鲨鱼辣椒</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">鲨鱼辣椒</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+        
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      
+    
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/27/iOS%E5%8E%9F%E7%90%86%EF%BC%8822%EF%BC%89%E9%94%81%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            iOS原理（22）锁（二）
+            
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-27 10:59:50 / Modified: 13:34:53" itemprop="dateCreated datePublished" datetime="2019-10-27T10:59:50+08:00">2019-10-27</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h5 id="十一、NSConditionLock"><a href="#十一、NSConditionLock" class="headerlink" title="十一、NSConditionLock"></a>十一、NSConditionLock</h5><p>NSConditionLock是对NSCondition的进一步封装，可以设置具体的条件值<br><img src="http://wx4.sinaimg.cn/large/76a55189ly1g8brze21vyj20rs08kk3v.jpg" alt="image"></p>
+<h5 id="十二、dispatch-semaphore"><a href="#十二、dispatch-semaphore" class="headerlink" title="十二、dispatch_semaphore"></a>十二、dispatch_semaphore</h5><ol>
+<li>semaphore叫做”信号量”</li>
+<li>信号量的初始值，可以用来控制线程并发访问的最大数量</li>
+<li>信号量的初始值为1，代表同时只允许1条线程访问资源，保证线程同步。<br><img src="http://wx4.sinaimg.cn/mw690/76a55189ly1g8bs34de0lj20rs096n9a.jpg" alt="image"></li>
+</ol>
+<h5 id="十三、dispatch-queue"><a href="#十三、dispatch-queue" class="headerlink" title="十三、dispatch_queue"></a>十三、dispatch_queue</h5><p>直接使用GCD的串行队列，也是可以实现线程同步的。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_queue_create(<span class="string">"gcd_locak"</span>, DISPATCH_QUEUE_SERIAL);</span><br><span class="line"><span class="built_in">dispatch_sync</span>(queue, ^&#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="十四、-synchronized"><a href="#十四、-synchronized" class="headerlink" title="十四、 @synchronized"></a>十四、 @synchronized</h5><ol>
+<li>@synchronized是对mutex递归锁的封装</li>
+<li>源码查看：objc4中的objc-sync.mm文件</li>
+<li>@synchronized(obj)内部会生成obj对应的递归锁，然后进行加锁、解锁操作</li>
+<li><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@synchronized</span> (obj) &#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h5 id="十五、iOS线程同步方案性能比较"><a href="#十五、iOS线程同步方案性能比较" class="headerlink" title="十五、iOS线程同步方案性能比较"></a>十五、iOS线程同步方案性能比较</h5><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">性能从高到低排序</span><br><span class="line"></span><br><span class="line">os_unfair_lock</span><br><span class="line">OSSpinLock</span><br><span class="line">dispatch_semaphore</span><br><span class="line">pthread_mutex</span><br><span class="line">dispatch_queue(DISPATCH_QUEUE_SERIAL)</span><br><span class="line"><span class="built_in">NSLock</span></span><br><span class="line"><span class="built_in">NSCondition</span></span><br><span class="line">pthread_mutex(recursive)</span><br><span class="line"><span class="built_in">NSRecursiveLock</span></span><br><span class="line"><span class="built_in">NSConditionLock</span></span><br><span class="line"><span class="keyword">@synchronized</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h5 id="十六、自旋锁、互斥锁比较"><a href="#十六、自旋锁、互斥锁比较" class="headerlink" title="十六、自旋锁、互斥锁比较"></a>十六、自旋锁、互斥锁比较</h5><ol>
+<li><p>什么情况使用自旋锁比较划算？<br>预计线程等待锁的时间很短<br>加锁的代码（临界区）经常被调用，但竞争情况很少发生<br>CPU资源不紧张<br>多核处理器</p>
+</li>
+<li><p>什么情况使用互斥锁比较划算？<br>预计线程等待锁的时间较长<br>单核处理器<br>临界区有IO操作<br>临界区代码复杂或者循环量大<br>临界区竞争非常激烈</p>
+</li>
+</ol>
+<h5 id="十七、atomic"><a href="#十七、atomic" class="headerlink" title="十七、atomic"></a>十七、atomic</h5><ol>
+<li>atomic用于保证属性setter、getter的原子性操作，相当于在getter和setter内部加了线程同步的锁</li>
+<li>可以参考源码 objc4 的 objc-accessors.m m</li>
+<li>它并不能保证使用属性的过程是线程安全的</li>
+</ol>
+<h5 id="十八、iOS中的读写安全方案"><a href="#十八、iOS中的读写安全方案" class="headerlink" title="十八、iOS中的读写安全方案"></a>十八、iOS中的读写安全方案</h5><p>同一时间，只能有1个线程进行写的操作<br>同一时间，允许有多个线程进行读的操作<br>同一时间，不允许既有写的操作，又有读的操作</p>
+<p>上面的场景就是典型的“多读单写”，经常用于文件等数据的读写操作，iOS中的实现方案有</p>
+<ol>
+<li>pthread_rwlock：读写锁</li>
+<li>dispatch_barrier_async：异步栅栏调用</li>
+</ol>
+<h6 id="pthread-rwlock"><a href="#pthread-rwlock" class="headerlink" title="pthread_rwlock"></a>pthread_rwlock</h6><p><img src="http://wx1.sinaimg.cn/large/76a55189ly1g8bwhuzjhaj20q60rskjl.jpg" alt="image"></p>
+<h6 id="dispatch-barrier-async"><a href="#dispatch-barrier-async" class="headerlink" title="dispatch_barrier_async"></a>dispatch_barrier_async</h6><ol>
+<li>==这个函数传入的并发队列必须是自己通过dispatch_queue_cretate创建的。==</li>
+<li>如果传入的是一个串行或是一个全局的并发队列，那这个函数便等同于dispatch_async函数的效果。</li>
+<li><img src="http://wx1.sinaimg.cn/large/76a55189ly1g8bwjod6qnj20rs092jx1.jpg" alt="image"></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/27/iOS%E5%8E%9F%E7%90%86%EF%BC%8821%EF%BC%89%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/" rel="next" title="iOS原理（21）锁（一）">
+                  <i class="fa fa-chevron-left"></i> iOS原理（21）锁（一）
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#十一、NSConditionLock"><span class="nav-number">1.</span> <span class="nav-text">十一、NSConditionLock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#十二、dispatch-semaphore"><span class="nav-number">2.</span> <span class="nav-text">十二、dispatch_semaphore</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#十三、dispatch-queue"><span class="nav-number">3.</span> <span class="nav-text">十三、dispatch_queue</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#十四、-synchronized"><span class="nav-number">4.</span> <span class="nav-text">十四、 @synchronized</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#十五、iOS线程同步方案性能比较"><span class="nav-number">5.</span> <span class="nav-text">十五、iOS线程同步方案性能比较</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#十六、自旋锁、互斥锁比较"><span class="nav-number">6.</span> <span class="nav-text">十六、自旋锁、互斥锁比较</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#十七、atomic"><span class="nav-number">7.</span> <span class="nav-text">十七、atomic</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#十八、iOS中的读写安全方案"><span class="nav-number">8.</span> <span class="nav-text">十八、iOS中的读写安全方案</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#pthread-rwlock"><span class="nav-number">8.1.</span> <span class="nav-text">pthread_rwlock</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#dispatch-barrier-async"><span class="nav-number">8.2.</span> <span class="nav-text">dispatch_barrier_async</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhangshengyang</p>
+  <div class="site-description" itemprop="description">iOS开发</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangshengyang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.2"></script><script src="/js/motion.js?v=7.4.2"></script>
+<script src="/js/schemes/pisces.js?v=7.4.2"></script>
+
+<script src="/js/next-boot.js?v=7.4.2"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

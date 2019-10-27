@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.2" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.2">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="一、多线程的安全隐患资源共享 块资源可能会被多个线程共享，也就是多个线程可能会访问同一块资源比如多个线程访问同一个对象、同一个变量、同一个文件。  当多个线程访问同一块资源时，很容易引发数据错乱和数据安全问题。   比如：买票问题、取钱问题。 二、多线程安全隐患分析 解决方案：使用线程同步技术（同步，就是协同步调，按预定的先后次序进行）常见的线程同步技术是：加锁  三、iOS中的线程同步方案123">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS原理（20）锁的基本信息">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;26&#x2F;iOS%E5%8E%9F%E7%90%86%EF%BC%8820%EF%BC%89%E9%94%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF&#x2F;index.html">
+<meta property="og:site_name" content="鲨鱼辣椒">
+<meta property="og:description" content="一、多线程的安全隐患资源共享 块资源可能会被多个线程共享，也就是多个线程可能会访问同一块资源比如多个线程访问同一个对象、同一个变量、同一个文件。  当多个线程访问同一块资源时，很容易引发数据错乱和数据安全问题。   比如：买票问题、取钱问题。 二、多线程安全隐患分析 解决方案：使用线程同步技术（同步，就是协同步调，按预定的先后次序进行）常见的线程同步技术是：加锁  三、iOS中的线程同步方案123">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http:&#x2F;&#x2F;wx2.sinaimg.cn&#x2F;large&#x2F;76a55189ly1g8br8rcldsj20rs0fg77d.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;wx4.sinaimg.cn&#x2F;large&#x2F;76a55189ly1g8brb1jbvoj20rs0h2adk.jpg">
+<meta property="og:updated_time" content="2019-10-27T03:02:21.652Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;wx2.sinaimg.cn&#x2F;large&#x2F;76a55189ly1g8br8rcldsj20rs0fg77d.jpg">
+  <link rel="canonical" href="http://yoursite.com/2019/10/26/iOS%E5%8E%9F%E7%90%86%EF%BC%8820%EF%BC%89%E9%94%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>iOS原理（20）锁的基本信息 | 鲨鱼辣椒</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">鲨鱼辣椒</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+        
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      
+    
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/26/iOS%E5%8E%9F%E7%90%86%EF%BC%8820%EF%BC%89%E9%94%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            iOS原理（20）锁的基本信息
+            
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-26 10:57:31" itemprop="dateCreated datePublished" datetime="2019-10-26T10:57:31+08:00">2019-10-26</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-27 11:02:21" itemprop="dateModified" datetime="2019-10-27T11:02:21+08:00">2019-10-27</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h5 id="一、多线程的安全隐患"><a href="#一、多线程的安全隐患" class="headerlink" title="一、多线程的安全隐患"></a>一、多线程的安全隐患</h5><h6 id="资源共享"><a href="#资源共享" class="headerlink" title="资源共享"></a>资源共享</h6><ol>
+<li><p>块资源可能会被多个线程共享，也就是多个线程可能会访问同一块资源<br>比如多个线程访问同一个对象、同一个变量、同一个文件。</p>
+</li>
+<li><p>当多个线程访问同一块资源时，很容易引发数据错乱和数据安全问题。</p>
+</li>
+</ol>
+<p>比如：买票问题、取钱问题。</p>
+<h5 id="二、多线程安全隐患分析"><a href="#二、多线程安全隐患分析" class="headerlink" title="二、多线程安全隐患分析"></a>二、多线程安全隐患分析</h5><p><img src="http://wx2.sinaimg.cn/large/76a55189ly1g8br8rcldsj20rs0fg77d.jpg" alt="image"></p>
+<h6 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h6><p>使用线程同步技术（同步，就是协同步调，按预定的先后次序进行）<br>常见的线程同步技术是：加锁</p>
+<p><img src="http://wx4.sinaimg.cn/large/76a55189ly1g8brb1jbvoj20rs0h2adk.jpg" alt="image"></p>
+<h5 id="三、iOS中的线程同步方案"><a href="#三、iOS中的线程同步方案" class="headerlink" title="三、iOS中的线程同步方案"></a>三、iOS中的线程同步方案</h5><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> OSSpinLock</span><br><span class="line"><span class="number">2.</span> os_unfair_lock</span><br><span class="line"><span class="number">3.</span> pthread_mutex</span><br><span class="line"><span class="number">4.</span> dispatch_semaphore</span><br><span class="line"><span class="number">5.</span> dispatch_queue(DISPATCH_QUEUE_SERIAL)</span><br><span class="line"><span class="number">6.</span> <span class="built_in">NSLock</span></span><br><span class="line"><span class="number">7.</span> <span class="built_in">NSRecursiveLock</span></span><br><span class="line"><span class="number">8.</span> <span class="built_in">NSCondition</span></span><br><span class="line"><span class="number">9.</span> <span class="built_in">NSConditionLock</span></span><br><span class="line"><span class="number">10.</span> <span class="keyword">@synchronized</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h5 id="四、GNUstep"><a href="#四、GNUstep" class="headerlink" title="四、GNUstep"></a>四、GNUstep</h5><p>GNUstep是GNU计划的项目之一，它将Cocoa的OC库重新开源实现了一遍</p>
+<p>源码地址：<a href="http://www.gnustep.org/resources/downloads.php。" target="_blank" rel="noopener">http://www.gnustep.org/resources/downloads.php。</a></p>
+<p>虽然GNUstep不是苹果官方源码，但还是具有一定的参考价值。</p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/26/iOS%E5%8E%9F%E7%90%86%EF%BC%8819%EF%BC%89%E5%A4%9A%E7%BA%BF%E7%A8%8B-GCD/" rel="next" title="iOS原理（19）多线程_GCD">
+                  <i class="fa fa-chevron-left"></i> iOS原理（19）多线程_GCD
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/10/27/iOS%E5%8E%9F%E7%90%86%EF%BC%8821%EF%BC%89%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/" rel="prev" title="iOS原理（21）锁（一）">
+                  iOS原理（21）锁（一） <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、多线程的安全隐患"><span class="nav-number">1.</span> <span class="nav-text">一、多线程的安全隐患</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#资源共享"><span class="nav-number">1.1.</span> <span class="nav-text">资源共享</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、多线程安全隐患分析"><span class="nav-number">2.</span> <span class="nav-text">二、多线程安全隐患分析</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#解决方案："><span class="nav-number">2.1.</span> <span class="nav-text">解决方案：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三、iOS中的线程同步方案"><span class="nav-number">3.</span> <span class="nav-text">三、iOS中的线程同步方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#四、GNUstep"><span class="nav-number">4.</span> <span class="nav-text">四、GNUstep</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhangshengyang</p>
+  <div class="site-description" itemprop="description">iOS开发</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangshengyang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.2"></script><script src="/js/motion.js?v=7.4.2"></script>
+<script src="/js/schemes/pisces.js?v=7.4.2"></script>
+
+<script src="/js/next-boot.js?v=7.4.2"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

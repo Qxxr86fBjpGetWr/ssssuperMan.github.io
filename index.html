@@ -2,84 +2,60 @@
 
 
 
-  
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.2" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.2">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
 
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="iOS开发">
+  <meta name="description" content="iOS开发">
 <meta property="og:type" content="website">
 <meta property="og:title" content="鲨鱼辣椒">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
@@ -87,40 +63,19 @@
 <meta property="og:description" content="iOS开发">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="http://yoursite.com/">
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
   };
 </script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/"/>
-
-
-
-
 
   <title>鲨鱼辣椒</title>
   
@@ -132,186 +87,194 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+    <div>
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">鲨鱼辣椒</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
   <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
 
+
 <nav class="site-nav">
   
-
-  
-    <ul id="menu" class="menu">
+  <ul id="menu" class="menu">
       
+      
+        
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            首页
-          </a>
-        </li>
       
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            关于
-          </a>
-        </li>
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
       
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
     
       
+      
+        
+        
+        <li class="menu-item menu-item-about">
+      
+    
 
-  
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
 
-  
-  
-  
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-tags">
+      
+    
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      
+    
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/24/iOS%E5%8E%9F%E7%90%86(16)%20runtime%E5%BA%95%E5%B1%82/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/27/iOS%E5%8E%9F%E7%90%86%EF%BC%8822%EF%BC%89%E9%94%81%EF%BC%88%E4%BA%8C%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="iOS开发">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="鲨鱼辣椒">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/24/iOS%E5%8E%9F%E7%90%86(16)%20runtime%E5%BA%95%E5%B1%82/" itemprop="url">iOS原理(16) runtime底层</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/10/27/iOS%E5%8E%9F%E7%90%86%EF%BC%8822%EF%BC%89%E9%94%81%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">iOS原理（22）锁（二）</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
+              <span class="post-meta-item-text">Posted on</span>
+
               
-                <span class="post-meta-item-text">发表于</span>
+                
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-24T23:40:22+08:00">
-                2019-10-24
-              </time>
-            
 
-            
-
-            
-          </span>
-
+              <time title="Created: 2019-10-27 10:59:50 / Modified: 13:34:53" itemprop="dateCreated datePublished" datetime="2019-10-27T10:59:50+08:00">2019-10-27</time>
+            </span>
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
@@ -326,21 +289,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -348,10 +299,727 @@
     <div class="post-body" itemprop="articleBody">
 
       
+          <h5 id="十一、NSConditionLock"><a href="#十一、NSConditionLock" class="headerlink" title="十一、NSConditionLock"></a>十一、NSConditionLock</h5><p>NSConditionLock是对NSCondition的进一步封装，可以设置具体的条件值<br><img src="http://wx4.sinaimg.cn/large/76a55189ly1g8brze21vyj20rs08kk3v.jpg" alt="image"></p>
+<h5 id="十二、dispatch-semaphore"><a href="#十二、dispatch-semaphore" class="headerlink" title="十二、dispatch_semaphore"></a>十二、dispatch_semaphore</h5><ol>
+<li>semaphore叫做”信号量”</li>
+<li>信号量的初始值，可以用来控制线程并发访问的最大数量</li>
+<li>信号量的初始值为1，代表同时只允许1条线程访问资源，保证线程同步。<br><img src="http://wx4.sinaimg.cn/mw690/76a55189ly1g8bs34de0lj20rs096n9a.jpg" alt="image"></li>
+</ol>
+<h5 id="十三、dispatch-queue"><a href="#十三、dispatch-queue" class="headerlink" title="十三、dispatch_queue"></a>十三、dispatch_queue</h5><p>直接使用GCD的串行队列，也是可以实现线程同步的。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_queue_create(<span class="string">"gcd_locak"</span>, DISPATCH_QUEUE_SERIAL);</span><br><span class="line"><span class="built_in">dispatch_sync</span>(queue, ^&#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="十四、-synchronized"><a href="#十四、-synchronized" class="headerlink" title="十四、 @synchronized"></a>十四、 @synchronized</h5><ol>
+<li>@synchronized是对mutex递归锁的封装</li>
+<li>源码查看：objc4中的objc-sync.mm文件</li>
+<li>@synchronized(obj)内部会生成obj对应的递归锁，然后进行加锁、解锁操作</li>
+<li><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@synchronized</span> (obj) &#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h5 id="十五、iOS线程同步方案性能比较"><a href="#十五、iOS线程同步方案性能比较" class="headerlink" title="十五、iOS线程同步方案性能比较"></a>十五、iOS线程同步方案性能比较</h5><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">性能从高到低排序</span><br><span class="line"></span><br><span class="line">os_unfair_lock</span><br><span class="line">OSSpinLock</span><br><span class="line">dispatch_semaphore</span><br><span class="line">pthread_mutex</span><br><span class="line">dispatch_queue(DISPATCH_QUEUE_SERIAL)</span><br><span class="line"><span class="built_in">NSLock</span></span><br><span class="line"><span class="built_in">NSCondition</span></span><br><span class="line">pthread_mutex(recursive)</span><br><span class="line"><span class="built_in">NSRecursiveLock</span></span><br><span class="line"><span class="built_in">NSConditionLock</span></span><br><span class="line"><span class="keyword">@synchronized</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/10/27/iOS%E5%8E%9F%E7%90%86%EF%BC%8822%EF%BC%89%E9%94%81%EF%BC%88%E4%BA%8C%EF%BC%89/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
       
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/27/iOS%E5%8E%9F%E7%90%86%EF%BC%8821%EF%BC%89%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/10/27/iOS%E5%8E%9F%E7%90%86%EF%BC%8821%EF%BC%89%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title-link" itemprop="url">iOS原理（21）锁（一）</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-27 10:58:32 / Modified: 10:59:21" itemprop="dateCreated datePublished" datetime="2019-10-27T10:58:32+08:00">2019-10-27</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+          <h5 id="五、OSSpinLock"><a href="#五、OSSpinLock" class="headerlink" title="五、OSSpinLock"></a>五、OSSpinLock</h5><ol>
+<li>OSSpinLock叫做”自旋锁”，等待锁的线程会处于忙等（busy-wait）状态，一直占用着CPU资源</li>
+<li>目前已经不再安全，可能会出现优先级反转问题<br>如果等待锁的线程优先级较高，它会一直占用着CPU资源，优先级低的线程就无法释放锁</li>
+<li>需要导入头文件#import &lt;libkern/OSAtomic.h&gt;</li>
+</ol>
+<p><img src="http://wx4.sinaimg.cn/large/76a55189ly1g8brh1yzucj20rs086do3.jpg" alt="image"></p>
+<h5 id="六、os-unfair-lock"><a href="#六、os-unfair-lock" class="headerlink" title="六、os_unfair_lock"></a>六、os_unfair_lock</h5><ol>
+<li>os_unfair_lock用于取代不安全的OSSpinLock ，从iOS10开始才支持</li>
+<li>从底层调用看，等待os_unfair_lock锁的线程会处于休眠状态，并非忙等</li>
+<li>需要导入头文件#import &lt;os/lock.h&gt;</li>
+</ol>
+<p><img src="http://wx1.sinaimg.cn/large/76a55189ly1g8brmczxrxj20rs0cmk8n.jpg" alt="image"></p>
+<h5 id="七、pthread-mutex"><a href="#七、pthread-mutex" class="headerlink" title="七、pthread_mutex"></a>七、pthread_mutex</h5><ol>
+<li>mutex叫做”互斥锁”，等待锁的线程会处于休眠状态</li>
+<li>需要导入头文件#import &lt;pthread.h&gt;<br><img src="http://wx3.sinaimg.cn/large/76a55189ly1g8brod95o0j21lw0ju7l7.jpg" alt="image"></li>
+</ol>
+<h5 id="八、pthread-mutex-–-递归锁"><a href="#八、pthread-mutex-–-递归锁" class="headerlink" title="八、pthread_mutex – 递归锁"></a>八、pthread_mutex – 递归锁</h5><p><img src="http://wx2.sinaimg.cn/large/76a55189ly1g8brq6oqabj20rs07qk1y.jpg" alt="image"></p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/10/27/iOS%E5%8E%9F%E7%90%86%EF%BC%8821%EF%BC%89%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/26/iOS%E5%8E%9F%E7%90%86%EF%BC%8820%EF%BC%89%E9%94%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/10/26/iOS%E5%8E%9F%E7%90%86%EF%BC%8820%EF%BC%89%E9%94%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF/" class="post-title-link" itemprop="url">iOS原理（20）锁的基本信息</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-26 10:57:31" itemprop="dateCreated datePublished" datetime="2019-10-26T10:57:31+08:00">2019-10-26</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-27 11:02:21" itemprop="dateModified" datetime="2019-10-27T11:02:21+08:00">2019-10-27</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="一、多线程的安全隐患"><a href="#一、多线程的安全隐患" class="headerlink" title="一、多线程的安全隐患"></a>一、多线程的安全隐患</h5><h6 id="资源共享"><a href="#资源共享" class="headerlink" title="资源共享"></a>资源共享</h6><ol>
+<li><p>块资源可能会被多个线程共享，也就是多个线程可能会访问同一块资源<br>比如多个线程访问同一个对象、同一个变量、同一个文件。</p>
+</li>
+<li><p>当多个线程访问同一块资源时，很容易引发数据错乱和数据安全问题。</p>
+</li>
+</ol>
+<p>比如：买票问题、取钱问题。</p>
+<h5 id="二、多线程安全隐患分析"><a href="#二、多线程安全隐患分析" class="headerlink" title="二、多线程安全隐患分析"></a>二、多线程安全隐患分析</h5><p><img src="http://wx2.sinaimg.cn/large/76a55189ly1g8br8rcldsj20rs0fg77d.jpg" alt="image"></p>
+<h6 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h6><p>使用线程同步技术（同步，就是协同步调，按预定的先后次序进行）<br>常见的线程同步技术是：加锁</p>
+<p><img src="http://wx4.sinaimg.cn/large/76a55189ly1g8brb1jbvoj20rs0h2adk.jpg" alt="image"></p>
+<h5 id="三、iOS中的线程同步方案"><a href="#三、iOS中的线程同步方案" class="headerlink" title="三、iOS中的线程同步方案"></a>三、iOS中的线程同步方案</h5><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> OSSpinLock</span><br><span class="line"><span class="number">2.</span> os_unfair_lock</span><br><span class="line"><span class="number">3.</span> pthread_mutex</span><br><span class="line"><span class="number">4.</span> dispatch_semaphore</span><br><span class="line"><span class="number">5.</span> dispatch_queue(DISPATCH_QUEUE_SERIAL)</span><br><span class="line"><span class="number">6.</span> <span class="built_in">NSLock</span></span><br><span class="line"><span class="number">7.</span> <span class="built_in">NSRecursiveLock</span></span><br><span class="line"><span class="number">8.</span> <span class="built_in">NSCondition</span></span><br><span class="line"><span class="number">9.</span> <span class="built_in">NSConditionLock</span></span><br><span class="line"><span class="number">10.</span> <span class="keyword">@synchronized</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/10/26/iOS%E5%8E%9F%E7%90%86%EF%BC%8820%EF%BC%89%E9%94%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/26/iOS%E5%8E%9F%E7%90%86%EF%BC%8819%EF%BC%89%E5%A4%9A%E7%BA%BF%E7%A8%8B-GCD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/10/26/iOS%E5%8E%9F%E7%90%86%EF%BC%8819%EF%BC%89%E5%A4%9A%E7%BA%BF%E7%A8%8B-GCD/" class="post-title-link" itemprop="url">iOS原理（19）多线程_GCD</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-26 08:56:22" itemprop="dateCreated datePublished" datetime="2019-10-26T08:56:22+08:00">2019-10-26</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-27 11:02:11" itemprop="dateModified" datetime="2019-10-27T11:02:11+08:00">2019-10-27</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="一、iOS中的多线程方案"><a href="#一、iOS中的多线程方案" class="headerlink" title="一、iOS中的多线程方案"></a>一、iOS中的多线程方案</h5><p><img src="http://wx1.sinaimg.cn/large/76a55189ly1g8bplxl73hj216c0kowl0.jpg" alt="image"></p>
+<h5 id="二、GCD常用函数"><a href="#二、GCD常用函数" class="headerlink" title="二、GCD常用函数"></a>二、GCD常用函数</h5><h6 id="GCD中有2个用来执行任务的函数"><a href="#GCD中有2个用来执行任务的函数" class="headerlink" title="GCD中有2个用来执行任务的函数"></a>GCD中有2个用来执行任务的函数</h6><ol>
+<li><p>用同步的方式执行任务</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_sync</span>(<span class="built_in">dispatch_queue_t</span> queue, dispatch_block_t block);</span><br><span class="line">queue：队列</span><br><span class="line">block：任务</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用异步的方式执行任务</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_async</span>(<span class="built_in">dispatch_queue_t</span> queue, dispatch_block_t block);</span><br><span class="line"></span><br><span class="line">GCD源码：https:<span class="comment">//github.com/apple/swift-corelibs-libdispatch</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h5 id="三、GCD的队列"><a href="#三、GCD的队列" class="headerlink" title="三、GCD的队列"></a>三、GCD的队列</h5><h6 id="GCD的队列可以分为2大类型"><a href="#GCD的队列可以分为2大类型" class="headerlink" title="GCD的队列可以分为2大类型"></a>GCD的队列可以分为2大类型</h6><ol>
+<li><p>并发队列（Concurrent Dispatch Queue）<br>可以让多个任务并发（同时）执行（自动开启多个线程同时执行任务）<br>并发功能只有在异步（dispatch_async）函数下才有效</p>
+</li>
+<li><p>串行队列（Serial Dispatch Queue）<br>让任务一个接着一个地执行（一个任务执行完毕后，再执行下一个任务）</p>
+</li>
+</ol>
+<h6 id="比较容易混淆的几个术语"><a href="#比较容易混淆的几个术语" class="headerlink" title="比较容易混淆的几个术语"></a>比较容易混淆的几个术语</h6><p>同步、异步、并发、串行</p>
+<ol>
+<li><p>同步和异步主要影响：能不能开启新的线程</p>
+</li>
+<li><p>同步：在当前线程中执行任务，不具备开启新线程的能力</p>
+</li>
+<li><p>异步：在新的线程中执行任务，具备开启新线程的能力</p>
+</li>
+<li><p>并发和串行主要影响：任务的执行方式</p>
+</li>
+<li><p>并发：多个任务并发（同时）执行</p>
+</li>
+<li><p>串行：一个任务执行完毕后，再执行下一个任务</p>
+</li>
+</ol>
+<h6 id="各种队列的执行效果"><a href="#各种队列的执行效果" class="headerlink" title="各种队列的执行效果"></a>各种队列的执行效果</h6><p><img src="http://wx3.sinaimg.cn/mw690/76a55189ly1g8bpuuo1c7j21620iiwiq.jpg" alt="image"></p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/10/26/iOS%E5%8E%9F%E7%90%86%EF%BC%8819%EF%BC%89%E5%A4%9A%E7%BA%BF%E7%A8%8B-GCD/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/25/iOS%E5%8E%9F%E7%90%86%EF%BC%8818%EF%BC%89RunLoop%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/10/25/iOS%E5%8E%9F%E7%90%86%EF%BC%8818%EF%BC%89RunLoop%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">iOS原理（18）RunLoop底层原理（二）</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-25 12:10:05" itemprop="dateCreated datePublished" datetime="2019-10-25T12:10:05+08:00">2019-10-25</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-27 11:01:50" itemprop="dateModified" datetime="2019-10-27T11:01:50+08:00">2019-10-27</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="九、RunLoop得运行流程"><a href="#九、RunLoop得运行流程" class="headerlink" title="九、RunLoop得运行流程"></a>九、RunLoop得运行流程</h5><p><img src="http://wx4.sinaimg.cn/large/76a55189ly1g8bnd53pguj21g60qaqa7.jpg" alt="image"></p>
+<h5 id="十、RunLoop休眠的实现原理"><a href="#十、RunLoop休眠的实现原理" class="headerlink" title="十、RunLoop休眠的实现原理"></a>十、RunLoop休眠的实现原理</h5><p><img src="http://wx3.sinaimg.cn/large/76a55189ly1g8bnmxh1o9j21380o4acl.jpg" alt="image"></p>
+<p>RunLoop休眠的时候会调用内核级别的函数<code>mach_msg()</code>，当在用户态下调用该函数，则可以使线程进入内核态，在内核态下有消息唤醒的时候就进入用户态处理消息，是一种真正意义上的休眠。并不是通过无限循环实现的。</p>
+<h5 id="十一、RunLoop的实际应用"><a href="#十一、RunLoop的实际应用" class="headerlink" title="十一、RunLoop的实际应用"></a>十一、RunLoop的实际应用</h5><ol>
+<li><p>解决NSTimer在滑动时不工作的问题。</p>
+ <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="built_in">NSTimer</span> *timer = [<span class="built_in">NSTimer</span> timerWithTimeInterval:<span class="number">1.0</span> repeats:<span class="literal">YES</span> block:^(<span class="built_in">NSTimer</span> * _Nonnull timer) &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%d"</span>, ++count);</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">//    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];</span></span><br><span class="line"><span class="comment">//    [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// NSDefaultRunLoopMode、UITrackingRunLoopMode才是真正存在的模式</span></span><br><span class="line"><span class="comment">// NSRunLoopCommonModes并不是一个真的模式，它只是一个标记</span></span><br><span class="line"><span class="comment">// timer能在_commonModes数组中存放的模式下工作</span></span><br><span class="line">[[<span class="built_in">NSRunLoop</span> currentRunLoop] addTimer:timer forMode:<span class="built_in">NSRunLoopCommonModes</span>];</span><br></pre></td></tr></table></figure></li>
+<li><p>线程保活<br>当一个线程执行完所有的任务时，便会被销毁，如果一个线程需要频繁使用则可以进行线程保活。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"MJThread.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">MJThread</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%s"</span>, __func__);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"ViewController.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"MJThread.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) MJThread *thread;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span>.thread = [[MJThread alloc] initWithTarget:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(run) object:<span class="literal">nil</span>];</span><br><span class="line">    [<span class="keyword">self</span>.thread start];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches withEvent:(<span class="built_in">UIEvent</span> *)event</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="keyword">self</span> performSelector:<span class="keyword">@selector</span>(test) onThread:<span class="keyword">self</span>.thread withObject:<span class="literal">nil</span> waitUntilDone:<span class="literal">NO</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 子线程需要执行的任务</span></span><br><span class="line"><span class="comment">// 这里还有内存管理的问题，这里仅对RunLoop线程保活功能进行演示。</span></span><br><span class="line">- (<span class="keyword">void</span>)test</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%s %@"</span>, __func__, [<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个方法的目的：线程保活</span></span><br><span class="line">- (<span class="keyword">void</span>)run &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%s %@"</span>, __func__, [<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 往RunLoop里面添加Source\Timer\Observer</span></span><br><span class="line">    [[<span class="built_in">NSRunLoop</span> currentRunLoop] addPort:[[<span class="built_in">NSPort</span> alloc] init] forMode:<span class="built_in">NSDefaultRunLoopMode</span>];</span><br><span class="line">    <span class="comment">// 线程会在这里休眠</span></span><br><span class="line">    [[<span class="built_in">NSRunLoop</span> currentRunLoop] run];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%s ----end----"</span>, __func__);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/10/25/iOS%E5%8E%9F%E7%90%86%EF%BC%8818%EF%BC%89RunLoop%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/25/iOS%E5%8E%9F%E7%90%86%EF%BC%8817%EF%BC%89RunLoop%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/10/25/iOS%E5%8E%9F%E7%90%86%EF%BC%8817%EF%BC%89RunLoop%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title-link" itemprop="url">iOS原理（17）RunLoop底层原理（一）</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-25 10:53:03" itemprop="dateCreated datePublished" datetime="2019-10-25T10:53:03+08:00">2019-10-25</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-27 11:01:30" itemprop="dateModified" datetime="2019-10-27T11:01:30+08:00">2019-10-27</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="一-什么是RunLoop？"><a href="#一-什么是RunLoop？" class="headerlink" title="一. 什么是RunLoop？"></a>一. 什么是RunLoop？</h5><p>顾名思义，运行循环，在程序运行中循环做一些事情。</p>
+<h5 id="二-Runloop的应用范畴"><a href="#二-Runloop的应用范畴" class="headerlink" title="二. Runloop的应用范畴"></a>二. Runloop的应用范畴</h5><ul>
+<li>定时器（Timer）、PerformSelector</li>
+<li>GCD Async Main Queue</li>
+<li>事件响应、手势识别、界面刷新</li>
+<li>网络请求</li>
+<li>AutoreleasePool</li>
+</ul>
+<h5 id="三-有或者没有RunLoop时代码执行情况。"><a href="#三-有或者没有RunLoop时代码执行情况。" class="headerlink" title="三. 有或者没有RunLoop时代码执行情况。"></a>三. 有或者没有RunLoop时代码执行情况。</h5><p><img src="http://wx2.sinaimg.cn/large/76a55189ly1g8bfgc2otwj20rs084tid.jpg" alt="image"><br>没有runloop的情况下，代码执行到13行后会马上退出。</p>
+<p><img src="http://wx1.sinaimg.cn/large/76a55189ly1g8bfg81qwaj20rs04yaf7.jpg" alt="image"><br><img src="http://wx4.sinaimg.cn/large/76a55189ly1g8bfgg3rl0j20rs0fa7mr.jpg" alt="image"><br>有runloop的情况下程序并不会马上退出，而是保持运行状态。当没有任务时休眠，当有事件需要处理的时候会唤醒runloop，拿到事件消息进行处理。</p>
+<h5 id="四-runloop对象"><a href="#四-runloop对象" class="headerlink" title="四.runloop对象"></a>四.runloop对象</h5><p>iOS中有两套API来访问和使用runloop。<br><code>Foundation</code>:NSRunLoop</p>
+<p><code>Core Foundation</code>:CFRunLoopRef</p>
+<p>NSRunLoop和CFRunLoopRef都代表着RunLoop对象<br>NSRunLoop是基于CFRunLoopRef的一层OC包装<br>CFRunLoopRef是开源的:<a href="https://opensource.apple.com/tarballs/CF/" target="_blank" rel="noopener">https://opensource.apple.com/tarballs/CF/</a></p>
+<h5 id="五-RunLoop与线程的关系"><a href="#五-RunLoop与线程的关系" class="headerlink" title="五.RunLoop与线程的关系"></a>五.RunLoop与线程的关系</h5><ul>
+<li><p>每条线程都有唯一的一个与之对应的RunLoop对象</p>
+</li>
+<li><p>RunLoop保存在一个全局的Dictionary里，线程作为key，RunLoop作为value</p>
+</li>
+<li><p>线程刚创建时并没有RunLoop对象，==RunLoop会在第一次获取它时创建==</p>
+</li>
+<li><p>RunLoop会在线程结束时销毁</p>
+</li>
+<li><p>主线程的RunLoop已经自动获取（创建），子线程默认没有开启RunLoop</p>
+</li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/10/25/iOS%E5%8E%9F%E7%90%86%EF%BC%8817%EF%BC%89RunLoop%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/24/iOS%E5%8E%9F%E7%90%86(16)%20runtime%E5%BA%95%E5%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/10/24/iOS%E5%8E%9F%E7%90%86(16)%20runtime%E5%BA%95%E5%B1%82/" class="post-title-link" itemprop="url">iOS原理(16) runtime底层</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-24 23:40:22" itemprop="dateCreated datePublished" datetime="2019-10-24T23:40:22+08:00">2019-10-24</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-25 00:03:48" itemprop="dateModified" datetime="2019-10-25T00:03:48+08:00">2019-10-25</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
           <h2 id="面试题21-什么是Runtime"><a href="#面试题21-什么是Runtime" class="headerlink" title="面试题21:什么是Runtime?"></a>面试题21:什么是Runtime?</h2><ol>
 <li>OC是一门动态性比较强的编程语言，允许很多操作推迟到程序运行时再进行</li>
 <li>OC的动态性就是由Runtime来支撑和实现的，Runtime是一套C语言的API，封装了很多动态性相关的函数</li>
@@ -364,110 +1032,84 @@
 <li>利用消息转发机制解决方法找不到的异常问题</li>
 </ol>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/24/iOS%E5%8E%9F%E7%90%86(16)%20runtime%E5%BA%95%E5%B1%82/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/10/24/iOS%E5%8E%9F%E7%90%86(16)%20runtime%E5%BA%95%E5%B1%82/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
+  
+  
+  
 
     
-      
-
-  
-
+        
   
   
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/23/iOS%E5%8E%9F%E7%90%86(15)%20super%E9%9D%A2%E8%AF%95%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="iOS开发">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="鲨鱼辣椒">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/23/iOS%E5%8E%9F%E7%90%86(15)%20super%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url">iOS原理(15) super相关的面试题</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/10/23/iOS%E5%8E%9F%E7%90%86(15)%20super%E9%9D%A2%E8%AF%95%E9%A2%98/" class="post-title-link" itemprop="url">iOS原理(15) super相关的面试题</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
+              <span class="post-meta-item-text">Posted on</span>
+
               
-                <span class="post-meta-item-text">发表于</span>
+                
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-23T23:37:33+08:00">
-                2019-10-23
-              </time>
-            
 
-            
-
-            
-          </span>
-
+              <time title="Created: 2019-10-23 23:37:33" itemprop="dateCreated datePublished" datetime="2019-10-23T23:37:33+08:00">2019-10-23</time>
+            </span>
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-25 23:30:56" itemprop="dateModified" datetime="2019-10-25T23:30:56+08:00">2019-10-25</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
@@ -482,21 +1124,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -504,113 +1134,79 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h5 id="面试题19"><a href="#面试题19" class="headerlink" title="面试题19:"></a>面试题19:</h5><p><img src="http://wx4.sinaimg.cn/large/76a55189ly1g8av0we4ohj21lw0qqwpj.jpg" alt="image"></p>
+          <h5 id="面试题19"><a href="#面试题19" class="headerlink" title="面试题19:"></a>面试题19:</h5><p><img src="http://wx4.sinaimg.cn/large/76a55189ly1g8av0we4ohj21lw0qqwpj.jpg" alt="image"></p>
 <h5 id="面试题20"><a href="#面试题20" class="headerlink" title="面试题20:"></a>面试题20:</h5><p><img src="http://wx3.sinaimg.cn/large/76a55189ly1g8av11y5cqj21e40hstha.jpg" alt="image"></p>
 
-          
         
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
+  
+  
+  
 
     
-      
-
-  
-
+        
   
   
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/22/iOS%E5%8E%9F%E7%90%86(14)%20objc-msgSend%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B-%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E3%80%81%E5%8A%A8%E6%80%81%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90%EF%BC%88%E4%BA%8C%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="iOS开发">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="鲨鱼辣椒">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/22/iOS%E5%8E%9F%E7%90%86(14)%20objc-msgSend%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B-%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E3%80%81%E5%8A%A8%E6%80%81%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url">iOS原理(14) objc_msgSend执行流程-消息发送、动态方法解析（二）</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/10/22/iOS%E5%8E%9F%E7%90%86(14)%20objc-msgSend%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B-%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E3%80%81%E5%8A%A8%E6%80%81%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">iOS原理(14) objc_msgSend执行流程-消息发送、动态方法解析（二）</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
+              <span class="post-meta-item-text">Posted on</span>
+
               
-                <span class="post-meta-item-text">发表于</span>
+                
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-22T23:34:05+08:00">
-                2019-10-22
-              </time>
-            
 
-            
-
-            
-          </span>
-
+              <time title="Created: 2019-10-22 23:34:05" itemprop="dateCreated datePublished" datetime="2019-10-22T23:34:05+08:00">2019-10-22</time>
+            </span>
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-25 23:31:30" itemprop="dateModified" datetime="2019-10-25T23:31:30+08:00">2019-10-25</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
@@ -625,21 +1221,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -647,12 +1231,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h5 id="面试题18-消息转发机制流程？"><a href="#面试题18-消息转发机制流程？" class="headerlink" title="面试题18:消息转发机制流程？"></a>面试题18:消息转发机制流程？</h5><h5 id="五、objc-msgSend的执行流程03-消息转发"><a href="#五、objc-msgSend的执行流程03-消息转发" class="headerlink" title="五、objc_msgSend的执行流程03-消息转发"></a>五、objc_msgSend的执行流程03-消息转发</h5><p><img src="http://wx3.sinaimg.cn/large/76a55189ly1g8auy2ieo6j21ma0qugqd.jpg" alt="image"></p>
+          <h5 id="面试题18-消息转发机制流程？"><a href="#面试题18-消息转发机制流程？" class="headerlink" title="面试题18:消息转发机制流程？"></a>面试题18:消息转发机制流程？</h5><h5 id="五、objc-msgSend的执行流程03-消息转发"><a href="#五、objc-msgSend的执行流程03-消息转发" class="headerlink" title="五、objc_msgSend的执行流程03-消息转发"></a>五、objc_msgSend的执行流程03-消息转发</h5><p><img src="http://wx3.sinaimg.cn/large/76a55189ly1g8auy2ieo6j21ma0qugqd.jpg" alt="image"></p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">控制消息转发流程的三个方法：</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>)forwardingTargetForSelector:(SEL)aSelector</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (aSelector == <span class="keyword">@selector</span>(test)) &#123;</span><br><span class="line">        <span class="comment">//如果返回了对象，那么会直接给该对象发消息</span></span><br><span class="line">        <span class="comment">// objc_msgSend([[MJCat alloc] init], aSelector)</span></span><br><span class="line">        <span class="keyword">return</span> [[MJCat alloc] init];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> [<span class="keyword">super</span> forwardingTargetForSelector:aSelector];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> 方法签名：返回值类型、参数类型</span><br><span class="line">- (<span class="built_in">NSMethodSignature</span> *)methodSignatureForSelector:(SEL)aSelector</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (aSelector == <span class="keyword">@selector</span>(test)) &#123;</span><br><span class="line">        <span class="keyword">return</span> [<span class="built_in">NSMethodSignature</span> signatureWithObjCTypes:<span class="string">"v16@0:8"</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> [<span class="keyword">super</span> methodSignatureForSelector:aSelector];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="built_in">NSInvocation</span>封装了一个方法调用，包括：方法调用者、方法名、方法参数</span><br><span class="line">    anInvocation.target 方法调用者</span><br><span class="line">    anInvocation.selector 方法名</span><br><span class="line">    [anInvocation getArgument:<span class="literal">NULL</span> atIndex:<span class="number">0</span>]</span><br><span class="line">- (<span class="keyword">void</span>)forwardInvocation:(<span class="built_in">NSInvocation</span> *)anInvocation</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//    anInvocation.target = [[MJCat alloc] init];</span></span><br><span class="line"><span class="comment">//    [anInvocation invoke];</span></span><br><span class="line"></span><br><span class="line">    [anInvocation invokeWithTarget:[[MJCat alloc] init]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -662,105 +1241,76 @@
 
 <h5 id="七、-dynamic-和-synthesize"><a href="#七、-dynamic-和-synthesize" class="headerlink" title="七、@dynamic 和 @synthesize"></a>七、@dynamic 和 @synthesize</h5><p>@dynamic：作用是让编译器不要自动生成setter和getter的实现、不要自动生成成员变量。但是setter和getter的生命不会受到影响。<br>@synthesize：会生成一个带下划线前缀的实例变量名，并且会为它生成getter、setter方法。</p>
 
-          
         
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
+  
+  
+  
 
     
-      
-
-  
-
+        
   
   
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/21/iOS%E5%8E%9F%E7%90%86(13)%20objc-msgSend%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B-%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E3%80%81%E5%8A%A8%E6%80%81%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="iOS开发">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="鲨鱼辣椒">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/21/iOS%E5%8E%9F%E7%90%86(13)%20objc-msgSend%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B-%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E3%80%81%E5%8A%A8%E6%80%81%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">iOS原理(13) objc_msgSend执行流程-消息发送、动态方法解析（一）</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/10/21/iOS%E5%8E%9F%E7%90%86(13)%20objc-msgSend%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B-%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E3%80%81%E5%8A%A8%E6%80%81%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title-link" itemprop="url">iOS原理(13) objc_msgSend执行流程-消息发送、动态方法解析（一）</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
+              <span class="post-meta-item-text">Posted on</span>
+
               
-                <span class="post-meta-item-text">发表于</span>
+                
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-21T23:27:14+08:00">
-                2019-10-21
-              </time>
-            
 
-            
-
-            
-          </span>
-
+              <time title="Created: 2019-10-21 23:27:14" itemprop="dateCreated datePublished" datetime="2019-10-21T23:27:14+08:00">2019-10-21</time>
+            </span>
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-25 23:32:21" itemprop="dateModified" datetime="2019-10-25T23:32:21+08:00">2019-10-25</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
@@ -775,21 +1325,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -797,12 +1335,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h5 id="面试题17-讲一下-OC-的消息机制？"><a href="#面试题17-讲一下-OC-的消息机制？" class="headerlink" title="面试题17. 讲一下 OC 的消息机制？"></a>面试题17. 讲一下 OC 的消息机制？</h5><ol>
+          <h5 id="面试题17-讲一下-OC-的消息机制？"><a href="#面试题17-讲一下-OC-的消息机制？" class="headerlink" title="面试题17. 讲一下 OC 的消息机制？"></a>面试题17. 讲一下 OC 的消息机制？</h5><ol>
 <li>OC中的方法调用其实都是转成了objc_msgSend函数的调用，给receiver（方法调用者）发送了一条消息（selector方法名）。</li>
 <li>objc_msgSend底层有3大阶段，消息发送（当前类、父类中查找）、动态方法解析、消息转发。</li>
 </ol>
@@ -817,939 +1350,27 @@
 <h5 id="四、objc-msgSend执行流程02-动态方法解析"><a href="#四、objc-msgSend执行流程02-动态方法解析" class="headerlink" title="四、objc_msgSend执行流程02-动态方法解析"></a>四、objc_msgSend执行流程02-动态方法解析</h5><p><img src="http://wx2.sinaimg.cn/large/76a55189ly1g8auqw83hjj21ly0qiq7m.jpg" alt="image"></p>
 <h6 id="动态添加方法实例："><a href="#动态添加方法实例：" class="headerlink" title="动态添加方法实例："></a>动态添加方法实例：</h6><p><img src="http://wx1.sinaimg.cn/large/76a55189ly1g8aur0fa37j21ma0qudru.jpg" alt="image"></p>
 
-          
         
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/20/iOS%E5%8E%9F%E7%90%86(12)-class%E7%9A%84%E5%BA%95%E5%B1%82%E5%87%BD%E6%95%B0%E3%80%81%E6%95%A3%E5%88%97%E8%A1%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="鲨鱼辣椒">
-    </span>
-
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/20/iOS%E5%8E%9F%E7%90%86(12)-class%E7%9A%84%E5%BA%95%E5%B1%82%E5%87%BD%E6%95%B0%E3%80%81%E6%95%A3%E5%88%97%E8%A1%A8/" itemprop="url">iOS原理(12) class的底层函数、散列表</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-20T23:25:27+08:00">
-                2019-10-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS原理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h5 id="一、class的结构"><a href="#一、class的结构" class="headerlink" title="一、class的结构"></a>一、class的结构</h5><p><img src="http://wx3.sinaimg.cn/mw690/76a55189ly1g7r2oq9azmj21ks0rctom.jpg" alt="image"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/20/iOS%E5%8E%9F%E7%90%86(12)-class%E7%9A%84%E5%BA%95%E5%B1%82%E5%87%BD%E6%95%B0%E3%80%81%E6%95%A3%E5%88%97%E8%A1%A8/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/19/iOS%E5%8E%9F%E7%90%86(11)-isa%E8%AF%A6%E8%A7%A3%E3%80%81%E4%BD%8D%E8%BF%90%E7%AE%97%E3%80%81%E5%85%B1%E7%94%A8%E4%BD%93%E3%80%81%E4%BD%8D%E5%9F%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="鲨鱼辣椒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/19/iOS%E5%8E%9F%E7%90%86(11)-isa%E8%AF%A6%E8%A7%A3%E3%80%81%E4%BD%8D%E8%BF%90%E7%AE%97%E3%80%81%E5%85%B1%E7%94%A8%E4%BD%93%E3%80%81%E4%BD%8D%E5%9F%9F/" itemprop="url">iOS原理(11) isa详解、位运算、共用体、位域</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-19T23:24:19+08:00">
-                2019-10-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS原理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>今天主要讲解了要学习runtime的一些基本知识。具体的内容看当天的代码是怎么使用位赋值取值的以及位域和共用体的详细内容。</p>
-<ol>
-<li>使用位运算给变量赋值、取值。</li>
-<li>介绍了一下位域和共用体。</li>
-</ol>
-<h5 id="一、-isa指针详解"><a href="#一、-isa指针详解" class="headerlink" title="一、 isa指针详解"></a>一、 isa指针详解</h5><p>要想学习Runtime，首先要了解它底层的一些常用数据结构，比如isa指针</p>
-<p>在arm64架构之前，isa就是一个普通的指针，存储着Class、Meta-Class对象的内存地址</p>
-<p>从arm64架构开始，对isa进行了优化，变成了一个共用体（union）结构，还使用位域来存储更多的信息</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/19/iOS%E5%8E%9F%E7%90%86(11)-isa%E8%AF%A6%E8%A7%A3%E3%80%81%E4%BD%8D%E8%BF%90%E7%AE%97%E3%80%81%E5%85%B1%E7%94%A8%E4%BD%93%E3%80%81%E4%BD%8D%E5%9F%9F/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/18/iOS%E5%8E%9F%E7%90%86(10)-__block%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="鲨鱼辣椒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/18/iOS%E5%8E%9F%E7%90%86(10)-__block%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" itemprop="url">iOS原理(10) __block的内存管理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-18T23:22:20+08:00">
-                2019-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS原理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>面试题13: block的原理是什么样的？本质是什么？</p>
-</blockquote>
-<p>block本质是封装了函数调用和调用环境的OC对象，block结构体内部有需要执行的代码块funcPtr和自己的大小size。</p>
-<blockquote>
-<p>面试题14:__block 的作用是什么？有什么使用的注意点？</p>
-</blockquote>
-<ol>
-<li>__block修饰的变量可以在block内部修改。</li>
-<li>解决循环引用的问题（并不常用）</li>
-</ol>
-<blockquote>
-<p>面试题15： block的属性修饰词为什么是copy？使用block有哪些使用注意？</p>
-</blockquote>
-<p>如果block在栈空间上，那么block可能会被释放，使用copy是为了把block拷贝到堆上。注意循环引用的问题。</p>
-<blockquote>
-<p>面试题16:block在修改NSMutableArray，需不需要添加__block？</p>
-</blockquote>
-<p>如果是调用NSMutablearray的<code>addObject</code>方法，则不需要添加__block，如果直接修改NSMutablearray则需要。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/18/iOS%E5%8E%9F%E7%90%86(10)-__block%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/17/iOS%E5%8E%9F%E7%90%86(9)-block%E3%80%81copy%E3%80%81-block%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="鲨鱼辣椒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/17/iOS%E5%8E%9F%E7%90%86(9)-block%E3%80%81copy%E3%80%81-block%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" itemprop="url">iOS原理(9) block、copy、__block底层原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-17T23:20:51+08:00">
-                2019-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h5 id="一、block的copy"><a href="#一、block的copy" class="headerlink" title="一、block的copy"></a>一、block的copy</h5><ol>
-<li>在ARC环境下，编译器会根据情况自动将栈上的block复制到堆上，比如以下情况</li>
-</ol>
-<ul>
-<li>block作为函数返回值时</li>
-<li>将block赋值给__strong指针时</li>
-<li>block作为Cocoa API中方法名含有usingBlock的方法参数时</li>
-<li>block作为GCD API的方法参数时</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/17/iOS%E5%8E%9F%E7%90%86(9)-block%E3%80%81copy%E3%80%81-block%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/16/iOS%E5%8E%9F%E7%90%86(8)-block%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="鲨鱼辣椒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/16/iOS%E5%8E%9F%E7%90%86(8)-block%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" itemprop="url">iOS原理(8) block底层原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-16T23:18:06+08:00">
-                2019-10-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS原理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h5 id="一-block的本质"><a href="#一-block的本质" class="headerlink" title="一. block的本质"></a>一. block的本质</h5><ol>
-<li>block本质也是一个oc对象，它内部也有一个isa指针</li>
-<li>block是封装了函数调用以及函数调用环境的OC对象</li>
-</ol>
-<p>block的底层结构如下所示：</p>
-<p><img src="https://wx2.sinaimg.cn/mw690/76a55189ly1g7hqz2x22sj21ma0q8jz6.jpg" alt="image"></p>
-<h5 id="二、block对变量的捕获"><a href="#二、block对变量的捕获" class="headerlink" title="二、block对变量的捕获"></a>二、block对变量的捕获</h5><p><img src="https://wx2.sinaimg.cn/mw690/76a55189ly1g7hthmw3n5j21700cgwgn.jpg" alt="image"></p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//block会捕获self对象，因为self对象是局部变量</span></span><br><span class="line">- (<span class="keyword">void</span>)test &#123;</span><br><span class="line">    <span class="keyword">void</span> (^myblock)(<span class="keyword">void</span>) = ^&#123;</span><br><span class="line">      <span class="built_in">NSLog</span>(<span class="string">@"%p"</span>,<span class="keyword">self</span>);  </span><br><span class="line">    &#125;;</span><br><span class="line">    myblock();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//block会捕获self对象，因为_name为当前类的成员变量，如果要访问成员变量，需要先通过类对象，也就是self。所以blcok直接捕获了self</span></span><br><span class="line">- (<span class="keyword">void</span>)test1 &#123;</span><br><span class="line">    <span class="keyword">void</span> (^myblock)(<span class="keyword">void</span>) = ^&#123;</span><br><span class="line">      <span class="built_in">NSLog</span>(<span class="string">@"%p"</span>,_name);  </span><br><span class="line">    &#125;;</span><br><span class="line">    myblock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/16/iOS%E5%8E%9F%E7%90%86(8)-block%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/15/iOS%E5%8E%9F%E7%90%86(7)-%E5%85%B3%E8%81%94%E5%AF%B9%E8%B1%A1%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="鲨鱼辣椒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/15/iOS%E5%8E%9F%E7%90%86(7)-%E5%85%B3%E8%81%94%E5%AF%B9%E8%B1%A1%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" itemprop="url">iOS原理(7) 关联对象底层原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T23:15:58+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS原理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h5 id="1-关联对象的key的常见用法"><a href="#1-关联对象的key的常见用法" class="headerlink" title="1. 关联对象的key的常见用法"></a>1. 关联对象的key的常见用法</h5><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> *MyKey = &amp;MyKey;</span><br><span class="line">objc_setAssociatedObject(obj, MyKey, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC)</span><br><span class="line">objc_getAssociatedObject(obj, MyKey)</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">char</span> MyKey;</span><br><span class="line">objc_setAssociatedObject(obj, &amp;MyKey, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC)</span><br><span class="line">objc_getAssociatedObject(obj, &amp;MyKey)</span><br><span class="line"></span><br><span class="line">使用属性名作为key</span><br><span class="line">objc_setAssociatedObject(obj, <span class="string">@"property"</span>, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span><br><span class="line">objc_getAssociatedObject(obj, <span class="string">@"property"</span>);</span><br><span class="line"></span><br><span class="line">使用get方法的@selecor作为key</span><br><span class="line">objc_setAssociatedObject(obj, <span class="keyword">@selector</span>(<span class="keyword">getter</span>), value, OBJC_ASSOCIATION_RETAIN_NONATOMIC)</span><br><span class="line">objc_getAssociatedObject(obj, <span class="keyword">@selector</span>(<span class="keyword">getter</span>))</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/15/iOS%E5%8E%9F%E7%90%86(7)-%E5%85%B3%E8%81%94%E5%AF%B9%E8%B1%A1%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1757,127 +1378,113 @@
           </div>
           
 
-
-          
-
         </div>
-        
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
-    
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhangshengyang</p>
+  <div class="site-description" itemprop="description">iOS开发</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
       
-
       
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">zhangshengyang</p>
-              <p class="site-description motion-element" itemprop="description">iOS开发</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives">
-              
-                  <span class="site-state-item-count">55</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
+      <div class="site-state-item site-state-categories">
+        
           
-
+            <a href="/categories/">
           
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
       
-
       
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">zhangshengyang</span>
-
-  
 </div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
-
-
-
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
 
         
+
+
+
+
+
 
 
 
@@ -1888,31 +1495,16 @@
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
   </div>
 
   
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.2"></script><script src="/js/motion.js?v=7.4.2"></script>
+<script src="/js/schemes/pisces.js?v=7.4.2"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
+<script src="/js/next-boot.js?v=7.4.2"></script>
 
 
 
@@ -1929,86 +1521,6 @@
 
 
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -2017,24 +1529,6 @@
 
 
 
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
 
   
 

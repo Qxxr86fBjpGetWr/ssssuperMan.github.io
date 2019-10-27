@@ -2,84 +2,60 @@
 
 
 
-  
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.2" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.2">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
 
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="iOS开发">
+  <meta name="description" content="iOS开发">
 <meta property="og:type" content="website">
 <meta property="og:title" content="鲨鱼辣椒">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;6&#x2F;index.html">
@@ -87,40 +63,19 @@
 <meta property="og:description" content="iOS开发">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="http://yoursite.com/page/6/">
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
   };
 </script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/page/6/"/>
-
-
-
-
 
   <title>鲨鱼辣椒</title>
   
@@ -132,186 +87,642 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+    <div>
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">鲨鱼辣椒</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
   <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
 
+
 <nav class="site-nav">
   
-
-  
-    <ul id="menu" class="menu">
+  <ul id="menu" class="menu">
       
+      
+        
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            首页
-          </a>
-        </li>
       
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            关于
-          </a>
-        </li>
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
       
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
     
       
+      
+        
+        
+        <li class="menu-item menu-item-about">
+      
+    
 
-  
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
 
-  
-  
-  
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-tags">
+      
+    
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      
+    
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/07/swift-e4-b8-80-ef-bc-9a-e5-9f-ba-e7-a1-80-e8-af-ad-e6-b3-95-e5-92-8c-e5-b8-b8-e9-87-8f-e5-92-8c-e5-8f-98-e9-87-8f/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/18/nsuserdefaults-standarduserdefaults-e7-9a-84-e4-bd-bf-e7-94-a8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="iOS开发">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="鲨鱼辣椒">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/01/07/swift-e4-b8-80-ef-bc-9a-e5-9f-ba-e7-a1-80-e8-af-ad-e6-b3-95-e5-92-8c-e5-b8-b8-e9-87-8f-e5-92-8c-e5-8f-98-e9-87-8f/" itemprop="url">Swift一：基础语法和常量和变量</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2016/03/18/nsuserdefaults-standarduserdefaults-e7-9a-84-e4-bd-bf-e7-94-a8/" class="post-title-link" itemprop="url">NSUserDefaults standardUserDefaults的使用</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
+              <span class="post-meta-item-text">Posted on</span>
+
               
-                <span class="post-meta-item-text">发表于</span>
+                
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-07T08:28:02+08:00">
-                2016-01-07
-              </time>
-            
 
-            
-
-            
-          </span>
-
+              <time title="Created: 2016-03-18 10:40:20" itemprop="dateCreated datePublished" datetime="2016-03-18T10:40:20+08:00">2016-03-18</time>
+            </span>
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-21 00:38:36" itemprop="dateModified" datetime="2019-10-21T00:38:36+08:00">2019-10-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
+              <span class="post-meta-item-text">In</span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
               
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <pre><code>NSUserDefaults用于存储数据量小的数据，例如用户配置。并不是所有的东西都能往里放的，只支持：NSString,NSNumber, NSDate, NSArray, NSDictionary (之前有面试官问我这个问题来着：“用户偏好设置什么时候用？怎么用？可以存放NSMutableArray/Dictionary吗？我没有回答上来”)，详细方法可以查看类文件。</code></pre><p>NSUserDefaultsstandardUserDefaults用来记录一下永久保留的数据非常方便，不需要读写文件，而是保留到一个NSDictionary字典里，由系统保存到文件里，系统会保存到该应用下的/Library/Preferences/gongcheng.plist文件中。需要注意的是如果程序意外退出，NSUserDefaultsstandardUserDefaults数据不会被系统写入到该文件，不过可以使用［[NSUserDefaultsstandardUserDefaults] synchronize］命令直接同步到文件里，来避免数据的丢失。</p>
+<p>[code lang=”objc”] 一、将数据存储到NSUserDefaults： //UISwitch - (IBAction)switchChanged:(id)sender{ NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults]; [userDefaults setBool:_theSwitch.on forKey:@”switchValue”]; } //UITextField - (IBAction)inputChanged:(id)sender{ NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults]; [userDefaults setObject:_textField.text forKey:@”inputValue”]; } [/code]</p>
+<p>二、读取NSUserDefaults中的数据：</p>
+<p>[code lang=”objc”] UISwitchNSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults]; BOOL sw = [userDefaults boolForKey:@”switchValue”]; [_theSwitch setOn:sw]; UITextFieldNSString *str = [userDefaults stringForKey:@”inputValue”]; [_textField setText:str]; [/code]</p>
+<p>registerDefaults:方法是注册偏好设置的子集，它是不写入到plist文件中的，但在ND中取确实能取到。<br>也就是说plist文件中看到的数据是你显示的设置进去的。<br>比如调用setxxx方法</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/17/e5-8f-96-e6-b6-88tableview-section-e7-9a-84headerview-e5-92-8cfooterview-e7-9a-84-e6-bb-9e-e7-95-99-e6-95-88-e6-9e-9c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2016/03/17/e5-8f-96-e6-b6-88tableview-section-e7-9a-84headerview-e5-92-8cfooterview-e7-9a-84-e6-bb-9e-e7-95-99-e6-95-88-e6-9e-9c/" class="post-title-link" itemprop="url">取消TableView Section的headerView和footerView的滞留效果</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2016-03-17 16:24:18" itemprop="dateCreated datePublished" datetime="2016-03-17T16:24:18+08:00">2016-03-17</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-21 00:38:36" itemprop="dateModified" datetime="2019-10-21T00:38:36+08:00">2019-10-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>TableView Section的headerView和footerView的粘性效果是iOS本身的特性，有的时候这种效果很好，但是有时候我们却不需要这种效果。</p>
+<p>[code lang=”objc”] -(void)scrollViewDidScroll:(UIScrollView <em>)scrollView { if (scrollView == self.tableView) { UITableView *tableview = (UITableView \</em>)scrollView; CGFloat sectionHeaderHeight = 64; CGFloat sectionFooterHeight = 120; CGFloat offsetY = tableview.contentOffset.y; if (offsetY &gt;= 0 &amp;&amp; offsetY &lt;= sectionHeaderHeight) { tableview.contentInset = UIEdgeInsetsMake(-offsetY, 0, -sectionFooterHeight, 0); }else if (offsetY &gt;= sectionHeaderHeight &amp;&amp; offsetY &lt;= tableview.contentSize.height - tableview.frame.size.height - sectionFooterHeight) { tableview.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, -sectionFooterHeight, 0); }else if (offsetY &gt;= tableview.contentSize.height - tableview.frame.size.height - sectionFooterHeight &amp;&amp; offsetY &lt;= tableview.contentSize.height - tableview.frame.size.height) { tableview.contentInset = UIEdgeInsetsMake(-offsetY, 0, -(tableview.contentSize.height - tableview.frame.size.height - sectionFooterHeight), 0); } } } [/code]</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/17/e6-9c-80-e8-bf-91-e4-bd-bf-e7-94-a8tableview-e6-b3-a8-e6-84-8f-e7-82-b9-e6-80-bb-e7-bb-93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2016/03/17/e6-9c-80-e8-bf-91-e4-bd-bf-e7-94-a8tableview-e6-b3-a8-e6-84-8f-e7-82-b9-e6-80-bb-e7-bb-93/" class="post-title-link" itemprop="url">最近使用TableView注意点总结</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2016-03-17 11:28:30" itemprop="dateCreated datePublished" datetime="2016-03-17T11:28:30+08:00">2016-03-17</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-21 00:38:36" itemprop="dateModified" datetime="2019-10-21T00:38:36+08:00">2019-10-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近与TableView接触比较多，同时也发现很多容易出BUG的地方，放在这里总结一下。</p>
+<p>1. [tableView dequeueReusableCellWithIdentifier:CELL_REUSEID_MRLIST]方法的使用</p>
+<pre><code>这个方法是从已经创建过的cell中选出合适的cell用来复用，也就是所谓的tableview的复用机制，也就是说这个方法在</code></pre><p> (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:<br>(NSIndexPath *)indexPath 调用的时候是不会执行的。</p>
+<p>2.</p>
+<p>[[MrListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_REUSEID_MRLIST]方法的使用</p>
+<p>这个方法是用来创建新的cell的，一般来说，一个tableview加载的时候需要显示5个cell那么这个方法就会创建5个新的cell，需要注意的是在这个方法里面，也就是 if （cell == ni） { &nbsp;}这个方法里面调用的方法和使用的内容要注意，如果在这里面写的有创建控件或者分配空间的方法就会出现cell的内容重叠或者空间浪费的情况。<br>    总结一下就是一定要分清楚tableview创建的时候用到的这两个方法，然后在书写代码的时候一定要把创建和赋值给区分开，避免造成空间浪费的情况，对了，还有一点就是，不到万不得已的情况下不要关闭tableview的重用机制。</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/13/mac-e4-b8-8b-e7-bf-bb-e5-a2-99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2016/01/13/mac-e4-b8-8b-e7-bf-bb-e5-a2-99/" class="post-title-link" itemprop="url">Mac下翻墙总结</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2016-01-13 00:10:46" itemprop="dateCreated datePublished" datetime="2016-01-13T00:10:46+08:00">2016-01-13</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-21 00:38:36" itemprop="dateModified" datetime="2019-10-21T00:38:36+08:00">2019-10-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Other/" itemprop="url" rel="index">
+                    <span itemprop="name">Other</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近百度把血友吧卖出得事情被爆出，网上对百度更加不满了。但是国内现在也并没有一个公司能完全替代百度的位置。就搜索而言吧，百度竞价导致的搜索结果那是相当的恶心，按照自然排名点击词条，点中野鸡网站的几率十有七八吧我感觉，今天就把Mac下翻墙的经验总结一下吧。</p>
+<h2 id="一、ShadowsocksX（影梭）"><a href="#一、ShadowsocksX（影梭）" class="headerlink" title="一、ShadowsocksX（影梭）"></a>一、ShadowsocksX（影梭）</h2><p>1.GitHub项目地址：<a href="https://github.com/breakwa11/shadowsocks-rss/issues/32" target="_blank" rel="noopener">https://github.com/breakwa11/shadowsocks-rss/issues/32</a></p>
+<p>2.下载打开后使用我就不说了，你可以选择去购买账号，途径有很多，这个网站上面有免费得账号，每六个小时更换一次密码，使用频率不高的话，可是用网站上面的账号，上面也有推荐的账号商家。网址是：<a href="http://www.ishadowsocks.com/" target="_blank" rel="noopener">http://www.ishadowsocks.com/</a></p>
+<p>3.使用免费账号的缺点就是不太稳定，如果你能够购买账号的话这种方式应该是优先选择的。支持自定义站点，和全局模式。</p>
+<h2 id="二-修改host文件"><a href="#二-修改host文件" class="headerlink" title="二.修改host文件"></a>二.修改host文件</h2><p>直接干货吧。</p>
+<p>1首先得打开Mac下面的host文件，可以使用终端命令打开host文件并并编辑，偏极客的做法，但是相对不好操作。我推荐一种简单的，点击桌面，也就是Finder下面按shift + command + g 弹出“前往文件夹”的对话框，输入  /private/etc/  在出现的文件中找到“hosts”文件。</p>
+<p>2.按住option键将“hosts”文件复制到桌面，打开文件。</p>
+<p>3.<a href="https://github.com/racaljk/hosts/blob/master/hosts#L2" target="_blank" rel="noopener">https://github.com/racaljk/hosts/blob/master/hosts#L2</a>打开这个GitHub项目，赋值主页host文件中得内容到自己的hosts文件中，保存。</p>
+<p>4.把桌面上面的hosts文件拖到 /private/etc/下面，替换掉原本的hosts文件。</p>
+<p>好了，这样就可以试着打开Google之类的网站了。缺点是需要不定时的更新hosts文件。</p>
+<h2 id="三、Lantern（蓝灯）"><a href="#三、Lantern（蓝灯）" class="headerlink" title="三、Lantern（蓝灯）"></a>三、Lantern（蓝灯）</h2><p>听说背后是Google。开始并不怎么好用，但是最近推出了2.10版本，下载使用了一下，感觉还不错。就是不支持自定义站点，对于普通用户来说应该也足够了。</p>
+<p>官网需要穿墙，附上GitHub地址吧：<a href="https://github.com/getlantern" target="_blank" rel="noopener">https://github.com/getlantern</a>  下载安装即可使用。非常简单。</p>
+<p>当然，随着GFW越来越智能，以上的方案都不是永久的解决办法，一批又一批的服务、软件、技术在实现科学上网的征途中到下，但是紧接着又会出现一批。</p>
+<p>最后总结一句政治正确的话：知识无国界，思想是自由的。</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/11/hittest-e5-92-8cpointinside-e5-a6-82-e4-bd-95-e5-93-8d-e5-ba-94-e7-94-a8-e6-88-b7-e7-82-b9-e5-87-bb-e4-ba-8b-e4-bb-b6-ef-bc-88-e8-bd-ac-ef-bc-89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2016/01/11/hittest-e5-92-8cpointinside-e5-a6-82-e4-bd-95-e5-93-8d-e5-ba-94-e7-94-a8-e6-88-b7-e7-82-b9-e5-87-bb-e4-ba-8b-e4-bb-b6-ef-bc-88-e8-bd-ac-ef-bc-89/" class="post-title-link" itemprop="url">hitTest和pointInside如何响应用户点击事件（转）</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2016-01-11 23:33:21" itemprop="dateCreated datePublished" datetime="2016-01-11T23:33:21+08:00">2016-01-11</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-21 00:38:36" itemprop="dateModified" datetime="2019-10-21T00:38:36+08:00">2019-10-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/iOS/" itemprop="url" rel="index">
@@ -326,21 +737,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -348,12 +747,280 @@
     <div class="post-body" itemprop="articleBody">
 
       
+          <p>iOS事件处理，首先应该是找到能处理点击事件的视图，然后在找到的这个视图里处理这个点击事件。</p>
+<p>处理原理如下：</p>
+<p>• 当用户点击屏幕时，会产生一个触摸事件，系统会将该事件加入到一个由UIApplication管理的事件队列中</p>
+<p>• UIApplication会从事件队列中取出最前面的事件进行分发以便处理，通常，先发送事件给应用程序的主窗口(UIWindow)</p>
+<p>• 主窗口会调用hitTest:withEvent:方法在视图(UIView)层次结构中找到一个最合适的UIView来处理触摸事件</p>
+<p>(hitTest:withEvent:其实是UIView的一个方法，UIWindow继承自UIView，因此主窗口UIWindow也是属于视图的一种)</p>
+<p>• hitTest:withEvent:方法大致处理流程是这样的：</p>
+<p>首先调用当前视图的pointInside:withEvent:方法判断触摸点是否在当前视图内：</p>
+<p>▶ 若pointInside:withEvent:方法返回NO，说明触摸点不在当前视图内，则当前视图的hitTest:withEvent:返回nil</p>
+<p>▶ 若pointInside:withEvent:方法返回YES，说明触摸点在当前视图内，则遍历当前视图的所有子视图(subviews)，调用子视图的hitTest:withEvent:方法重复前面的步骤，子视图的遍历顺序是从top到bottom，即从subviews数组的末尾向前遍历，直到有子视图的hitTest:withEvent:方法返回非空对象或者全部子视图遍历完毕：</p>
+<p>▷ 若第一次有子视图的hitTest:withEvent:方法返回非空对象,则当前视图的hitTest:withEvent:方法就返回此对象，处理结束</p>
+<p>▷ 若所有子视图的hitTest:withEvent:方法都返回nil，则当前视图的hitTest:withEvent:方法返回当前视图自身(self)</p>
+<p>• 最终，这个触摸事件交给主窗口的hitTest:withEvent:方法返回的视图对象去处理。</p>
+<h3 id="案列分析"><a href="#案列分析" class="headerlink" title="案列分析"></a>案列分析</h3><p>在UIViewController的self.view上加载一个LGFirstView</p>
+<p>LGFirstView上面有一个UIButton我们叫它buttonFirst</p>
+<p>然后，self.view上加载一个LGSecondView，刚好盖在LGFirstView上面</p>
+<p>LGSecondView上面也有一个UIButton我们叫它buttonSecond</p>
+<h5 id="正常情况下："><a href="#正常情况下：" class="headerlink" title="正常情况下："></a>正常情况下：</h5><p>用户点击LGSecondView（点击的点不在buttonSecond上，但是在buttonFirst撒很难过吗），事件处理流程如下：</p>
+<p>1）调用UIWindow的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在UIWindow上面。</p>
+<p>2）去遍历UIWindow上面的子视图，也就是self.view。同样也是调用self.view的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在self.view上面。</p>
+<p>3）去遍历self.view上的子视图，也就是LGFirstView和LGSecondView。（注意：子视图的遍历顺序是从top到bottom，即从subviews数组的末尾向前遍历）。</p>
+<p>4）所以先调用LGSecondView的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在LGSecondView上面。（此时不会再去遍历LGFirstView，所以正如你所愿buttonFirst的点击事件也不会被调用）</p>
+<p>5）还没有结束，接着回去遍历LGSecondView上的所有子视图，结果所有子视图的hitTest:withEvent:方法都返回nil，因为LGSecondView上面只有secondButton，而点击的点不在secondButton。</p>
+<p>6）最终hitTest:withEvent:方法返回当前视图自身(self)，而LGSecondView没有事件要处理。整个过程结束。</p>
+<h5 id="如果我们想让buttonFirst也响应点击事件怎么办？"><a href="#如果我们想让buttonFirst也响应点击事件怎么办？" class="headerlink" title="如果我们想让buttonFirst也响应点击事件怎么办？"></a>如果我们想让buttonFirst也响应点击事件怎么办？</h5><h5 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h5><p>我们在LGSecondView加入如下代码：</p>
+<p>-(id)hitTest:(CGPoint)point withEvent:(UIEvent *)event<br>{<br>    UIView *hitView = [super hitTest:point withEvent:event];<br>    if (hitView == self)<br>    {<br>        return nil;<br>    }<br>    else<br>    {<br>        return hitView;<br>    }<br>}</p>
+<p>我们再来分析一下：</p>
+<p>还是这个场景，用户点击LGSecondView（点击的点不在buttonSecond上，但是在buttonFirst撒很难过吗），事件处理流程如下：</p>
+<p>1）调用UIWindow的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在UIWindow上面。</p>
+<p>2）去遍历UIWindow上面的子视图，也就是self.view。同样也是调用self.view的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在self.view上面。</p>
+<p>3）去遍历self.view上的子视图，也就是LGFirstView和LGSecondView。（注意：子视图的遍历顺序是从top到bottom，即从subviews数组的末尾向前遍历）。</p>
+<p>4）所以先调用LGSecondView的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在LGSecondView上面。</p>
+<p>5)但是，注意了，这里有个但是， UIView *hitView = [super hitTest:point withEvent:event];就是这句代码发挥了作用。如果hitView是LGSecondView的话，就不处理点击事件。（这跟userInteractionEnabled=NO是不一样的，userInteractionEnabled=NO，LGSecondView上的buttonSecond也不会响应点击事件了。）</p>
+<p>6)这个时候会去调用LGFirstView的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在LGFirstView上面。</p>
+<p>7）再去遍历LGFirstView上面的子视图，也就是buttonFirst，调用buttonFirst的hitTest:withEvent:方法，hitTest:withEvent:方法会调用pointInside:withEvent:方法。此时pointInside:withEvent:返回YES，说明触摸事件在buttonFirst上面。</p>
+<p>8）再去遍历buttonFirst上的所有子视图，结果所有子视图的hitTest:withEvent:方法都返回nil，说明点击就在buttonFirst，buttonFirst就用响应的点击方法。</p>
+<h5 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h5><p>在LGSecondView.m</p>
+<p>@interface LGSecondView ()</p>
+<p>@property (nonatomic, strong) NSMutableArray *subControlsArray;</p>
+<p>@end</p>
+<p>@implementation LGSecondView</p>
+<p>- (id)initWithFrame:(CGRect)frame<br>{<br>    if (self = [super initWithFrame:frame]) {<br>        self.subControlsArray = [NSMutableArray array];<br>    }<br>    return self;<br>}</p>
+<p>#pragma mark - 方法二</p>
+<p>- (void)addSubview:(UIView *)view{<br>    [super addSubview:view];<br>    if ([view isKindOfClass:[UIControl class]]) {<br>        [self.subControlsArray addObject:view];<br>    }<br>}</p>
+<p>//set self not response action and self subviews response action<br>- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event;<br>{<br>    BOOL toNext = YES;<br>    for (UIView *view in _subControlsArray) {<br>        if (CGRectContainsPoint(view.frame, point)) {<br>            toNext = NO;<br>            break;<br>        }<br>    }<br>    return !toNext;<br>}</p>
+
+        
       
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/08/e4-bd-bf-e7-94-a8xib-e8-87-aa-e5-ae-9a-e4-b9-89-e8-be-93-e5-85-a5-e6-a1-86-e4-bb-a5-e5-8f-8a-e9-94-ae-e7-9b-98-e4-bd-8d-e7-bd-ae-e7-9a-84-e5-a4-84-e7-90-86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2016/01/08/e4-bd-bf-e7-94-a8xib-e8-87-aa-e5-ae-9a-e4-b9-89-e8-be-93-e5-85-a5-e6-a1-86-e4-bb-a5-e5-8f-8a-e9-94-ae-e7-9b-98-e4-bd-8d-e7-bd-ae-e7-9a-84-e5-a4-84-e7-90-86/" class="post-title-link" itemprop="url">使用XIB自定义输入框以及键盘位置的处理</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2016-01-08 00:04:38" itemprop="dateCreated datePublished" datetime="2016-01-08T00:04:38+08:00">2016-01-08</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-21 00:38:36" itemprop="dateModified" datetime="2019-10-21T00:38:36+08:00">2019-10-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+          <p>一、今天在项目中有个这样的需求，在评论页面（tableView）下面添加一个评论框，评论页面是使用XIB了的，从其他控制器push到评论页面的时候这个评论框和评论页面加载的时间和方式都不太一致，因为把评论框添加在了评论页面的navigationController上，事实说明这样是不合适的。（有些时候这样弄有奇效，只不过在这不太合适）。</p>
+<p>合适的做法是，把评论框添加在评论页面上面，这样就能做到随着评论页面的同步。</p>
+<p>错误的做法：</p>
+<p>1.单独弄个toolBar的view，然后XIB</p>
+<p><img src="http://www.zhangshengyang.com/wp-content/uploads/2016/01/Snip20160107_2-300x45.png" alt="Snip20160107_2"></p>
+<p>2.创建一个评论控制器继承自tableviewcontroller</p>
+<p><img src="http://www.zhangshengyang.com/wp-content/uploads/2016/01/Snip20160107_4-300x48.png" alt="Snip20160107_4">  </p>
+<p>3.把toolBar添加进去，通过懒加载加载到navigationController上面</p>
+<p><img src="http://www.zhangshengyang.com/wp-content/uploads/2016/01/Snip20160107_6-300x211.png" alt="Snip20160107_6"></p>
+<p>最后，把评论控制器ZZCommentViewController改成继承自UIViewController，XIB上面加个tableviewcell来弥补没有继承自UITableViewController的功能，然后在ZZCommentViewController的XIB上面创建评论框的View，再使用UIView+Layout调整cell和view的相对位置。</p>
+<p>就像这样：</p>
+<p><img src="http://www.zhangshengyang.com/wp-content/uploads/2016/01/Snip20160107_9-300x238.png" alt="Snip20160107_9"></p>
+<p>二、点击评论框的textField 弹出键盘时，评论框的处理方式</p>
+<p>1.首先注册通知</p>
+<p>//注册键盘监听通知</p>
+<pre><code>\[\[NSNotificationCenter defaultCenter\] addObserver:self selector:@selector(keyBoardChange:) name:UIKeyboardWillChangeFrameNotification object:nil\];</code></pre><p>2.需要改变位置的评论框的约束</p>
+<p>@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstranint;</p>
+<p>3.监听键盘位置变化时执行的方法。改变评论框的位置</p>
+<p>-(void)keyBoardChange:(NSNotification *)notification{</p>
+<pre><code>CGSize size = \[UIScreen mainScreen\].bounds.size;
+
+//键盘显示隐藏的frame
+
+CGRect frame = \[notification.userInfo\[UIKeyboardFrameEndUserInfoKey\]CGRectValue\];
+
+//修改底部的约束
+
+self.bottomConstranint.constant = size.height - frame.origin.y;
+
+//获取键盘升起退出的的动画时间
+
+CGFloat duration = \[notification.userInfo\[UIKeyboardAnimationDurationUserInfoKey\]doubleValue\];
+
+\[UIView animateWithDuration:duration animations:^{
+
+    \[self.view layoutIfNeeded\];
+
+}\];</code></pre><p>}</p>
+
         
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/07/swift-e4-b8-80-ef-bc-9a-e5-9f-ba-e7-a1-80-e8-af-ad-e6-b3-95-e5-92-8c-e5-b8-b8-e9-87-8f-e5-92-8c-e5-8f-98-e9-87-8f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
           
-            <p>1.Swift是按照从上往下的顺序执行，不需要main函数，写在前面的代码会自动被当做是程序的入口</p>
+            
+            <a href="/2016/01/07/swift-e4-b8-80-ef-bc-9a-e5-9f-ba-e7-a1-80-e8-af-ad-e6-b3-95-e5-92-8c-e5-b8-b8-e9-87-8f-e5-92-8c-e5-8f-98-e9-87-8f/" class="post-title-link" itemprop="url">Swift一：基础语法和常量和变量</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2016-01-07 08:28:02" itemprop="dateCreated datePublished" datetime="2016-01-07T08:28:02+08:00">2016-01-07</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-21 00:38:36" itemprop="dateModified" datetime="2019-10-21T00:38:36+08:00">2019-10-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1.Swift是按照从上往下的顺序执行，不需要main函数，写在前面的代码会自动被当做是程序的入口</p>
 <p>2.不需要在每一条语句后面加上分号，加上也不会报错，但是一行上面有多条语句的时候需要加分号</p>
 <p>3.注释：OC里面不允许多行嵌套注释，但是Swift可以。单行注释基本是一样的。</p>
 <p>声明常量和变量：</p>
@@ -370,105 +1037,76 @@ let str1 = &quot;11111&quot;
 let str2 = &quot;ddddd&quot;
 var str3 = str1 + str2</code></pre><p>未完待续。</p>
 
-          
         
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
+  
+  
+  
 
     
-      
-
-  
-
+        
   
   
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/06/e6-87-92-e5-8a-a0-e8-bd-bdview-e6-97-b6-e5-8a-a0-e8-bd-bdxib-e5-86-85-e5-ae-b9-e7-9a-84-e6-96-b9-e6-b3-95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="iOS开发">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="鲨鱼辣椒">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/01/06/e6-87-92-e5-8a-a0-e8-bd-bdview-e6-97-b6-e5-8a-a0-e8-bd-bdxib-e5-86-85-e5-ae-b9-e7-9a-84-e6-96-b9-e6-b3-95/" itemprop="url">懒加载View时加载XIB内容的方法</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2016/01/06/e6-87-92-e5-8a-a0-e8-bd-bdview-e6-97-b6-e5-8a-a0-e8-bd-bdxib-e5-86-85-e5-ae-b9-e7-9a-84-e6-96-b9-e6-b3-95/" class="post-title-link" itemprop="url">懒加载View时加载XIB内容的方法</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
+              <span class="post-meta-item-text">Posted on</span>
+
               
-                <span class="post-meta-item-text">发表于</span>
+                
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-06T00:17:45+08:00">
-                2016-01-06
-              </time>
-            
 
-            
-
-            
-          </span>
-
+              <time title="Created: 2016-01-06 00:17:45" itemprop="dateCreated datePublished" datetime="2016-01-06T00:17:45+08:00">2016-01-06</time>
+            </span>
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-21 00:38:36" itemprop="dateModified" datetime="2019-10-21T00:38:36+08:00">2019-10-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/iOS/" itemprop="url" rel="index">
@@ -483,21 +1121,9 @@ var str3 = str1 + str2</code></pre><p>未完待续。</p>
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -505,12 +1131,7 @@ var str3 = str1 + str2</code></pre><p>未完待续。</p>
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>可以在UIView的分类中定义拓展一个方法方法名为：</p>
+          <p>可以在UIView的分类中定义拓展一个方法方法名为：</p>
 <p>+ (instancetype)viewFromXib</p>
 <p>实现为：</p>
 <p>+ (instancetype)viewFromXib<br>{<br>    return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] lastObject];<br>}</p>
@@ -525,105 +1146,76 @@ var str3 = str1 + str2</code></pre><p>未完待续。</p>
 return _pictureView;</code></pre><p>}</p>
 <p>一定要记得调用viewFromXib方法，不然的话即使创建的xib与view绑定，view也不会显示xib上面的内容，编译不会报错，比较隐蔽。</p>
 
-          
         
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
+  
+  
+  
 
     
-      
-
-  
-
+        
   
   
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/05/e8-ae-b0afnetworking-e8-af-b7-e6-b1-82-e6-95-b0-e6-8d-ae-e7-9a-84-e4-b8-80-e7-a7-8d-e5-9f-ba-e6-9c-ac-e6-9e-b6-e6-9e-84-e6-96-b9-e6-a1-88-ef-bc-88-e4-b8-80-ef-bc-89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="iOS开发">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="鲨鱼辣椒">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/01/05/e8-ae-b0afnetworking-e8-af-b7-e6-b1-82-e6-95-b0-e6-8d-ae-e7-9a-84-e4-b8-80-e7-a7-8d-e5-9f-ba-e6-9c-ac-e6-9e-b6-e6-9e-84-e6-96-b9-e6-a1-88-ef-bc-88-e4-b8-80-ef-bc-89/" itemprop="url">记AFNetworking请求数据的一种基本架构方案（一）</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2016/01/05/e8-ae-b0afnetworking-e8-af-b7-e6-b1-82-e6-95-b0-e6-8d-ae-e7-9a-84-e4-b8-80-e7-a7-8d-e5-9f-ba-e6-9c-ac-e6-9e-b6-e6-9e-84-e6-96-b9-e6-a1-88-ef-bc-88-e4-b8-80-ef-bc-89/" class="post-title-link" itemprop="url">记AFNetworking请求数据的一种基本架构方案（一）</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
+              <span class="post-meta-item-text">Posted on</span>
+
               
-                <span class="post-meta-item-text">发表于</span>
+                
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-05T23:41:17+08:00">
-                2016-01-05
-              </time>
-            
 
-            
-
-            
-          </span>
-
+              <time title="Created: 2016-01-05 23:41:17" itemprop="dateCreated datePublished" datetime="2016-01-05T23:41:17+08:00">2016-01-05</time>
+            </span>
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-21 00:38:36" itemprop="dateModified" datetime="2019-10-21T00:38:36+08:00">2019-10-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/iOS/" itemprop="url" rel="index">
@@ -638,21 +1230,9 @@ return _pictureView;</code></pre><p>}</p>
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -660,12 +1240,7 @@ return _pictureView;</code></pre><p>}</p>
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>从最刚开始使用系统网络请求方式到使用第三方请求，再到封装网络层，数据层，也是经历了好一番波折的，今天好好研究了一下使用AFN请求网络数据的时候的一些问题，封装。</p>
+          <p>从最刚开始使用系统网络请求方式到使用第三方请求，再到封装网络层，数据层，也是经历了好一番波折的，今天好好研究了一下使用AFN请求网络数据的时候的一些问题，封装。</p>
 <ul>
 <li><h3 id="你如果只会使用AFN请求数据那就是码农，你要是会封装网络层你就是项目组长，要是能再封装一层数据层，你就是项目经理-——某视频老师说的"><a href="#你如果只会使用AFN请求数据那就是码农，你要是会封装网络层你就是项目组长，要是能再封装一层数据层，你就是项目经理-——某视频老师说的" class="headerlink" title="你如果只会使用AFN请求数据那就是码农，你要是会封装网络层你就是项目组长，要是能再封装一层数据层，你就是项目经理 ——某视频老师说的"></a>你如果只会使用AFN请求数据那就是码农，你要是会封装网络层你就是项目组长，要是能再封装一层数据层，你就是项目经理 ——某视频老师说的</h3></li>
 </ul>
@@ -714,105 +1289,76 @@ return _pictureView;</code></pre><p>}</p>
 }\];</code></pre><p>}</p>
 <p>这样之后，就可以在请求数据的时候直接使用封装好的HttpTool来请求数据，但是使用的时候在Controller里面还是需要自己设定参数字典，虽然解决了项目对AFN过度依赖的问题，但是还是没有做到足够的面向对象，代码还是不够简练，这个时候我们就需要在网络层的基础之上再封装一个数据层。</p>
 
-          
         
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
+  
+  
+  
 
     
-      
-
-  
-
+        
   
   
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/12/30/ios-e4-bb-a3-e7-a0-81-e6-8f-92-e4-bb-b6-e6-b5-8b-e8-af-95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="iOS开发">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="鲨鱼辣椒">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/30/ios-e4-bb-a3-e7-a0-81-e6-8f-92-e4-bb-b6-e6-b5-8b-e8-af-95/" itemprop="url">iOS代码插件测试</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2015/12/30/ios-e4-bb-a3-e7-a0-81-e6-8f-92-e4-bb-b6-e6-b5-8b-e8-af-95/" class="post-title-link" itemprop="url">iOS代码插件测试</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
+              <span class="post-meta-item-text">Posted on</span>
+
               
-                <span class="post-meta-item-text">发表于</span>
+                
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-30T23:48:31+08:00">
-                2015-12-30
-              </time>
-            
 
-            
-
-            
-          </span>
-
+              <time title="Created: 2015-12-30 23:48:31" itemprop="dateCreated datePublished" datetime="2015-12-30T23:48:31+08:00">2015-12-30</time>
+            </span>
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-21 00:38:36" itemprop="dateModified" datetime="2019-10-21T00:38:36+08:00">2019-10-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/iOS/" itemprop="url" rel="index">
@@ -827,21 +1373,9 @@ return _pictureView;</code></pre><p>}</p>
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -849,12 +1383,7 @@ return _pictureView;</code></pre><p>}</p>
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>-(void)loadNewData<br>{</p>
+          <p>-(void)loadNewData<br>{</p>
 <pre><code>NSMutableDictionary *params = \[NSMutableDictionary dictionary\];
 params\[@&quot;a&quot;\] = @&quot;list&quot;;
 params\[@&quot;c&quot;\] = @&quot;data&quot;;
@@ -882,188 +1411,27 @@ params\[@&quot;type&quot;\] = @(self.type);
     NSLog(@&quot;%@--&quot;,error);
 }\];</code></pre><p>}</p>
 
-          
         
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/12/30/e8-a6-81-e6-80-8e-e6-a0-b7-e5-8a-aa-e5-8a-9b-ef-bc-8c-e6-89-8d-e8-83-bd-e6-88-90-e4-b8-ba-e5-be-88-e5-8e-89-e5-ae-b3-e7-9a-84-e4-ba-ba-ef-bc-9f-ef-bc-88-e8-bd-ac-e8-87-aa-e7-9f-a5-e4-b9-8e-c2-b7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="鲨鱼辣椒">
-    </span>
-
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/30/e8-a6-81-e6-80-8e-e6-a0-b7-e5-8a-aa-e5-8a-9b-ef-bc-8c-e6-89-8d-e8-83-bd-e6-88-90-e4-b8-ba-e5-be-88-e5-8e-89-e5-ae-b3-e7-9a-84-e4-ba-ba-ef-bc-9f-ef-bc-88-e8-bd-ac-e8-87-aa-e7-9f-a5-e4-b9-8e-c2-b7/" itemprop="url">要怎样努力，才能成为很厉害的人？（转自知乎·生活）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-30T18:59:28+08:00">
-                2015-12-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Home/" itemprop="url" rel="index">
-                    <span itemprop="name">Home</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>作者：朱炫 链接：<a href="https://www.zhihu.com/question/22921426/answer/23330366" target="_blank" rel="noopener">https://www.zhihu.com/question/22921426/answer/23330366</a> 来源：知乎</p>
-<p>首先，少年，答应别人的承诺，就一定要兑现。 我以前啊，和你一样，很想成为一个很厉害很厉害很厉害的人。 喜欢看热血的东西，幻想自己是屠龙的勇士，登塔的先锋，我左手有剑，右手有光，没头没脑的燃烧自己，敌人的骑军来了，我说你们何人堪与之战，我的女人在等我。 后来我现实了一点，我觉得我要成为那种说走就走，说日就日的男人，我梳大背头，流浪在欧洲或者新几内亚的，我拍孩子，拍野兽，拍流浪的雏妓，与罗伯特德尼罗握手，说嘿，我给你写了愤怒的公牛2。 再后来，我觉得我人生的梦想，是在城市中心买上一间顶层公寓，把一整面墙都改造成钢化玻璃，在灯火通明的夜晚，我就要端着酒站在巨大的窗前，看整个城市在呼吸，然后我的朋友叩门，他带来了一打嫩模，我们就玩一些成年人的游戏 现在，我发现龙并不存在，我不会骑马，不会用单反，家住2楼，我能做的，就是把眼前的事儿做好，赚到足够的钱，这样我可以给我的姑娘一个地球仪，然后用飞镖扎它，扎到哪儿，就去哪儿玩。 这样看来，虽然我的想法随着生殖器的发育，始终在变，但那个很厉害很厉害的人，一直离我很远，甚至越来越远。 我心中曾经执剑的少年，此刻也混迹在市井之间。 血似乎都凉了。 我也不是没有惶恐过，是不是我这一生，都不能左手持剑，右手握着罗伯特德尼罗，说这里的嫩模随便你玩但是你他妈别从窗户上掉下去。 这样一看，我逊得不行，我的朋友都是一些凡人，比我还逊，业余生活就是推塔、中单、跪。 我心想，我是不是这辈子都要做一个逊逼，直到我的坟墓上写好墓志铭，我甚至都想好了： 我来，我见，我挂了。 最后我给了自己一个否定的答复，我不要。 我喜欢我的朋友们，喜欢我现在的生活，首先我希望你明白，没有厉害与逊逼得区分，只有血的凉与热，有的人觉得生活就这样吧，我算了，现在没什么不好。 有的人觉得生活这样挺好，但是我还要更好。 这种只要剧情稍微热血一点就会热泪盈眶的傻逼，已经不多了，一刻也不要停留。 所以现在，我和你不一样了，我仍然想成为一个很厉害很厉害很厉害的人，像我们这种剧情稍微热血一点就会热泪盈眶的傻逼，要好好珍惜自己。 很多人坐下来了，跟你说你不行，说你省点儿心吧，说你请静一静。 汹涌的人群就把你这样的少年淹没了，人群散去的时候，你也不见了，你那些承诺，谁也听不见，这个世界对于你，就再不可能有什么更有趣更漂亮的女朋友。 你就失约了，小逼崽子。 这么跟你说。 虽然随着年龄的增长，我趋于现实，不能像你那样分分钟冲动的燃烧，然而我每时每刻都有想做的事，有想达成的目标。 不排除以后的某一年，我会握着罗伯特德尼罗的手，他说这是你写得吗，愤怒的公牛2，只要他还没死。 故事里拳王拉莫塔忍着伤，他举着铁拳，挥汗如雨，要和命运斗争，他说我怎么能失约呢，我是那个要成为很厉害很厉害的拳王拉莫塔！ 小伙儿，成为很厉害很厉害的人，最重要的，就是要热血，永远也不要让你的血凉下去，你凉下去了，就再也不能找到一个更有趣更漂亮的女友，你就失约了，于是那天她踏梦而来，就成了一个彻头彻尾的笑话。 当有一天你成为你讨厌的那种人，浑浑噩噩，你走在街上，看见那些更有趣更漂亮的女孩，你会不会想起多年以前，你说我答应你，在一个承诺就是永远的年纪。 读书，交友，美容，都不如你这一腔狗血，滚烫，灼人，你要燃上大半辈子，才对得起你现在说的这些话。 我听闻最美的故事，是公主死去了，屠龙的少年还在燃烧。 火苗再小，你都要反复的点燃。 所谓热血的少年，青涩的爱恋，死亡与梦之约。 这么好的故事。 你可别演砸了。 最后我给你点个人建议： 1.读书，读到倦，网上有很多方法，但你从来沉不下心看。 2.学习，学到疼，网上有很多方法，但你从来沉不下心看。 3.开口说话，冷场也要说话，脸皮薄也要说话，挨打也要说话。 4.如果你现在不知道做什么，至少你还可以先从做一个牛逼的学生开始。 5.更漂亮更有趣的女孩，五年以后再找。 6.承诺是鞭子，不是兴奋剂。 7.年纪大了，也不要说什么心如死灰。 改变自己是非常，非常，非常痛苦的，我能看出来你一腔热血的优点，自然知道你孤僻懒散自以为是的缺点，方法很多，不过我不确定你吃不吃得了苦，我和你共勉吧。 在成为最厉害最厉害最厉害的道路上。 完</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1071,127 +1439,113 @@ params\[@&quot;type&quot;\] = @(self.type);
           </div>
           
 
-
-          
-
         </div>
-        
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
-    
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhangshengyang</p>
+  <div class="site-description" itemprop="description">iOS开发</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
       
-
       
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">zhangshengyang</p>
-              <p class="site-description motion-element" itemprop="description">iOS开发</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives">
-              
-                  <span class="site-state-item-count">55</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
+      <div class="site-state-item site-state-categories">
+        
           
-
+            <a href="/categories/">
           
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
       
-
       
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">zhangshengyang</span>
-
-  
 </div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
-
-
-
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
 
         
+
+
+
+
+
 
 
 
@@ -1202,31 +1556,16 @@ params\[@&quot;type&quot;\] = @(self.type);
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
   </div>
 
   
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.2"></script><script src="/js/motion.js?v=7.4.2"></script>
+<script src="/js/schemes/pisces.js?v=7.4.2"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
+<script src="/js/next-boot.js?v=7.4.2"></script>
 
 
 
@@ -1243,86 +1582,6 @@ params\[@&quot;type&quot;\] = @(self.type);
 
 
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -1331,24 +1590,6 @@ params\[@&quot;type&quot;\] = @(self.type);
 
 
 
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
 
   
 
