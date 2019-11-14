@@ -63,13 +63,13 @@
 <meta property="og:site_name" content="鲨鱼辣椒">
 <meta property="og:description" content="一. block的本质 block本质也是一个oc对象，它内部也有一个isa指针 block是封装了函数调用以及函数调用环境的OC对象  block的底层结构如下所示：  二、block对变量的捕获 123456789101112131415&#x2F;&#x2F;block会捕获self对象，因为self对象是局部变量- (void)test &amp;#123;    void (^myblock)(void) = ^&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;wx2.sinaimg.cn&#x2F;mw690&#x2F;76a55189ly1g7hqz2x22sj21ma0q8jz6.jpg">
-<meta property="og:image" content="https:&#x2F;&#x2F;wx2.sinaimg.cn&#x2F;mw690&#x2F;76a55189ly1g7hthmw3n5j21700cgwgn.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;wx2.sinaimg.cn&#x2F;mw690&#x2F;76a55189ly1g7hqz2x22sj21ma0q8jz6.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;wx2.sinaimg.cn&#x2F;mw690&#x2F;76a55189ly1g7hthmw3n5j21700cgwgn.jpg">
 <meta property="og:image" content="https:&#x2F;&#x2F;wx3.sinaimg.cn&#x2F;mw690&#x2F;76a55189ly1g7hx5movljj21js0r4jyz.jpg">
 <meta property="og:image" content="https:&#x2F;&#x2F;wx4.sinaimg.cn&#x2F;mw690&#x2F;76a55189ly1g7hyl241nxj20zo0k2dn0.jpg">
-<meta property="og:updated_time" content="2019-10-24T16:00:25.073Z">
+<meta property="og:updated_time" content="2019-11-14T02:40:04.418Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;wx2.sinaimg.cn&#x2F;mw690&#x2F;76a55189ly1g7hqz2x22sj21ma0q8jz6.jpg">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;wx2.sinaimg.cn&#x2F;mw690&#x2F;76a55189ly1g7hqz2x22sj21ma0q8jz6.jpg">
   <link rel="canonical" href="http://yoursite.com/2019/10/16/iOS%E5%8E%9F%E7%90%86(8)-block%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">
 
 
@@ -291,7 +291,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-25 00:00:25" itemprop="dateModified" datetime="2019-10-25T00:00:25+08:00">2019-10-25</time>
+                <time title="Modified: 2019-11-14 10:40:04" itemprop="dateModified" datetime="2019-11-14T10:40:04+08:00">2019-11-14</time>
               </span>
             
           
@@ -337,8 +337,8 @@
 <li>block是封装了函数调用以及函数调用环境的OC对象</li>
 </ol>
 <p>block的底层结构如下所示：</p>
-<p><img src="https://wx2.sinaimg.cn/mw690/76a55189ly1g7hqz2x22sj21ma0q8jz6.jpg" alt="image"></p>
-<h5 id="二、block对变量的捕获"><a href="#二、block对变量的捕获" class="headerlink" title="二、block对变量的捕获"></a>二、block对变量的捕获</h5><p><img src="https://wx2.sinaimg.cn/mw690/76a55189ly1g7hthmw3n5j21700cgwgn.jpg" alt="image"></p>
+<p><img src="http://wx2.sinaimg.cn/mw690/76a55189ly1g7hqz2x22sj21ma0q8jz6.jpg" alt="image"></p>
+<h5 id="二、block对变量的捕获"><a href="#二、block对变量的捕获" class="headerlink" title="二、block对变量的捕获"></a>二、block对变量的捕获</h5><p><img src="http://wx2.sinaimg.cn/mw690/76a55189ly1g7hthmw3n5j21700cgwgn.jpg" alt="image"></p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//block会捕获self对象，因为self对象是局部变量</span></span><br><span class="line">- (<span class="keyword">void</span>)test &#123;</span><br><span class="line">    <span class="keyword">void</span> (^myblock)(<span class="keyword">void</span>) = ^&#123;</span><br><span class="line">      <span class="built_in">NSLog</span>(<span class="string">@"%p"</span>,<span class="keyword">self</span>);  </span><br><span class="line">    &#125;;</span><br><span class="line">    myblock();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//block会捕获self对象，因为_name为当前类的成员变量，如果要访问成员变量，需要先通过类对象，也就是self。所以blcok直接捕获了self</span></span><br><span class="line">- (<span class="keyword">void</span>)test1 &#123;</span><br><span class="line">    <span class="keyword">void</span> (^myblock)(<span class="keyword">void</span>) = ^&#123;</span><br><span class="line">      <span class="built_in">NSLog</span>(<span class="string">@"%p"</span>,_name);  </span><br><span class="line">    &#125;;</span><br><span class="line">    myblock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
