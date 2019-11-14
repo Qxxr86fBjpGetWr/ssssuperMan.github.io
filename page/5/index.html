@@ -242,6 +242,152 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/22/effective-objective-c-2-0-ef-bc-88-e4-ba-94-ef-bc-89-e5-86-85-e5-ad-98-e7-ae-a1-e7-90-86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2016/08/22/effective-objective-c-2-0-ef-bc-88-e4-ba-94-ef-bc-89-e5-86-85-e5-ad-98-e7-ae-a1-e7-90-86/" class="post-title-link" itemprop="url">Effective Objective-C 2.0 （五）内存管理</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2016-08-22 17:53:35" itemprop="dateCreated datePublished" datetime="2016-08-22T17:53:35+08:00">2016-08-22</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-21 00:38:36" itemprop="dateModified" datetime="2019-10-21T00:38:36+08:00">2019-10-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          <span id="busuanzi_container_page_pv">
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+            </span>
+            阅读量: <span id="busuanzi_value_page_pv"></span>次
+          </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>第二十九条：理解引用计数</p>
+<p><code>retain</code> 增计数<br><code>release</code> 减计数<br><code>autorelease</code> 待稍后清理<code>autorelease pool</code>时，再减少计数</p>
+<p>对象创建出来时，其保留计数至少为1</p>
+<p>第三十条：以ARC简化引用计数</p>
+<p>若方法名以下列词语开头，则返回的对象归调用者所有</p>
+<ul>
+<li><p>alloc</p>
+</li>
+<li><p>new</p>
+</li>
+<li><p>copy</p>
+</li>
+<li><p>mutableCopy</p>
+</li>
+</ul>
+<p>在应用程序中，可用下列修饰符来改变局部变量与实例变量的语义</p>
+<p><code>__strong</code> 默认语义，保留这个值</p>
+<p><code>__unsafe_unretained</code> 不保留这个值，这么做可能不安全，因为等到再次使用变量时，其对象可能已经回收了</p>
+<p><code>__weak</code> 不保留这个值，但是变量可以安全使用，因为如果系统把这个对象回收了，那么变量也会自动清空</p>
+<p><code>__autoreleasing</code> 把对象_按引用传递_给方法时，使用这个特殊的修饰符，此值在方法返回时自动释放</p>
+<p>比如，想令实例变量的语义与不使用 ARC 时相同，可以使用<code>__weak</code>或<code>__unsafe_unretained</code>修饰符</p>
+<p>block 块会自动保留其所捕获的全部对象，而如果这其中有某个对象又保留了块本身，那么就可能导致循环引用，可以用<code>__weak</code>局部变量来打破这种循环引用</p>
+<p>注意：<code>CoreFoundation</code>对象不归 ARC 管理，开发者必须适时调用<code>CFRetain/CFRelease</code></p>
+<p><code>第三十一条：在dealdealloc方法中只释放引用并解除监听</code></p>
+<p>把原来配置过的观测行为都清除掉，如果使用<code>NSNotificationCenter</code>给此对象注册过某种通知，那么一般应该在这里注销</p>
+<p>第三十二条：编写“异常安全代码”是留意内存泄露问题</p>
+<p>1.捕获异常时，一定要注意try块内所创立的对象清理干净</p>
+<p>2.在默认情况下，ARC不生成安全处理异常所需要的清理代码。开启编译器标志之后可以生成这种代码，不过会导致程序变大，并且降低运行效率。</p>
+<p>第三十三条：以弱引用避免保留环</p>
+<p>第三十四条：用“自动释放池”块 来降低内存峰值</p>
+<p>第三十五条：用僵尸对象来调试内存管理问题</p>
+<p>第三十六条：不要使用retainCount</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/22/effective-objective-c-2-0-ef-bc-88-e5-9b-9b-ef-bc-89-e5-8d-8f-e8-ae-ae-e4-b8-8e-e5-88-86-e7-b1-bb-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1412,124 +1558,6 @@ loginVC.delegate=self;
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/25/e5-85-b3-e4-ba-8etextview-e7-9a-84-e9-94-ae-e7-9b-98-e9-81-ae-e7-9b-96-e9-97-ae-e9-a2-98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="iOS开发">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="鲨鱼辣椒">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2016/03/25/e5-85-b3-e4-ba-8etextview-e7-9a-84-e9-94-ae-e7-9b-98-e9-81-ae-e7-9b-96-e9-97-ae-e9-a2-98/" class="post-title-link" itemprop="url">关于TextView的键盘遮盖问题</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2016-03-25 18:19:12" itemprop="dateCreated datePublished" datetime="2016-03-25T18:19:12+08:00">2016-03-25</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-21 00:38:36" itemprop="dateModified" datetime="2019-10-21T00:38:36+08:00">2019-10-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Home/" itemprop="url" rel="index">
-                    <span itemprop="name">Home</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          <span id="busuanzi_container_page_pv">
-            <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
-            <i class="fa fa-eye"></i>
-            </span>
-            阅读量: <span id="busuanzi_value_page_pv"></span>次
-          </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>第一种方法：使用TextView的Delegate方法来实现</p>
-<p>[code lang=”objc”] //如果键盘盖过输入框上移界面 -(void)textFieldDidBeginEditing:(UITextField *)textField { CGFloat offset=self.view.height- (textField.y+textField.height+300); if (offset&lt;=0) { [UIView animateWithDuration:0.3 animations:^{ CGRect frame=self.view.frame; frame.origin.y=offset; self.view.frame=frame; }]; } } -(void)textFieldDidEndEditing:(UITextField *)textField { [UIView animateWithDuration:0.3 animations:^{ CGRect frame=self.view.frame; frame.origin.y=0; self.view.frame=frame; }]; } [/code]</p>
-<p>第二种方法：注册通知监听键盘的弹入弹出，从而改变视图的偏移量</p>
-<p>[code lang=”objc”] #pragma mark - 返回该页面时刷新 -(void)viewWillAppear:(BOOL)animated { [super viewWillAppear:animated]; [self.tableView reloadData]; [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil]; [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil]; [self addLineView]; } #pragma mark - 页面销毁后移除通知 -(void)viewDidDisappear:(BOOL)animated{ [[NSNotificationCenter defaultCenter] removeObserver:self]; } #pragma mark - scrollView滚动 使 textView 处于可显示区域 //这个方法一定根据需要，如果需要点击就触发事件则需要在textview的didchange代理方法里面调用这个方法。 -(void)scrollToShow:(UITextView <em>)textView { CGRect cursorRect = [textView caretRectForPosition:textView.selectedTextRange.end]; [textView setContentOffset:CGPointZero animated:YES]; cursorRect.origin.y += 8; CGRect scrollRect = [self.tableView convertRect:cursorRect fromView:textView]; [self.tableView scrollRectToVisible:scrollRect animated:YES]; } #pragma mark - 监听键盘的弹出和收起 - (void)keyboardWillShow:(NSNotification *)notification { //键盘的frame NSValue \</em>keyboardBoundsValue = [[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey]; CGRect keyboardBounds = [keyboardBoundsValue CGRectValue]; //设置 scrollView 的内边距即可，这里只需要将底部高度设置为键盘高度即可 UIEdgeInsets ei = self.tableView.contentInset; ei.bottom = keyboardBounds.size.height; [self.tableView setContentInset:ei]; //调整滑动条距离窗口底边的距离 [self.tableView setScrollIndicatorInsets:ei]; UITextView *textview = (UITextView *)findFirstResponseOfView(self.tableView); if (textview.tag &gt;= 2000 || textview.tag &gt;= 3000) { [self scrollToShow:textview]; } } - (void)keyboardWillHide:(NSNotification *)notification { UIEdgeInsets ei = self.tableView.contentInset; ei.bottom = 0; [self.tableView setContentInset:ei]; [self.tableView setScrollIndicatorInsets:ei]; } [/code]</p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1579,7 +1607,7 @@ loginVC.delegate=self;
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">62</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

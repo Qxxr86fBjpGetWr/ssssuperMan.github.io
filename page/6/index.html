@@ -242,6 +242,124 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/25/e5-85-b3-e4-ba-8etextview-e7-9a-84-e9-94-ae-e7-9b-98-e9-81-ae-e7-9b-96-e9-97-ae-e9-a2-98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangshengyang">
+      <meta itemprop="description" content="iOS开发">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鲨鱼辣椒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2016/03/25/e5-85-b3-e4-ba-8etextview-e7-9a-84-e9-94-ae-e7-9b-98-e9-81-ae-e7-9b-96-e9-97-ae-e9-a2-98/" class="post-title-link" itemprop="url">关于TextView的键盘遮盖问题</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2016-03-25 18:19:12" itemprop="dateCreated datePublished" datetime="2016-03-25T18:19:12+08:00">2016-03-25</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-21 00:38:36" itemprop="dateModified" datetime="2019-10-21T00:38:36+08:00">2019-10-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/" itemprop="url" rel="index">
+                    <span itemprop="name">Home</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Home/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          <span id="busuanzi_container_page_pv">
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+            </span>
+            阅读量: <span id="busuanzi_value_page_pv"></span>次
+          </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>第一种方法：使用TextView的Delegate方法来实现</p>
+<p>[code lang=”objc”] //如果键盘盖过输入框上移界面 -(void)textFieldDidBeginEditing:(UITextField *)textField { CGFloat offset=self.view.height- (textField.y+textField.height+300); if (offset&lt;=0) { [UIView animateWithDuration:0.3 animations:^{ CGRect frame=self.view.frame; frame.origin.y=offset; self.view.frame=frame; }]; } } -(void)textFieldDidEndEditing:(UITextField *)textField { [UIView animateWithDuration:0.3 animations:^{ CGRect frame=self.view.frame; frame.origin.y=0; self.view.frame=frame; }]; } [/code]</p>
+<p>第二种方法：注册通知监听键盘的弹入弹出，从而改变视图的偏移量</p>
+<p>[code lang=”objc”] #pragma mark - 返回该页面时刷新 -(void)viewWillAppear:(BOOL)animated { [super viewWillAppear:animated]; [self.tableView reloadData]; [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil]; [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil]; [self addLineView]; } #pragma mark - 页面销毁后移除通知 -(void)viewDidDisappear:(BOOL)animated{ [[NSNotificationCenter defaultCenter] removeObserver:self]; } #pragma mark - scrollView滚动 使 textView 处于可显示区域 //这个方法一定根据需要，如果需要点击就触发事件则需要在textview的didchange代理方法里面调用这个方法。 -(void)scrollToShow:(UITextView <em>)textView { CGRect cursorRect = [textView caretRectForPosition:textView.selectedTextRange.end]; [textView setContentOffset:CGPointZero animated:YES]; cursorRect.origin.y += 8; CGRect scrollRect = [self.tableView convertRect:cursorRect fromView:textView]; [self.tableView scrollRectToVisible:scrollRect animated:YES]; } #pragma mark - 监听键盘的弹出和收起 - (void)keyboardWillShow:(NSNotification *)notification { //键盘的frame NSValue \</em>keyboardBoundsValue = [[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey]; CGRect keyboardBounds = [keyboardBoundsValue CGRectValue]; //设置 scrollView 的内边距即可，这里只需要将底部高度设置为键盘高度即可 UIEdgeInsets ei = self.tableView.contentInset; ei.bottom = keyboardBounds.size.height; [self.tableView setContentInset:ei]; //调整滑动条距离窗口底边的距离 [self.tableView setScrollIndicatorInsets:ei]; UITextView *textview = (UITextView *)findFirstResponseOfView(self.tableView); if (textview.tag &gt;= 2000 || textview.tag &gt;= 3000) { [self scrollToShow:textview]; } } - (void)keyboardWillHide:(NSNotification *)notification { UIEdgeInsets ei = self.tableView.contentInset; ei.bottom = 0; [self.tableView setContentInset:ei]; [self.tableView setScrollIndicatorInsets:ei]; } [/code]</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/18/nsuserdefaults-standarduserdefaults-e7-9a-84-e4-bd-bf-e7-94-a8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1386,136 +1504,6 @@ return _pictureView;</code></pre><p>}</p>
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/12/30/ios-e4-bb-a3-e7-a0-81-e6-8f-92-e4-bb-b6-e6-b5-8b-e8-af-95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangshengyang">
-      <meta itemprop="description" content="iOS开发">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="鲨鱼辣椒">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2015/12/30/ios-e4-bb-a3-e7-a0-81-e6-8f-92-e4-bb-b6-e6-b5-8b-e8-af-95/" class="post-title-link" itemprop="url">iOS代码插件测试</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2015-12-30 23:48:31" itemprop="dateCreated datePublished" datetime="2015-12-30T23:48:31+08:00">2015-12-30</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-21 00:38:36" itemprop="dateModified" datetime="2019-10-21T00:38:36+08:00">2019-10-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          <span id="busuanzi_container_page_pv">
-            <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
-            <i class="fa fa-eye"></i>
-            </span>
-            阅读量: <span id="busuanzi_value_page_pv"></span>次
-          </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>-(void)loadNewData<br>{</p>
-<pre><code>NSMutableDictionary *params = \[NSMutableDictionary dictionary\];
-params\[@&quot;a&quot;\] = @&quot;list&quot;;
-params\[@&quot;c&quot;\] = @&quot;data&quot;;
-params\[@&quot;type&quot;\] = @(self.type);
-
-\[self.manager GET:@&quot;http://api.budejie.com/api/api\_open.php&quot; parameters:params progress:^(NSProgress * \_Nonnull downloadProgress) {
-
-
-} success:^(NSURLSessionDataTask * \_Nonnull task, id  \_Nullable responseObject) {
-
-
-    self.topics = \[ZZTopic mj_objectArrayWithKeyValuesArray:responseObject\[@&quot;list&quot;\]\];
-
-
-    // 刷新
-    \[self.tableView reloadData\];
-
-
-    // 停止
-    \[self.tableView.header endRefreshing\];
-
-
-} failure:^(NSURLSessionDataTask * \_Nullable task, NSError * \_Nonnull error) {
-
-    NSLog(@&quot;%@--&quot;,error);
-}\];</code></pre><p>}</p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1565,7 +1553,7 @@ params\[@&quot;type&quot;\] = @(self.type);
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">62</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
